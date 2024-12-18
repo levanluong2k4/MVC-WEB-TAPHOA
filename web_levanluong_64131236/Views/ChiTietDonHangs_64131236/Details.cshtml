@@ -1,0 +1,38 @@
+﻿@model web_levanluong_64131236.Models.ChiTietDonHang
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Chi tiết đơn hàng #@Model.MaDH</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h5>Thông tin sản phẩm</h5>
+                            <p><strong>Tên sản phẩm:</strong> @Model.HangHoa.TenHH</p>
+                            <p><strong>Đơn giá:</strong> @Model.DonGia.ToString("N0") đ</p>
+                            <p><strong>Số lượng:</strong> @Model.SoLuong</p>
+                            <p><strong>Thành tiền:</strong> @Model.ThanhTien đ</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Thông tin đơn hàng</h5>
+                            <p><strong>Mã đơn hàng:</strong> @Model.MaDH</p>
+                            <p><strong>Trạng thái:</strong> @Model.DonHang.TrangThai</p>
+                            <p><strong>Trạng thái giao hàng:</strong> @Model.DonHang.TrangThaiGiaoHang</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại danh sách</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

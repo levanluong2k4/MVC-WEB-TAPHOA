@@ -1,0 +1,40 @@
+﻿@model IEnumerable<web_levanluong_64131236.Models.LoaiHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhLH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenLH)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnhLH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenLH)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaLH }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaLH }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaLH })
+        </td>
+    </tr>
+}
+
+</table>

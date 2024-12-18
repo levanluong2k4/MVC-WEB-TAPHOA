@@ -1,0 +1,181 @@
+﻿@model web_levanluong_64131236.Models.GioHang
+
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Giỏ hàng của bạn</h2>
+
+
+
+
+    @if (Model != null && Model.ChiTietGioHangs.Any())
+
+
+    {
+
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    
+                    <th>Mã giỏ hàng</th>
+
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.ChiTietGioHangs)
+                {
+                    <tr id="cart-item-@item.MaHH">
+                        <td>@item.MaGioHang</td>
+                   
+                        <td>@item.HangHoa.GiaBan.ToString("N0") đ</td>
+                        <td>
+                            <div class="quantity-container">
+                                <input type="number" min="1" value="@item.SoLuong"
+                                       class="form-control"
+                                       onchange="updateQuantity('@item.MaHH', this.value, @item.HangHoa.SoLuongHangTon)" />
+                                <div class="text-danger quantity-error" id="error-@item.MaHH"></div>
+                            </div>
+                        </td>
+                        <td class="item-total">
+                            @((item.SoLuong * item.HangHoa.GiaBan).ToString("N0")) đ
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm"
+                                    onclick="removeItem('@item.MaHH')">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right"><strong>Tổng cộng:</strong></td>
+                    <td colspan="2" class="cart-total">
+                        @Model.ChiTietGioHangs.Sum(x => x.SoLuong * x.HangHoa.GiaBan).ToString("N0") đ
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="text-right mt-3">
+            <a href="@Url.Action("Categories", "LoaiHangs_64131236")" class="btn btn-secondary">
+                Tiếp tục mua hàng
+            </a>
+        
+            <a href="@Url.Action("Checkout", "DonHangs_64131236")" class="btn btn-primary">
+                Thanh toán
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Giỏ hàng của bạn đang trống.
+            <a href="@Url.Action("Categories", "LoaiHangs_64131236")">Tiếp tục mua hàng</a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function updateQuantity(maHH, soLuong, maxQuantity) {
+            // Clear previous error
+            $('#error-' + maHH).text('');
+
+            // Check if quantity exceeds available stock
+            if (parseInt(soLuong) > maxQuantity) {
+                $('#error-' + maHH).text('Chỉ còn ' + maxQuantity + ' sản phẩm trong kho');
+                // Reset input to max available quantity
+                $('input[onchange*="' + maHH + '"]').val(maxQuantity);
+                soLuong = maxQuantity;
+            }
+
+            $.ajax({
+                url: '/GioHangs_64131236/UpdateQuantity',
+                type: 'POST',
+                data: { maHH: maHH, soLuong: soLuong },
+                success: function (response) {
+                    if (response.success) {
+                        var formattedTotal = response.newTotal.toLocaleString('vi-VN');
+                        $('#cart-item-' + maHH + ' .item-total').text(formattedTotal + ' đ');
+                        updateCartTotal();
+                        updateCartCount();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('Có lỗi xảy ra khi cập nhật số lượng');
+                }
+            });
+        }
+
+        function removeItem(maHH) {
+            if (confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
+                $.ajax({
+                    url: '/GioHangs_64131236/RemoveItem',
+                    type: 'POST',
+                    data: { maHH: maHH },
+                    success: function (response) {
+                        if (response.success) {
+                            $('#cart-item-' + maHH).remove();
+                            updateCartTotal();
+                            updateCartCount();
+                            if ($('tbody tr').length === 0) {
+                                location.reload();
+                            }
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra khi xóa sản phẩm');
+                    }
+                });
+            }
+        }
+
+        function updateCartTotal() {
+            var total = 0;
+            $('.item-total').each(function () {
+                var itemTotal = $(this).text().replace(/[^\d]/g, '');
+                total += parseInt(itemTotal);
+            });
+            $('.cart-total').text(total.toLocaleString('vi-VN') + ' đ');
+        }
+
+        function updateCartCount() {
+            $.ajax({
+                url: '/GioHangs_64131236/GetCartCount',
+                type: 'GET',
+                success: function (count) {
+                    $('.cart-count').text(count);
+                }
+            });
+        }
+    </script>
+
+    <style>
+        .quantity-container {
+            position: relative;
+        }
+
+        .quantity-error {
+            font-size: 0.8em;
+            margin-top: 4px;
+        }
+    </style>
+}

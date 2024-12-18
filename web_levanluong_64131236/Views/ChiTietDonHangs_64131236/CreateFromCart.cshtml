@@ -1,0 +1,35 @@
+﻿@model web_levanluong_64131236.Models.ChiTietDonHang
+
+@{
+    ViewBag.Title = "Xử lý đơn hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Đang xử lý đơn hàng của bạn</h4>
+                </div>
+                <div class="card-body text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Đang xử lý...</span>
+                    </div>
+                    <p class="mt-3">Vui lòng đợi trong giây lát...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Tự động chuyển trang sau 2 giây
+            setTimeout(function () {
+                window.location.href = '@Url.Action("OrderConfirmation", "DonHangs_64131236", new { id = ViewBag.MaDH })';
+            }, 2000);
+        });
+    </script>
+}

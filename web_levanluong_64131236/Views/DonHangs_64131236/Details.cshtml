@@ -1,0 +1,83 @@
+﻿@model web_levanluong_64131236.Models.DonHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DonHang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhuongThucThanhToan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhuongThucThanhToan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThaiGiaoHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThaiGiaoHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount.TenGiamGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount.TenGiamGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.TenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.TenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioHang.MaKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioHang.MaKH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDH }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

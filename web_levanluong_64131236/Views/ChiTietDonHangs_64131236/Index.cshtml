@@ -1,0 +1,47 @@
+﻿@model IEnumerable<web_levanluong_64131236.Models.ChiTietDonHang>
+
+@{
+    ViewBag.Title = "Danh sách chi tiết đơn hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h4>Danh sách chi tiết đơn hàng</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Mã đơn hàng</th>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thành tiền</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.MaDH</td>
+                                <td>@item.HangHoa.TenHH</td>
+                                <td>@item.SoLuong</td>
+                                <td>@item.DonGia.ToString("N0") đ</td>
+                                <td>@item.ThanhTien đ</td>
+                                <td>
+                                    <a href="@Url.Action("Details", new { id=item.MaDH })" class="btn btn-info btn-sm">
+                                        <i class="fas fa-info-circle"></i> Chi tiết
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
