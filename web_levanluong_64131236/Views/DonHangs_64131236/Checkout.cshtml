@@ -4,6 +4,7 @@
     ViewBag.Title = "Thanh toán";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var gioHang = ViewBag.GioHang as web_levanluong_64131236.Models.GioHang;
+    var khachHang = ViewBag.KhachHang as web_levanluong_64131236.Models.KhachHang;
 }
 
 <div class="container mt-4">
@@ -20,30 +21,16 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
         <div class="row">
             <div class="col-md-8">
                 <div class="card mb-4">
                     <div class="card-header">
                         Chi tiết đơn hàng
                     </div>
-                    <div>
-                        @Html.DisplayNameFor(model => model.MaDH)
-                        @foreach (var item in Model.ChiTietDonHangs)
-                        {
-                            <td>@item.MaDH</td>
-
-
-
-                        }
-
-
-                    </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
                                 <tr>
-
                                     <th>Sản phẩm</th>
                                     <th>Giá</th>
                                     <th>Số lượng</th>
@@ -67,6 +54,40 @@
                         </table>
                     </div>
                 </div>
+
+                <!-- Bank Transfer Details Section -->
+                <div id="bankTransferDetails" class="card mb-4" style="display: none;">
+                    <div class="card-header">
+                        Thông tin chuyển khoản
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <h5>Thông tin tài khoản</h5>
+                                    <p><strong>Ngân hàng:</strong> Viettinbank</p>
+                                    <p><strong>Số tài khoản:</strong> 1234567890</p>
+                                    <p><strong>Chủ tài khoản:</strong> LE VAN LUONG</p>
+                                    <p><strong>Chi nhánh:</strong> Nha Trang</p>
+                                    <div class="mt-3">
+                                        <h6>Nội dung chuyển khoản:</h6>
+                                        <p id="transferContent" class="alert alert-info p-2">
+                                            @if (khachHang != null)
+                                            {
+                                                @:Thanh toan don hang - @khachHang.TenKH @gioHang.MaGioHang
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <h5>Mã QR thanh toán</h5>
+                                <img src="~/img/QR.png" alt="QR Code" class="img-fluid" />
+                                <p class="mt-2 text-muted">Quét mã QR để thanh toán nhanh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-4">
@@ -78,7 +99,6 @@
                         <div class="form-group">
                             <label>Mã giảm giá</label>
                             @Html.DropDownListFor(model => model.MaGiamGia, ViewBag.DiscountList as SelectList, "Chọn mã giảm giá", new { @class = "form-control", onchange = "applyDiscount(this.value)" })
-
                         </div>
 
                         <div class="mt-3">
@@ -89,7 +109,7 @@
 
                         <div class="form-group mt-3">
                             <label>Phương thức thanh toán</label>
-                            @Html.DropDownList("PhuongThucThanhToan", ViewBag.PhuongThucThanhToan as SelectList, new { @class = "form-control" })
+                            @Html.DropDownList("PhuongThucThanhToan", ViewBag.PhuongThucThanhToan as SelectList, new { @class = "form-control", onchange = "handlePaymentMethodChange(this.value)" })
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block mt-3">Đặt hàng</button>
@@ -124,5 +144,20 @@
                 }
             });
         }
+
+        function handlePaymentMethodChange(method) {
+            const bankTransferDetails = document.getElementById('bankTransferDetails');
+            if (method === 'BankTransfer') {
+                bankTransferDetails.style.display = 'block';
+            } else {
+                bankTransferDetails.style.display = 'none';
+            }
+        }
+
+        // Initialize payment method display on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentMethod = document.getElementById('PhuongThucThanhToan').value;
+            handlePaymentMethodChange(paymentMethod);
+        });
     </script>
 }

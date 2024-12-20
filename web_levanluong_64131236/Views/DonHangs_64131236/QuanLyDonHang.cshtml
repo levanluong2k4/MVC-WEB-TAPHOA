@@ -5,8 +5,6 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-
-
 <div class="container my-5">
     <h2>Quản Lý Đơn Hàng</h2>
 
@@ -46,7 +44,60 @@
                             }
                         </td>
                         <td>
-                            <span class="badge bg-info">@item.TrangThaiGiaoHang</span>
+                            @if (item.TrangThai == "Đã xác nhận")
+                            {
+                                <div class="delivery-status" data-order-id="@item.MaDH">
+                                    <div class="status-steps d-flex align-items-center">
+                                        @{
+                                            var statuses = new[] { "Chưa giao hàng", "Đang giao hàng", "Giao hàng thành công", "Đã nhận hàng" };
+                                            var currentIndex = Array.IndexOf(statuses, item.TrangThaiGiaoHang);
+                                        }
+                                        @foreach (var status in statuses)
+                                        {
+                                            var index = Array.IndexOf(statuses, status);
+                                            var isActive = index <= currentIndex;
+                                            var icon = "fa-clock"; // default value
+                                            switch (index)
+                                            {
+                                                case 0:
+                                                    icon = "fa-clock";
+                                                    break;
+                                                case 1:
+                                                    icon = "fa-truck";
+                                                    break;
+                                                case 2:
+                                                    icon = "fa-check-circle";
+                                                    break;
+                                                default:
+                                                    icon = "fa-flag-checkered";
+                                                    break;
+                                            }
+                                            <div class="status-step @(isActive ? "active" : "")" data-status="@status">
+                                                <i class="fas @icon @(isActive ? "text-success" : "text-muted")"></i>
+                                                <small class="@(isActive ? "text-success" : "text-muted")">@status</small>
+                                            </div>
+                                            if (index < statuses.Length - 1)
+                                            {
+                                                <div class="status-line @(isActive ? "bg-success" : "bg-muted")"></div>
+                                            }
+                                        }
+                                    </div>
+                                    @if (item.TrangThaiGiaoHang != "Đã nhận hàng")
+                                    {
+                                        <div class="mt-2">
+                                            <button class="btn btn-sm btn-primary update-status"
+                                                    data-order-id="@item.MaDH"
+                                                    data-current-status="@item.TrangThaiGiaoHang">
+                                                <i class="fas fa-arrow-right"></i> Cập nhật trạng thái
+                                            </button>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <span class="badge bg-info">@item.TrangThaiGiaoHang</span>
+                            }
                         </td>
                         <td>
                             @if (item.TrangThai == "Chờ xác nhận")
@@ -56,6 +107,12 @@
                                 </button>
                                 <button class="btn btn-danger btn-sm" onclick="huyDonHang(@item.MaDH)">
                                     <i class="fas fa-times"></i> Hủy
+                                </button>
+                            }
+                            @if (item.TrangThai == "Đã xác nhận")
+                            {
+                                <button class="btn btn-primary btn-sm" onclick="inHoaDon(@item.MaDH)">
+                                    <i class="fas fa-print"></i> In hóa đơn
                                 </button>
                             }
                             <button class="btn btn-info btn-sm" onclick="xemChiTiet(@item.MaDH)">
@@ -69,7 +126,184 @@
     </div>
 </div>
 
+<!-- Modal Upload Ảnh -->
+<div class="modal fade" id="uploadImageModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tải lên ảnh xác nhận giao hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadImageForm" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="deliveryImage" class="form-label">Chọn ảnh</label>
+                        <input type="file" class="form-control" id="deliveryImage" name="image" accept="image/*" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="submitImage">Tải lên</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .delivery-status {
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .status-steps {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .status-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+    }
+
+        .status-step i {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+    .status-line {
+        flex-grow: 1;
+        height: 2px;
+        margin: 0 10px;
+        background-color: #dee2e6;
+    }
+
+    .status-step.active i,
+    .status-step.active small {
+        color: #28a745;
+    }
+
+    .status-line.active {
+        background-color: #28a745;
+    }
+</style>
+
 @section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Existing functions remain the same
+
+        let currentOrderId = null;
+
+        $(document).ready(function() {
+            $('.update-status').click(function() {
+                const orderId = $(this).data('order-id');
+                const currentStatus = $(this).data('current-status');
+                let nextStatus = '';
+
+                switch(currentStatus) {
+                    case 'Chưa giao hàng':
+                        nextStatus = 'Đang giao hàng';
+                        break;
+                    case 'Đang giao hàng':
+                        nextStatus = 'Giao hàng thành công';
+                        break;
+                    default:
+                        return;
+                }
+
+                updateDeliveryStatus(orderId, nextStatus);
+            });
+
+            $('#submitImage').click(function() {
+                const fileInput = $('#deliveryImage')[0];
+                if (!fileInput.files[0]) {
+                    Swal.fire('Lỗi', 'Vui lòng chọn ảnh', 'error');
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('image', fileInput.files[0]);
+                formData.append('id', currentOrderId);
+                formData.append('__RequestVerificationToken', $('input[name="__RequestVerificationToken"]').val());
+
+                $.ajax({
+                    url: '@Url.Action("UploadDeliveryImage", "DonHangs_64131236")',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(result) {
+                        if (result.success) {
+                            $('#uploadImageModal').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Thành công!',
+                                text: 'Đã cập nhật ảnh giao hàng',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => location.reload());
+                        } else {
+                            Swal.fire('Lỗi', result.message, 'error');
+                        }
+                    },
+                    error: function() {
+                        Swal.fire('Lỗi', 'Không thể tải lên ảnh. Vui lòng thử lại.', 'error');
+                    }
+                });
+            });
+        });
+
+        function updateDeliveryStatus(orderId, status) {
+            Swal.fire({
+                title: 'Xác nhận cập nhật',
+                text: `Cập nhật trạng thái giao hàng thành "${status}"?`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Đồng ý',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Action("UpdateDeliveryStatus", "DonHangs_64131236")',
+                        type: 'POST',
+                        data: {
+                            id: orderId,
+                            status: status,
+                            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                        },
+                        success: function(result) {
+                            if (result.success) {
+                                if (result.requiresImage) {
+                                    currentOrderId = orderId;
+                                    $('#uploadImageModal').modal('show');
+                                } else {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Thành công!',
+                                        text: 'Đã cập nhật trạng thái giao hàng',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    }).then(() => location.reload());
+                                }
+                            } else {
+                                Swal.fire('Lỗi', result.message, 'error');
+                            }
+                        },
+                        error: function() {
+                            Swal.fire('Lỗi', 'Không thể cập nhật trạng thái. Vui lòng thử lại.', 'error');
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function xacNhanDonHang(maDH) {
@@ -99,7 +333,7 @@
                                     text: 'Đơn hàng đã được xác nhận',
                                     showConfirmButton: false,
                                     timer: 1500
-                                }).then(function() {
+                                }).then(function () {
                                     location.reload();
                                 });
                             } else {
@@ -122,10 +356,12 @@
             });
         }
 
+        function inHoaDon(maDH) {
+            var url = '@Url.Action("InHoaDon", "DonHangs_64131236")/' + maDH;
+            window.open(url, '_blank', 'width=800,height=600');
+        }
 
-
-
-         function huyDonHang(maDH) {
+        function huyDonHang(maDH) {
             Swal.fire({
                 title: 'Hủy đơn hàng?',
                 text: "Bạn có chắc chắn muốn hủy đơn hàng này?",
@@ -138,11 +374,9 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '@Url.Action("HuyDonHang", "DonHangs_64131236")',  // Sử dụng action HuyDonHang có sẵn
+                        url: '@Url.Action("HuyDonHang", "DonHangs_64131236")',
                         type: 'POST',
-                        data: {
-                            id: maDH
-                        },
+                        data: { id: maDH },
                         success: function (result) {
                             if (result.success) {
                                 Swal.fire({
@@ -151,7 +385,7 @@
                                     text: 'Đơn hàng đã được hủy',
                                     showConfirmButton: false,
                                     timer: 1500
-                                }).then(function() {
+                                }).then(function () {
                                     location.reload();
                                 });
                             } else {
@@ -178,4 +412,5 @@
             window.location.href = '@Url.Action("OrderConfirmation", "DonHangs_64131236")/' + maDH;
         }
     </script>
+
 }

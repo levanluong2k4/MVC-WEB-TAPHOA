@@ -34,19 +34,6 @@
     <NavigationProperty Name="GioHang" Relationship="Self.fk_ChiTietGioHang_GioHang" FromRole="ChiTietGioHang" ToRole="GioHang" />
     <NavigationProperty Name="HangHoa" Relationship="Self.fk_ChiTietGioHang_HangHoa" FromRole="ChiTietGioHang" ToRole="HangHoa" />
   </EntityType>
-  <EntityType Name="ChiTietHoaDon">
-    <Key>
-      <PropertyRef Name="SoHD" />
-      <PropertyRef Name="MaHH" />
-    </Key>
-    <Property Name="SoHD" Type="Int32" Nullable="false" />
-    <Property Name="MaHH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SoLuong" Type="Int32" Nullable="false" />
-    <Property Name="GiaBan" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="ThanhTien" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
-    <NavigationProperty Name="HangHoa" Relationship="Self.fk_ChiTietHoaDon_HangHoa" FromRole="ChiTietHoaDon" ToRole="HangHoa" />
-    <NavigationProperty Name="HoaDon" Relationship="Self.fk_ChiTietHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
-  </EntityType>
   <EntityType Name="Discount">
     <Key>
       <PropertyRef Name="MaGiamGia" />
@@ -76,7 +63,6 @@
     <NavigationProperty Name="Discount" Relationship="Self.fk_DonHang_Discounts" FromRole="DonHang" ToRole="Discounts" />
     <NavigationProperty Name="KhachHang" Relationship="Self.FK__DonHang__MaKH__6477ECF3" FromRole="DonHang" ToRole="KhachHang" />
     <NavigationProperty Name="KhachHang1" Relationship="Self.fk_DonHang_KhachHang" FromRole="DonHang" ToRole="KhachHang" />
-    <NavigationProperty Name="HoaDons" Relationship="Self.fk_HoaDon_DonHang" FromRole="DonHang" ToRole="HoaDon" />
   </EntityType>
   <EntityType Name="GioHang">
     <Key>
@@ -102,22 +88,7 @@
     <Property Name="NSX" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK__ChiTietDon__MaHH__693CA210" FromRole="HangHoa" ToRole="ChiTietDonHang" />
     <NavigationProperty Name="ChiTietGioHangs" Relationship="Self.fk_ChiTietGioHang_HangHoa" FromRole="HangHoa" ToRole="ChiTietGioHang" />
-    <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.fk_ChiTietHoaDon_HangHoa" FromRole="HangHoa" ToRole="ChiTietHoaDon" />
     <NavigationProperty Name="LoaiHang" Relationship="Self.fk_loaihanghoa" FromRole="HangHoa" ToRole="LoaiHang" />
-  </EntityType>
-  <EntityType Name="HoaDon">
-    <Key>
-      <PropertyRef Name="SoHD" />
-    </Key>
-    <Property Name="SoHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="NgayGD" Type="DateTime" Precision="3" />
-    <Property Name="MaDH" Type="Int32" />
-    <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.fk_ChiTietHoaDon_HoaDon" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
-    <NavigationProperty Name="DonHang" Relationship="Self.fk_HoaDon_DonHang" FromRole="HoaDon" ToRole="DonHang" />
-    <NavigationProperty Name="KhachHang" Relationship="Self.fk_HoaDon_KhachHang" FromRole="HoaDon" ToRole="KhachHang" />
-    <NavigationProperty Name="NhanVien" Relationship="Self.fk_HoaDon_NV" FromRole="HoaDon" ToRole="NhanVien" />
   </EntityType>
   <EntityType Name="KhachHang">
     <Key>
@@ -132,7 +103,6 @@
     <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__MaKH__6477ECF3" FromRole="KhachHang" ToRole="DonHang" />
     <NavigationProperty Name="DonHangs1" Relationship="Self.fk_DonHang_KhachHang" FromRole="KhachHang" ToRole="DonHang" />
     <NavigationProperty Name="GioHangs" Relationship="Self.fk_GioHang_KhachHang" FromRole="KhachHang" ToRole="GioHang" />
-    <NavigationProperty Name="HoaDons" Relationship="Self.fk_HoaDon_KhachHang" FromRole="KhachHang" ToRole="HoaDon" />
     <NavigationProperty Name="QuanTri" Relationship="Self.fk_username" FromRole="KhachHang" ToRole="QuanTri" />
   </EntityType>
   <EntityType Name="LoaiHang">
@@ -156,7 +126,6 @@
     <Property Name="NgayLamViec" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DienThoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="HoaDons" Relationship="Self.fk_HoaDon_NV" FromRole="NhanVien" ToRole="HoaDon" />
     <NavigationProperty Name="QuanTri" Relationship="Self.fk_usernamenv" FromRole="NhanVien" ToRole="QuanTri" />
   </EntityType>
   <EntityType Name="QuanTri">
@@ -168,16 +137,6 @@
     <Property Name="Admin" Type="Boolean" />
     <NavigationProperty Name="KhachHangs" Relationship="Self.fk_username" FromRole="QuanTri" ToRole="KhachHang" />
     <NavigationProperty Name="NhanViens" Relationship="Self.fk_usernamenv" FromRole="QuanTri" ToRole="NhanVien" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="fk_AnhGiaoHang_DonHang">
     <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
@@ -239,30 +198,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_ChiTietHoaDon_HangHoa">
-    <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="1" />
-    <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HangHoa">
-        <PropertyRef Name="MaHH" />
-      </Principal>
-      <Dependent Role="ChiTietHoaDon">
-        <PropertyRef Name="MaHH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_ChiTietHoaDon_HoaDon">
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
-    <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HoaDon">
-        <PropertyRef Name="SoHD" />
-      </Principal>
-      <Dependent Role="ChiTietHoaDon">
-        <PropertyRef Name="SoHD" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_DonHang_Discounts">
     <End Role="Discounts" Type="Self.Discount" Multiplicity="0..1" />
     <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
@@ -299,18 +234,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_HoaDon_DonHang">
-    <End Role="DonHang" Type="Self.DonHang" Multiplicity="0..1" />
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DonHang">
-        <PropertyRef Name="MaDH" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaDH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_GioHang_KhachHang">
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
     <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
@@ -334,30 +257,6 @@
       </Principal>
       <Dependent Role="HangHoa">
         <PropertyRef Name="MaLH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_HoaDon_KhachHang">
-    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="KhachHang">
-        <PropertyRef Name="MaKH" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaKH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_HoaDon_NV">
-    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NhanVien">
-        <PropertyRef Name="MaNV" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaNV" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -393,17 +292,14 @@
     <EntitySet Name="AnhGiaoHangs" EntityType="Self.AnhGiaoHang" />
     <EntitySet Name="ChiTietDonHangs" EntityType="Self.ChiTietDonHang" />
     <EntitySet Name="ChiTietGioHangs" EntityType="Self.ChiTietGioHang" />
-    <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
     <EntitySet Name="Discounts" EntityType="Self.Discount" />
     <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
     <EntitySet Name="GioHangs" EntityType="Self.GioHang" />
     <EntitySet Name="HangHoas" EntityType="Self.HangHoa" />
-    <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
     <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
     <EntitySet Name="LoaiHangs" EntityType="Self.LoaiHang" />
     <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
     <EntitySet Name="QuanTris" EntityType="Self.QuanTri" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <AssociationSet Name="fk_AnhGiaoHang_DonHang" Association="Self.fk_AnhGiaoHang_DonHang">
       <End Role="DonHang" EntitySet="DonHangs" />
       <End Role="AnhGiaoHang" EntitySet="AnhGiaoHangs" />
@@ -424,14 +320,6 @@
       <End Role="HangHoa" EntitySet="HangHoas" />
       <End Role="ChiTietGioHang" EntitySet="ChiTietGioHangs" />
     </AssociationSet>
-    <AssociationSet Name="fk_ChiTietHoaDon_HangHoa" Association="Self.fk_ChiTietHoaDon_HangHoa">
-      <End Role="HangHoa" EntitySet="HangHoas" />
-      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
-    </AssociationSet>
-    <AssociationSet Name="fk_ChiTietHoaDon_HoaDon" Association="Self.fk_ChiTietHoaDon_HoaDon">
-      <End Role="HoaDon" EntitySet="HoaDons" />
-      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
-    </AssociationSet>
     <AssociationSet Name="fk_DonHang_Discounts" Association="Self.fk_DonHang_Discounts">
       <End Role="Discounts" EntitySet="Discounts" />
       <End Role="DonHang" EntitySet="DonHangs" />
@@ -444,10 +332,6 @@
       <End Role="KhachHang" EntitySet="KhachHangs" />
       <End Role="DonHang" EntitySet="DonHangs" />
     </AssociationSet>
-    <AssociationSet Name="fk_HoaDon_DonHang" Association="Self.fk_HoaDon_DonHang">
-      <End Role="DonHang" EntitySet="DonHangs" />
-      <End Role="HoaDon" EntitySet="HoaDons" />
-    </AssociationSet>
     <AssociationSet Name="fk_GioHang_KhachHang" Association="Self.fk_GioHang_KhachHang">
       <End Role="KhachHang" EntitySet="KhachHangs" />
       <End Role="GioHang" EntitySet="GioHangs" />
@@ -455,14 +339,6 @@
     <AssociationSet Name="fk_loaihanghoa" Association="Self.fk_loaihanghoa">
       <End Role="LoaiHang" EntitySet="LoaiHangs" />
       <End Role="HangHoa" EntitySet="HangHoas" />
-    </AssociationSet>
-    <AssociationSet Name="fk_HoaDon_KhachHang" Association="Self.fk_HoaDon_KhachHang">
-      <End Role="KhachHang" EntitySet="KhachHangs" />
-      <End Role="HoaDon" EntitySet="HoaDons" />
-    </AssociationSet>
-    <AssociationSet Name="fk_HoaDon_NV" Association="Self.fk_HoaDon_NV">
-      <End Role="NhanVien" EntitySet="NhanViens" />
-      <End Role="HoaDon" EntitySet="HoaDons" />
     </AssociationSet>
     <AssociationSet Name="fk_username" Association="Self.fk_username">
       <End Role="QuanTri" EntitySet="QuanTris" />

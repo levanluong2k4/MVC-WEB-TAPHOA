@@ -30,17 +30,14 @@ namespace web_levanluong_64131236.Models
         public virtual DbSet<AnhGiaoHang> AnhGiaoHangs { get; set; }
         public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual DbSet<ChiTietGioHang> ChiTietGioHangs { get; set; }
-        public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DbSet<Discount> Discounts { get; set; }
         public virtual DbSet<DonHang> DonHangs { get; set; }
         public virtual DbSet<GioHang> GioHangs { get; set; }
         public virtual DbSet<HangHoa> HangHoas { get; set; }
-        public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<LoaiHang> LoaiHangs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<QuanTri> QuanTris { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     
         public virtual int HangHoa_TimKiem(string maHH, string maLH, string tenHH, Nullable<decimal> giaBanMin, Nullable<decimal> giaBanMax, Nullable<int> soThang, Nullable<int> soLuongMin, Nullable<int> soLuongMax, Nullable<int> sapHetHang, Nullable<System.DateTime> ngayNSXTu, Nullable<System.DateTime> ngayNSXDen, Nullable<System.DateTime> ngayHSDTu, Nullable<System.DateTime> ngayHSDDen, Nullable<int> sapHetHan, Nullable<bool> coHinhAnh)
         {

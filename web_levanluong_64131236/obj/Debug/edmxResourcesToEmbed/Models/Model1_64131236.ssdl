@@ -29,17 +29,6 @@
     <Property Name="MaHH" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="SoLuong" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="ChiTietHoaDon">
-    <Key>
-      <PropertyRef Name="SoHD" />
-      <PropertyRef Name="MaHH" />
-    </Key>
-    <Property Name="SoHD" Type="int" Nullable="false" />
-    <Property Name="MaHH" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="SoLuong" Type="int" Nullable="false" />
-    <Property Name="GiaBan" Type="money" Nullable="false" />
-    <Property Name="ThanhTien" Type="money" StoreGeneratedPattern="Computed" />
-  </EntityType>
   <EntityType Name="Discounts">
     <Key>
       <PropertyRef Name="MaGiamGia" />
@@ -85,16 +74,6 @@
     <Property Name="HSD" Type="datetime" Nullable="false" />
     <Property Name="NSX" Type="datetime" Nullable="false" />
   </EntityType>
-  <EntityType Name="HoaDon">
-    <Key>
-      <PropertyRef Name="SoHD" />
-    </Key>
-    <Property Name="SoHD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaKH" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="MaNV" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="NgayGD" Type="datetime" />
-    <Property Name="MaDH" Type="int" />
-  </EntityType>
   <EntityType Name="KhachHang">
     <Key>
       <PropertyRef Name="MaKH" />
@@ -135,33 +114,6 @@
     <Property Name="Password" Type="varchar" MaxLength="50" />
     <Property Name="Admin" Type="bit" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'webbanhang64131236.dbo.v_DoanhThuNgay' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="v_DoanhThuNgay">
-          <Property Name="Ngay" Type="date" />
-          <Property Name="SoDonHang" Type="int" />
-          <Property Name="DoanhThu" Type="money" />
-          <Property Name="TongSoLuong" Type="int" />
-        </EntityType>-->
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'webbanhang64131236.dbo.v_DoanhThuThang' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="v_DoanhThuThang">
-          <Property Name="Nam" Type="int" />
-          <Property Name="Thang" Type="int" />
-          <Property Name="SoDonHang" Type="int" />
-          <Property Name="DoanhThu" Type="money" />
-          <Property Name="TongSoLuong" Type="int" />
-        </EntityType>-->
   <Association Name="FK__ChiTietDon__MaDH__68487DD7">
     <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
     <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
@@ -234,30 +186,6 @@ warning 6013: The table/view 'webbanhang64131236.dbo.v_DoanhThuThang' does not h
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_ChiTietHoaDon_HangHoa">
-    <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="1" />
-    <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HangHoa">
-        <PropertyRef Name="MaHH" />
-      </Principal>
-      <Dependent Role="ChiTietHoaDon">
-        <PropertyRef Name="MaHH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_ChiTietHoaDon_HoaDon">
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
-    <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HoaDon">
-        <PropertyRef Name="SoHD" />
-      </Principal>
-      <Dependent Role="ChiTietHoaDon">
-        <PropertyRef Name="SoHD" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_DonHang_Discounts">
     <End Role="Discounts" Type="Self.Discounts" Multiplicity="0..1" />
     <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
@@ -291,42 +219,6 @@ warning 6013: The table/view 'webbanhang64131236.dbo.v_DoanhThuThang' does not h
       </Principal>
       <Dependent Role="GioHang">
         <PropertyRef Name="MaKH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_HoaDon_DonHang">
-    <End Role="DonHang" Type="Self.DonHang" Multiplicity="0..1" />
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DonHang">
-        <PropertyRef Name="MaDH" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaDH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_HoaDon_KhachHang">
-    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="KhachHang">
-        <PropertyRef Name="MaKH" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaKH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_HoaDon_NV">
-    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NhanVien">
-        <PropertyRef Name="MaNV" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaNV" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -419,24 +311,6 @@ warning 6013: The table/view 'webbanhang64131236.dbo.v_DoanhThuThang' does not h
     <Parameter Name="owner_id" Type="int" Mode="In" />
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
-  <Function Name="sp_ThongKeDoanhThu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TuNgay" Type="date" Mode="In" />
-    <Parameter Name="DenNgay" Type="date" Mode="In" />
-    <Parameter Name="LoaiThongKe" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="sp_ThongKeDoanhThuTheoLoaiHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TuNgay" Type="date" Mode="In" />
-    <Parameter Name="DenNgay" Type="date" Mode="In" />
-  </Function>
-  <Function Name="sp_ThongKeDoanhThuTheoSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TuNgay" Type="date" Mode="In" />
-    <Parameter Name="DenNgay" Type="date" Mode="In" />
-  </Function>
-  <Function Name="sp_TopSanPhamBanChay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="TuNgay" Type="date" Mode="In" />
-    <Parameter Name="DenNgay" Type="date" Mode="In" />
-    <Parameter Name="TopN" Type="int" Mode="In" />
-  </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="ThemVaoGioHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MaKH" Type="varchar" Mode="In" />
@@ -447,17 +321,14 @@ warning 6013: The table/view 'webbanhang64131236.dbo.v_DoanhThuThang' does not h
     <EntitySet Name="AnhGiaoHang" EntityType="Self.AnhGiaoHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietGioHang" EntityType="Self.ChiTietGioHang" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discounts" EntityType="Self.Discounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GioHang" EntityType="Self.GioHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HangHoa" EntityType="Self.HangHoa" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiHang" EntityType="Self.LoaiHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QuanTri" EntityType="Self.QuanTri" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__ChiTietDon__MaDH__68487DD7" Association="Self.FK__ChiTietDon__MaDH__68487DD7">
       <End Role="DonHang" EntitySet="DonHang" />
       <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
@@ -482,14 +353,6 @@ warning 6013: The table/view 'webbanhang64131236.dbo.v_DoanhThuThang' does not h
       <End Role="HangHoa" EntitySet="HangHoa" />
       <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
     </AssociationSet>
-    <AssociationSet Name="fk_ChiTietHoaDon_HangHoa" Association="Self.fk_ChiTietHoaDon_HangHoa">
-      <End Role="HangHoa" EntitySet="HangHoa" />
-      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="fk_ChiTietHoaDon_HoaDon" Association="Self.fk_ChiTietHoaDon_HoaDon">
-      <End Role="HoaDon" EntitySet="HoaDon" />
-      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
-    </AssociationSet>
     <AssociationSet Name="fk_DonHang_Discounts" Association="Self.fk_DonHang_Discounts">
       <End Role="Discounts" EntitySet="Discounts" />
       <End Role="DonHang" EntitySet="DonHang" />
@@ -501,18 +364,6 @@ warning 6013: The table/view 'webbanhang64131236.dbo.v_DoanhThuThang' does not h
     <AssociationSet Name="fk_GioHang_KhachHang" Association="Self.fk_GioHang_KhachHang">
       <End Role="KhachHang" EntitySet="KhachHang" />
       <End Role="GioHang" EntitySet="GioHang" />
-    </AssociationSet>
-    <AssociationSet Name="fk_HoaDon_DonHang" Association="Self.fk_HoaDon_DonHang">
-      <End Role="DonHang" EntitySet="DonHang" />
-      <End Role="HoaDon" EntitySet="HoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="fk_HoaDon_KhachHang" Association="Self.fk_HoaDon_KhachHang">
-      <End Role="KhachHang" EntitySet="KhachHang" />
-      <End Role="HoaDon" EntitySet="HoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="fk_HoaDon_NV" Association="Self.fk_HoaDon_NV">
-      <End Role="NhanVien" EntitySet="NhanVien" />
-      <End Role="HoaDon" EntitySet="HoaDon" />
     </AssociationSet>
     <AssociationSet Name="fk_loaihanghoa" Association="Self.fk_loaihanghoa">
       <End Role="LoaiHang" EntitySet="LoaiHang" />

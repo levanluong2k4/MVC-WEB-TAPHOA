@@ -19,7 +19,6 @@ namespace web_levanluong_64131236.Models
         {
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
             this.ChiTietGioHangs = new HashSet<ChiTietGioHang>();
-            this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
         }
     
         public string MaHH { get; set; }
@@ -35,8 +34,6 @@ namespace web_levanluong_64131236.Models
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietGioHang> ChiTietGioHangs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual LoaiHang LoaiHang { get; set; }
     }
 }

@@ -30,14 +30,10 @@
                 <div class="card-header bg-white">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Đơn hàng #@order.MaDH</h5>
-                        @if (order.TrangThai == "Chờ xác nhận")
-                        {
-                            <span class="badge bg-warning text-dark">@order.TrangThai</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-success">@order.TrangThai</span>
-                        }
+                        <div>
+                            <span class="badge bg-@(order.TrangThai == "Chờ xác nhận" ? "warning" : "success") me-2">@order.TrangThai</span>
+                            <span class="badge bg-info">@order.TrangThaiGiaoHang</span>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -50,19 +46,37 @@
                         <div class="col-md-6">
                             <div class="tracking-status">
                                 <div class="status-timeline">
-                                    <div class="status-line @(order.TrangThai != "Chờ xác nhận" ? "bg-success" : "bg-secondary")" style="height: 2px;"></div>
+                                    <div class="status-line"></div>
                                     <div class="status-steps">
                                         <div class="status-step completed">
                                             <div class="step-icon">
-                                                <i class="fas fa-shopping-cart text-success"></i>
+                                                <i class="fas fa-shopping-cart"></i>
                                             </div>
                                             <div class="step-label">Đặt hàng</div>
                                         </div>
                                         <div class="status-step @(order.TrangThai != "Chờ xác nhận" ? "completed" : "")">
                                             <div class="step-icon">
-                                                <i class="fas fa-clipboard-check @(order.TrangThai != "Chờ xác nhận" ? "text-success" : "text-secondary")"></i>
+                                                <i class="fas fa-clipboard-check"></i>
                                             </div>
                                             <div class="step-label">Xác nhận</div>
+                                        </div>
+                                        <div class="status-step @(order.TrangThaiGiaoHang == "Đang giao hàng" || order.TrangThaiGiaoHang == "Giao hàng thành công" || order.TrangThaiGiaoHang == "Đã nhận hàng" ? "completed" : "")">
+                                            <div class="step-icon">
+                                                <i class="fas fa-shipping-fast"></i>
+                                            </div>
+                                            <div class="step-label">Đang giao</div>
+                                        </div>
+                                        <div class="status-step @(order.TrangThaiGiaoHang == "Giao hàng thành công" || order.TrangThaiGiaoHang == "Đã nhận hàng" ? "completed" : "")">
+                                            <div class="step-icon">
+                                                <i class="fas fa-box"></i>
+                                            </div>
+                                            <div class="step-label">Đã giao</div>
+                                        </div>
+                                        <div class="status-step @(order.TrangThaiGiaoHang == "Đã nhận hàng" ? "completed" : "")">
+                                            <div class="step-icon">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <div class="step-label">Đã nhận</div>
                                         </div>
                                     </div>
                                 </div>
@@ -103,6 +117,8 @@
         left: 0;
         right: 0;
         transform: translateY(-50%);
+        height: 2px;
+        background-color: #dee2e6;
     }
 
     .status-steps {
@@ -115,31 +131,72 @@
         text-align: center;
         position: relative;
         z-index: 1;
+        flex: 1;
+        padding: 0 10px;
     }
 
     .step-icon {
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background-color: white;
+
         border: 2px solid #dee2e6;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 10px;
+        transition: all 0.3s ease;
     }
 
     .status-step.completed .step-icon {
         border-color: #28a745;
+        background-color: #28a745;
+        color: white;
     }
 
     .step-label {
-        font-size: 0.875rem;
-        color: #6c757d;
+        font-size: 0.75rem;
+        
+        white-space: nowrap;
     }
 
     .status-step.completed .step-label {
         color: #28a745;
+        font-weight: 600;
+    }
+
+    .status-step.completed ~ .status-step .step-icon {
+        border-color: #dee2e6;
+        
+    }
+
+    
+
+        .status-step {
+            margin-bottom: 20px;
+        }
+
+        .status-line {
+            width: 2px;
+            height: 100%;
+            left: 19px;
+            top: 0;
+            transform: none;
+        }
+
+        .status-step {
+            display: flex;
+            align-items: center;
+            text-align: left;
+        }
+
+        .step-icon {
+            margin: 0 15px 0 0;
+        }
+
+        .step-label {
+            margin: 0;
+        }
     }
 </style>
 

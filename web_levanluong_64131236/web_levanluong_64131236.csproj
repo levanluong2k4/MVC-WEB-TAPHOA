@@ -191,13 +191,11 @@
     <Compile Include="Models\AnhGiaoHang.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BestSellingProductViewModel.cs" />
     <Compile Include="Models\ChiTietDonHang.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietGioHang.cs">
-      <DependentUpon>Model1_64131236.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietHoaDon.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomAuthorizeAttribute.cs" />
@@ -211,9 +209,6 @@
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HangHoa.cs">
-      <DependentUpon>Model1_64131236.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HoaDon.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -245,6 +240,7 @@
     <Compile Include="Models\QuanTri.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RevenueViewModel.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
@@ -261,9 +257,6 @@
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_TopSanPhamBanChay_Result.cs">
-      <DependentUpon>Model1_64131236.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThemVaoGioHang_Result.cs">
@@ -369,6 +362,7 @@
     <Content Include="img\orion_boom_keo.jpg" />
     <Content Include="img\Picture1.png" />
     <Content Include="img\play_more_keo.jpg" />
+    <Content Include="img\QR.png" />
     <Content Include="img\rejoice_dau_goi.jpg" />
     <Content Include="img\sach.png" />
     <Content Include="img\smartphone.jpg" />
@@ -532,9 +526,12 @@
     <Content Include="Views\DonHangs_64131236\CanceledOrders.cshtml" />
     <Content Include="Views\DonHangs_64131236\OrderTracking.cshtml" />
     <Content Include="Views\DonHangs_64131236\QuanLyDonHang.cshtml" />
+    <Content Include="Views\DonHangs_64131236\InHoaDon.cshtml" />
+    <Content Include="Views\DonHangs_64131236\DoanhThu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\DeliveryImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

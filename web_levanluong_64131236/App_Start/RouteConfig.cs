@@ -11,14 +11,17 @@ namespace web_levanluong_64131236
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}"); // Đặt IgnoreRoute lên đầu
+
+        
+
             routes.MapRoute(
-name: "ProductsByCategory",
-url: "danh-muc/{id}",
-defaults: new { controller = "LoaiHangs", action = "ShowProducts" }
-     );
+                name: "ProductsByCategory",
+                url: "danh-muc/{id}",
+                defaults: new { controller = "LoaiHangs", action = "ShowProducts" }
+            );
 
-
+            // Route mặc định đặt cuối cùng
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

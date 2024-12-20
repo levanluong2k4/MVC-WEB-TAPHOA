@@ -8,32 +8,24 @@
         <EntityTypeShape EntityType="webbanhang64131236Model.AnhGiaoHang" Width="1.5" PointX="4.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="webbanhang64131236Model.ChiTietDonHang" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="webbanhang64131236Model.ChiTietGioHang" Width="1.5" PointX="8.125" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="webbanhang64131236Model.ChiTietHoaDon" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="webbanhang64131236Model.Discount" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="webbanhang64131236Model.DonHang" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="webbanhang64131236Model.GioHang" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="webbanhang64131236Model.HangHoa" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="webbanhang64131236Model.HoaDon" Width="1.5" PointX="10.625" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="webbanhang64131236Model.KhachHang" Width="1.5" PointX="3.375" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="webbanhang64131236Model.LoaiHang" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="webbanhang64131236Model.NhanVien" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="webbanhang64131236Model.QuanTri" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="webbanhang64131236Model.sysdiagram" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="webbanhang64131236Model.fk_AnhGiaoHang_DonHang" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.FK__ChiTietDon__MaDH__68487DD7" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.FK__ChiTietDon__MaHH__693CA210" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.fk_ChiTietGioHang_GioHang" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.fk_ChiTietGioHang_HangHoa" ManuallyRouted="false" />
-        <AssociationConnector Association="webbanhang64131236Model.fk_ChiTietHoaDon_HangHoa" ManuallyRouted="false" />
-        <AssociationConnector Association="webbanhang64131236Model.fk_ChiTietHoaDon_HoaDon" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.fk_DonHang_Discounts" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.FK__DonHang__MaKH__6477ECF3" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.fk_DonHang_KhachHang" ManuallyRouted="false" />
-        <AssociationConnector Association="webbanhang64131236Model.fk_HoaDon_DonHang" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.fk_GioHang_KhachHang" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.fk_loaihanghoa" ManuallyRouted="false" />
-        <AssociationConnector Association="webbanhang64131236Model.fk_HoaDon_KhachHang" ManuallyRouted="false" />
-        <AssociationConnector Association="webbanhang64131236Model.fk_HoaDon_NV" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.fk_username" ManuallyRouted="false" />
         <AssociationConnector Association="webbanhang64131236Model.fk_usernamenv" ManuallyRouted="false" />
       </Diagram>
