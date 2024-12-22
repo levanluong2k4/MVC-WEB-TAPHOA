@@ -10,6 +10,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using web_levanluong_64131236.Models;
+using System.Globalization;
 
 namespace web_levanluong_64131236.Controllers
 {
@@ -583,86 +584,174 @@ namespace web_levanluong_64131236.Controllers
 
 
         // doanh thu 
-        public ActionResult DoanhThu()
+        public ActionResult DoanhThu(string period = "day", DateTime? startDate = null, DateTime? endDate = null , int page = 1)
         {
             if (Session["Admin"] == null)
             {
                 return RedirectToAction("Login", "QuanTris_64131236");
             }
+          
 
-            // Get current date
             var currentDate = DateTime.Now;
+            startDate = startDate ?? currentDate.AddDays(-30);
+            endDate = endDate ?? currentDate;
+          
 
-            // Daily revenue
-            var revenueToday = db.DonHangs
+            var viewModel = new RevenueViewModel();
+            viewModel.RevenueToday = CalculateRevenueForDate(endDate.Value);
+            viewModel.RevenueThisMonth = CalculateRevenueForMonth(endDate.Value.Year, endDate.Value.Month);
+            viewModel.RevenueThisYear = CalculateRevenueForYear(endDate.Value.Year);
+
+            // Always get both daily and monthly data
+            viewModel.DailyRevenue = GetDailyRevenue(startDate.Value, endDate.Value);
+        
+
+            // Get top selling products
+            viewModel.BestSellingProducts = GetBestSellingProducts();
+
+            return View(viewModel);
+        }
+
+        private decimal CalculateRevenueForDate(DateTime date)
+        {
+            return db.DonHangs
                 .Where(d => d.TrangThai == "Đã xác nhận" &&
-                       d.NgayDat.Year == currentDate.Year &&
-                       d.NgayDat.Month == currentDate.Month &&
-                       d.NgayDat.Day == currentDate.Day)
-                .Sum(d => (decimal?)d.TongTien) ?? 0;
+                       DbFunctions.TruncateTime(d.NgayDat) == DbFunctions.TruncateTime(date))
+                .Select(d => d.TongTien)
+                .DefaultIfEmpty(0m)
+                .Sum();
+        }
 
-            // Monthly revenue
-            var revenueThisMonth = db.DonHangs
+        private decimal CalculateRevenueForMonth(int year, int month)
+        {
+            return db.DonHangs
                 .Where(d => d.TrangThai == "Đã xác nhận" &&
-                       d.NgayDat.Year == currentDate.Year &&
-                       d.NgayDat.Month == currentDate.Month)
-                .Sum(d => (decimal?)d.TongTien) ?? 0;
+                       d.NgayDat.Year == year && d.NgayDat.Month == month)
+                .Select(d => d.TongTien)
+                .DefaultIfEmpty(0m)
+                .Sum();
+        }
 
-            // Yearly revenue
-            var revenueThisYear = db.DonHangs
-                .Where(d => d.TrangThai == "Đã xác nhận" &&
-                       d.NgayDat.Year == currentDate.Year)
-                .Sum(d => (decimal?)d.TongTien) ?? 0;
+        private decimal CalculateRevenueForYear(int year)
+        {
+            return db.DonHangs
+                .Where(d => d.TrangThai == "Đã xác nhận" && d.NgayDat.Year == year)
+                .Select(d => d.TongTien)
+                .DefaultIfEmpty(0m)
+                .Sum();
+        }
 
-            // Best selling products
+
+        private List<BestSellingProductViewModel> GetBestSellingProducts()
+        {
             var bestSellingProducts = db.ChiTietDonHangs
-                .Where(ct => ct.DonHang.TrangThai == "Đã xác nhận")
-                .GroupBy(ct => ct.HangHoa)
+                .Join(db.HangHoas, ct => ct.MaHH, hh => hh.MaHH, (ct, hh) => new { ct, hh })
+                .GroupBy(x => new { x.hh.MaHH, x.hh.TenHH, x.hh.AnhHH })
                 .Select(g => new BestSellingProductViewModel
                 {
                     MaHH = g.Key.MaHH,
                     TenHH = g.Key.TenHH,
-                    TotalQuantity = g.Sum(ct => ct.SoLuong),
-                    TotalRevenue = g.Sum(ct => ct.ThanhTien ?? 0),
+                    TotalQuantity = g.Sum(x => x.ct.SoLuong),
+                    TotalRevenue = g.Sum(x => x.ct.SoLuong * x.ct.DonGia),
                     AnhHH = g.Key.AnhHH
                 })
                 .OrderByDescending(x => x.TotalQuantity)
-                .Take(5)
+                .Take(10) // Take top 10 best-selling products
                 .ToList();
 
-            // Monthly revenue chart data
-            var monthlyRevenue = db.DonHangs
+            return bestSellingProducts;
+        }
+
+        private List<DailyRevenueViewModel> GetDailyRevenue(DateTime startDate, DateTime endDate)
+        {
+            // First get all dates in the range
+            var allDates = Enumerable.Range(0, (endDate - startDate).Days + 1)
+                .Select(i => startDate.AddDays(i).Date)
+                .ToList();
+
+            // Get revenue data for dates that have orders
+            var dailyRevenue = db.DonHangs
                 .Where(d => d.TrangThai == "Đã xác nhận" &&
-                       d.NgayDat.Year == currentDate.Year)
-                .GroupBy(d => d.NgayDat.Month)
+                       d.NgayDat >= startDate &&
+                       d.NgayDat <= endDate)
+                .GroupBy(d => DbFunctions.TruncateTime(d.NgayDat))
                 .Select(g => new
                 {
-                    Month = g.Key,
-                    Revenue = g.Sum(d => d.TongTien)
+                    Date = g.Key.Value,
+                    Revenue = g.Sum(d => (decimal?)d.TongTien) ?? 0m,
+                    OrderCount = g.Count(),
+                    ProductCount = g.Sum(d => d.ChiTietDonHangs.Sum(ct => (int?)ct.SoLuong)) ?? 0,
+                    AverageOrderValue = g.Average(d => (decimal?)d.TongTien) ?? 0m
+                })
+                .ToDictionary(x => x.Date, x => x);
+
+            // Combine all dates with revenue data, using 0 for dates with no orders
+            var result = allDates.Select(date => new DailyRevenueViewModel
+            {
+                Date = date,
+                Revenue = dailyRevenue.ContainsKey(date) ? dailyRevenue[date].Revenue : 0,
+                OrderCount = dailyRevenue.ContainsKey(date) ? dailyRevenue[date].OrderCount : 0,
+                ProductCount = dailyRevenue.ContainsKey(date) ? dailyRevenue[date].ProductCount : 0,
+                AverageOrderValue = dailyRevenue.ContainsKey(date) ? dailyRevenue[date].AverageOrderValue : 0
+            })
+            .OrderByDescending(x => x.Date)
+            .ToList();
+
+            return result;
+        }
+
+        // Helper method to check if there are any orders for a given date
+        private bool HasOrdersForDate(DateTime date)
+        {
+            return db.DonHangs
+                .Any(d => d.TrangThai == "Đã xác nhận" &&
+                         DbFunctions.TruncateTime(d.NgayDat) == date.Date);
+        }
+
+        // Helper method to format the message for days with no orders
+        private string GetNoOrdersMessage(DateTime date)
+        {
+            return $"Không có đơn hàng nào được đặt vào ngày {date:dd/MM/yyyy}";
+        }
+
+        private List<MonthlyRevenueViewModel> GetMonthlyRevenue(int year)
+        {
+            // First get the data from database without month name
+            var monthlyRevenue = db.DonHangs
+                .Where(d => d.TrangThai == "Đã xác nhận" && d.NgayDat.Year == year)
+                .GroupBy(d => new { Month = d.NgayDat.Month, Year = d.NgayDat.Year })
+                .Select(g => new
+                {
+                    Month = g.Key.Month,
+                    Year = g.Key.Year,
+                    Revenue = g.Sum(d => d.TongTien),
+                    OrderCount = g.Count()
                 })
                 .OrderBy(x => x.Month)
-                .ToList();
-
-            var monthlyRevenueData = Enumerable.Range(1, 12)
-                .Select(month => new
+                .ToList()  // Execute the query here
+                .Select(x => new MonthlyRevenueViewModel  // Then process the results
                 {
-                    Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month),
-                    Revenue = monthlyRevenue.FirstOrDefault(x => x.Month == month)?.Revenue ?? 0
+                    Month = x.Month,
+                    Year = x.Year,
+                    MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(x.Month),
+                    Revenue = x.Revenue,
+                    OrderCount = x.OrderCount
                 })
                 .ToList();
 
-            // Prepare view model
-            var viewModel = new RevenueViewModel
+            // Calculate growth rates
+            for (int i = 1; i < monthlyRevenue.Count; i++)
             {
-                RevenueToday = revenueToday,
-                RevenueThisMonth = revenueThisMonth,
-                RevenueThisYear = revenueThisYear,
-                BestSellingProducts = bestSellingProducts,
-                MonthlyRevenueData = monthlyRevenueData
-            };
+                var previousRevenue = monthlyRevenue[i - 1].Revenue;
+                var currentRevenue = monthlyRevenue[i].Revenue;
+                monthlyRevenue[i].GrowthRate = previousRevenue > 0
+                    ? ((currentRevenue - previousRevenue) / previousRevenue) * 100
+                    : 0;
+            }
 
-            return View(viewModel);
+            return monthlyRevenue;
         }
+
 
 
 

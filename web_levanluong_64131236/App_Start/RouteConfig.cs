@@ -18,7 +18,7 @@ namespace web_levanluong_64131236
             routes.MapRoute(
                 name: "ProductsByCategory",
                 url: "danh-muc/{id}",
-                defaults: new { controller = "LoaiHangs", action = "ShowProducts" }
+                defaults: new { controller = "LoaiHangs_64131236", action = "ShowProducts" }
             );
 
             // Route mặc định đặt cuối cùng

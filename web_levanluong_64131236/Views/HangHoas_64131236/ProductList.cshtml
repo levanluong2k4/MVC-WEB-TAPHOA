@@ -1,0 +1,96 @@
+﻿@model IEnumerable<web_levanluong_64131236.Models.HangHoa>
+
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+    <div class="row mb-3">
+        <div class="col-md-12">
+            @using (Html.BeginForm("ProductList", "HangHoas_64131236", FormMethod.Get))
+            {
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Tìm kiếm:</label>
+                            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Loại hàng:</label>
+                            @Html.DropDownList("maLH", ViewBag.LoaiHangs as SelectList, "Tất cả", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Giá từ:</label>
+                            @Html.TextBox("minPrice", null, new { @class = "form-control", type = "number" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Giá đến:</label>
+                            @Html.TextBox("maxPrice", null, new { @class = "form-control", type = "number" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="~/img/@item.AnhHH" class="card-img-top" alt="@item.TenHH" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.TenHH</h5>
+                        <p class="card-text">
+                            <strong>Giá:</strong> @String.Format("{0:N0}", item.GiaBan) VNĐ<br />
+                            <strong>Số lượng còn:</strong> @item.SoLuongHangTon<br />
+                            <strong>NSX:</strong> @String.Format("{0:dd/MM/yyyy}", item.NSX)<br />
+                            <strong>HSD:</strong> @String.Format("{0:dd/MM/yyyy}", item.HSD)
+                        </p>
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaHH }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <style>
+        .card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+        }
+
+        .btn-group .btn {
+            flex: 1;
+        }
+    </style>
+
+
+
+

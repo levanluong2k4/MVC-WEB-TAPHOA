@@ -1,134 +1,371 @@
-﻿
+﻿@model web_levanluong_64131236.Models.RevenueViewModel
+
 @{
-    ViewBag.Title = "DoanhThu";
+    ViewBag.Title = "Thống kê doanh thu";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-@model web_levanluong_64131236.Models.RevenueViewModel
-
-
-
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Thống kê doanh thu</h1>
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="mt-4">Thống kê doanh thu</h1>
+        <div class="date-filters">
+            <form id="dateFilterForm" class="form-inline">
+                <div class="form-group mx-2">
+                    <label class="mr-2">Từ ngày:</label>
+                    <input type="date" name="startDate" class="form-control" />
+                </div>
+                <div class="form-group mx-2">
+                    <label class="mr-2">Đến ngày:</label>
+                    <input type="date" name="endDate" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">Lọc</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Revenue Summary Cards -->
     <div class="row mt-4">
         <div class="col-xl-4 col-md-6">
-            <div class="card bg-primary text-white mb-4">
+            <div class="card bg-primary text-white mb-4 h-100">
                 <div class="card-body">
-                    <h4>Doanh thu hôm nay</h4>
-                    <h2>@String.Format("{0:N0}đ", Model.RevenueToday)</h2>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase mb-2">Doanh thu hôm nay</h6>
+                            <h2 class="mb-0">@String.Format("{0:N0}đ", Model.RevenueToday)</h2>
+                        </div>
+                        <div class="rounded-circle bg-white p-3">
+                            <i class="fas fa-calendar-day text-primary fa-2x"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-xl-4 col-md-6">
-            <div class="card bg-success text-white mb-4">
+            <div class="card bg-success text-white mb-4 h-100">
                 <div class="card-body">
-                    <h4>Doanh thu tháng này</h4>
-                    <h2>@String.Format("{0:N0}đ", Model.RevenueThisMonth)</h2>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase mb-2">Doanh thu tháng này</h6>
+                            <h2 class="mb-0">@String.Format("{0:N0}đ", Model.RevenueThisMonth)</h2>
+                        </div>
+                        <div class="rounded-circle bg-white p-3">
+                            <i class="fas fa-calendar-week text-success fa-2x"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-xl-4 col-md-6">
-            <div class="card bg-info text-white mb-4">
+            <div class="card bg-info text-white mb-4 h-100">
                 <div class="card-body">
-                    <h4>Doanh thu năm này</h4>
-                    <h2>@String.Format("{0:N0}đ", Model.RevenueThisYear)</h2>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase mb-2">Doanh thu năm nay</h6>
+                            <h2 class="mb-0">@String.Format("{0:N0}đ", Model.RevenueThisYear)</h2>
+                        </div>
+                        <div class="rounded-circle bg-white p-3">
+                            <i class="fas fa-calendar text-info fa-2x"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Monthly Revenue Chart -->
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4>Biểu đồ doanh thu theo tháng</h4>
-                </div>
-                <div class="card-body">
-                    <canvas id="monthlyRevenueChart"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Chart Tabs -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="revenueTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="daily-tab" data-toggle="tab" href="#daily" role="tab">
+                        <i class="fas fa-chart-line mr-2"></i>Theo ngày
+                    </a>
+                </li>
+         
 
-    <!-- Best Selling Products -->
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4>Sản phẩm bán chạy nhất</h4>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content" id="revenueTabContent">
+                <!-- Daily Revenue Tab -->
+                <div class="tab-pane fade show active" id="daily" role="tabpanel">
+                    <div class="chart-container" style="position: relative; height:50vh; width:100%">
+                        <canvas id="dailyRevenueChart"></canvas>
+                    </div>
+                    <div class="table-responsive mt-4">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
                                 <tr>
-                                    <th>Hình ảnh</th>
-                                    <th>Mã hàng</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Số lượng đã bán</th>
+                                    <th>Ngày</th>
                                     <th>Doanh thu</th>
+                                    <th>Số đơn hàng</th>
+                                    <th>Số sản phẩm</th>
+                                    <th>Giá trị TB/đơn</th>
+                                    <th>Trạng thái</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var product in Model.BestSellingProducts)
+                                @foreach (var item in Model.DailyRevenue)
                                 {
                                     <tr>
-                                        <td>
-                                            <img src="~/img/@product.AnhHH" alt="@product.TenHH" style="width: 50px; height: 50px;" />
+                                        <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                                        <td class="text-right">@String.Format("{0:N0}đ", item.Revenue)</td>
+                                        <td class="text-center">@item.OrderCount</td>
+                                        <td class="text-center">@item.ProductCount</td>
+                                        <td class="text-right">@String.Format("{0:N0}đ", item.AverageOrderValue)</td>
+                                        <td class="text-center">
+                                            @if (item.OrderCount == 0)
+                                            {
+                                                <span class="badge badge-secondary">Không có đơn</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-success">Có đơn hàng</span>
+                                            }
                                         </td>
-                                        <td>@product.MaHH</td>
-                                        <td>@product.TenHH</td>
-                                        <td>@product.TotalQuantity</td>
-                                        <td>@String.Format("{0:N0}đ", product.TotalRevenue)</td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+              
+               
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Best Selling Products -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-crown me-1"></i>
+            Top 10 sản phẩm bán chạy
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Mã hàng</th>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng bán</th>
+                            <th>Doanh thu</th>
+                            <th>Ảnh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model.BestSellingProducts)
+                        {
+                            <tr>
+                                <td>@product.MaHH</td>
+                                <td>@product.TenHH</td>
+                                <td class="text-center">@product.TotalQuantity</td>
+                                <td class="text-right">@String.Format("{0:N0}đ", product.TotalRevenue)</td>
+                                <td class="text-center">
+                                    <img src="~/img/@product.AnhHH" alt="@product.TenHH" class="img-thumbnail" style="max-width: 50px;">
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
 
-@section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Monthly Revenue Chart
-        var ctx = document.getElementById('monthlyRevenueChart').getContext('2d');
-        var monthlyData = @Html.Raw(Json.Encode(Model.MonthlyRevenueData));
 
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: monthlyData.map(item => item.Month),
-                datasets: [{
-                    label: 'Doanh thu (VNĐ)',
-                    data: monthlyData.map(item => item.Revenue),
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: function(value) {
-                                return new Intl.NumberFormat('vi-VN', {
-                                    style: 'currency',
-                                    currency: 'VND'
-                                }).format(value);
+<style>
+    .chart-container {
+        margin: 20px 0;
+        background-color: white;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .badge {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+
+    .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+
+    .nav-tabs .nav-link {
+        border: none;
+        color: #495057;
+    }
+
+        .nav-tabs .nav-link.active {
+            color: #007bff;
+            background-color: transparent;
+            border-bottom: 2px solid #007bff;
+        }
+</style>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize chart data
+           const dailyRevenueData = @Html.Raw(Json.Encode(Model.DailyRevenue));
+
+
+            // Format currency function
+            const formatCurrency = (value) => {
+                return new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(value);
+            };
+
+            // Store chart instances
+            let charts = {
+                daily: null,
+                monthly: null
+            };
+
+           
+            // Chart initialization function
+            function initializeCharts() {
+                // Daily Revenue Chart
+                const ctxDaily = document.getElementById('dailyRevenueChart').getContext('2d');
+                charts.daily = new Chart(ctxDaily, {
+                    type: 'line',
+                    data: {
+                        labels: dailyRevenueData.map(d => moment(d.Date).format('DD/MM/YYYY')),
+                        datasets: [{
+                            label: 'Doanh thu',
+                            data: dailyRevenueData.map(d => d.Revenue),
+                            borderColor: 'rgb(75, 192, 192)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                            tension: 0.1,
+                            fill: true,
+                            yAxisID: 'y'
+                        }, {
+                            label: 'Số đơn hàng',
+                            data: dailyRevenueData.map(d => d.OrderCount),
+                            borderColor: 'rgb(255, 99, 132)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                            tension: 0.1,
+                            fill: true,
+                            yAxisID: 'y1'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    usePointStyle: true,
+                                    padding: 20
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const dataIndex = context.dataIndex;
+                                        const dataPoint = dailyRevenueData[dataIndex];
+
+                                        if (context.datasetIndex === 0) {
+                                            return 'Doanh thu: ' + formatCurrency(dataPoint.Revenue);
+                                        } else {
+                                            return [
+                                                'Số đơn hàng: ' + dataPoint.OrderCount,
+                                                'Số sản phẩm: ' + dataPoint.ProductCount,
+                                                'TB/đơn: ' + formatCurrency(dataPoint.AverageOrderValue)
+                                            ];
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    maxRotation: 45,
+                                    minRotation: 45
+                                }
+                            },
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                title: {
+                                    display: true,
+                                    text: 'Doanh thu (VNĐ)'
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        return formatCurrency(value);
+                                    }
+                                }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                title: {
+                                    display: true,
+                                    text: 'Số đơn hàng'
+                                },
+                                grid: {
+                                    drawOnChartArea: false
+                                }
                             }
                         }
                     }
-                }
+                });
+
+
             }
+
+            // Initialize charts on page load
+            initializeCharts();
+
+            // Handle tab switching
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                const targetId = $(e.target).attr("href");
+                if (targetId === "#monthly" && charts.monthly) {
+                    charts.monthly.update();
+                } else if (targetId === "#daily" && charts.daily) {
+                    charts.daily.update();
+                }
+            });
+
+            $('#dateFilterForm').on('submit', function (e) {
+                e.preventDefault();
+                const startDate = $('input[name="startDate"]').val();
+                const endDate = $('input[name="endDate"]').val();
+
+                if (startDate && endDate) {
+                    // Get the current URL path
+                    const currentPath = window.location.pathname;
+                    // Create the correct URL by combining the current path with query parameters
+                    const url = `${currentPath}?startDate=${startDate}&endDate=${endDate}`;
+                    window.location.href = url;
+                } else {
+                    alert('Vui lòng chọn ngày bắt đầu và ngày kết thúc');
+                }
+            });
         });
     </script>
 }
-

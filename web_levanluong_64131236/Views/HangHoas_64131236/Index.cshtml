@@ -1,70 +1,101 @@
 ﻿@model IEnumerable<web_levanluong_64131236.Models.HangHoa>
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lý hàng hóa";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container-fluid mt-4">
+    <h2 class="text-center mb-4">Quản lý hàng hóa</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenHH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnhHH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoLuongHangTon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GiaBan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HSD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NSX)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LoaiHang.AnhLH)
-        </th>
-        <th></th>
-    </tr>
+    <!-- Filter Panel -->
+    <div class="card mb-4">
+        <div class="card-body">
+            @using (Html.BeginForm("Index", "HangHoas_64131236", FormMethod.Get, new { @class = "row g-3" }))
+            {
+                <div class="col-md-3">
+                    <input type="text" name="searchString" class="form-control" placeholder="Tìm kiếm theo tên hoặc mã"
+                           value="@ViewBag.CurrentFilter">
+                </div>
+                <div class="col-md-2">
+                    @Html.DropDownList("maLH", (SelectList)ViewBag.LoaiHangs, "-- Chọn loại hàng --",
+                        new { @class = "form-select" })
+                </div>
+                <div class="col-md-2">
+                    <input type="number" name="minPrice" class="form-control" placeholder="Giá tối thiểu">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" name="maxPrice" class="form-control" placeholder="Giá tối đa">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">Lọc</button>
+                </div>
+            }
+        </div>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenHH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnhHH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoLuongHangTon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GiaBan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HSD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NSX)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiHang.AnhLH)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaHH }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaHH }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaHH })
-        </td>
-    </tr>
-}
+    <!-- Add New Button -->
+    <div class="mb-3">
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-success" })
+    </div>
 
-</table>
+    <!-- Products Grid -->
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    @if (!string.IsNullOrEmpty(item.AnhHH))
+                    {
+                        <img src="~/img/@item.AnhHH" class="card-img-top" alt="@item.TenHH"
+                             style="height: 200px; object-fit: cover;">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@item.TenHH</h5>
+                        <p class="card-text">
+                            <strong>Mã:</strong> @item.MaHH<br>
+                            <strong>Giá:</strong> @item.GiaBan.ToString("N0") VNĐ<br>
+                            <strong>Tồn kho:</strong> @item.SoLuongHangTon<br>
+                            <strong>NSX:</strong> @item.NSX.ToShortDateString()<br>
+                            <strong>HSD:</strong> @item.HSD.ToShortDateString()
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="btn-group w-100">
+                            @Html.ActionLink("Sửa", "Edit", new { id = item.MaHH },
+                                new { @class = "btn btn-primary btn-sm" })
+                            @Html.ActionLink("Chi tiết", "Details", new { id = item.MaHH },
+                                new { @class = "btn btn-info btn-sm" })
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaHH },
+                                new { @class = "btn btn-danger btn-sm" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .btn-group .btn {
+        flex: 1;
+    }
+</style>

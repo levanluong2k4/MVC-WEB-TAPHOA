@@ -126,9 +126,7 @@ namespace web_levanluong_64131236.Controllers
 
         [CustomAuthorize]
         public ActionResult ShowProducts(string id)
-
         {
-
             if (Session["Admin"] != null && (bool)Session["Admin"])
             {
                 TempData["Warning"] = "Đây là trang dành cho khách hàng!";
@@ -145,16 +143,19 @@ namespace web_levanluong_64131236.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.CategoryName = db.LoaiHangs.Find(id).TenLH;
+            // Get the category name and store it
+            var category = db.LoaiHangs.Find(id);
+            ViewBag.CategoryName = category?.TenLH;
+            ViewBag.CurrentCategoryId = id; // Add this to track current category
+
             return View(products);
         }
 
-        // Action để lấy menu danh mục (dùng làm partial view)
-
-        [CustomAuthorize]
+        // Update the CategoryMenu action:
         public ActionResult CategoryMenu()
         {
             var categories = db.LoaiHangs.ToList();
+            ViewBag.CurrentCategoryId = TempData["CurrentCategoryId"]; // Add this
             return PartialView("_CategoryMenu", categories);
         }
 

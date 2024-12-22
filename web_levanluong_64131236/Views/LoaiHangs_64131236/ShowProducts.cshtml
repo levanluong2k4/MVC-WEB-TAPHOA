@@ -4,6 +4,33 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
+<style>
+    .product-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+        }
+
+        .product-card .card-link {
+            cursor: pointer;
+        }
+
+        .product-card .card-footer {
+            padding: 1rem;
+        }
+
+        .product-card .btn {
+            transition: all 0.3s ease;
+        }
+
+            .product-card .btn:hover {
+                transform: scale(1.02);
+            }
+</style>
+
 <div class="container mt-4">
     <h2 class="text-center mb-4">@ViewBag.CategoryName</h2>
 
@@ -11,23 +38,70 @@
         @foreach (var item in Model)
         {
             <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card h-100 shadow-sm">
-                    @if (!string.IsNullOrEmpty(item.AnhHH))
-                    {
-                        <img src="~/img/@item.AnhHH" class="card-img-top" alt="@item.TenHH"
-                             style="height: 200px; object-fit: cover;">
-                    }
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">@item.TenHH</h5>
-                        <p class="card-text">Giá: @item.GiaBan.ToString("N0") VNĐ</p>
-                        <p class="card-text">Còn lại: @item.SoLuongHangTon</p>
-                        <div class="mt-auto">
-                            @Html.ActionLink("Chi tiết", "Details", "HangHoas_64131236", new { id = item.MaHH },
-                                new { @class = "btn btn-info btn-sm" })
+                <div class="card h-100 shadow-sm product-card">
+                    <a href="@Url.Action("Details", "HangHoas_64131236", new { id = item.MaHH })" class="card-link text-decoration-none text-dark">
+                        @if (!string.IsNullOrEmpty(item.AnhHH))
+                        {
+                            <img src="~/img/@item.AnhHH" class="card-img-top" alt="@item.TenHH"
+                                 style="height: 200px; object-fit: cover;">
+                        }
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@item.TenHH</h5>
+                            <p class="card-text">Giá: @item.GiaBan.ToString("N0") VNĐ</p>
+                            <p class="card-text">Còn lại: @item.SoLuongHangTon</p>
                         </div>
+                    </a>
+                    <div class="card-footer bg-transparent border-0 mt-auto">
+                        @Html.AntiForgeryToken()
+                        <button class="btn btn-primary w-100" onclick="themVaoGio('@item.MaHH')">
+                            Thêm vào giỏ
+                        </button>
                     </div>
                 </div>
+
             </div>
         }
     </div>
 </div>
+
+<script>
+
+    function themVaoGio(maHH) {
+        const btn = event.target;
+        btn.disabled = true;
+        btn.innerHTML = 'Đang xử lý...';
+
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        $.ajax({
+            url: '/GioHangs_64131236/AddToCart',  // Sửa lại URL cho đúng với controller
+            type: 'POST',
+            data: {
+                maHH: maHH,
+                soLuong: 1,
+                __RequestVerificationToken: token
+            },
+            success: function (response) {
+                if (response.success) {
+                    toastr.success(response.message);
+                    // Cập nhật số lượng giỏ hàng
+                    if (response.cartCount !== undefined) {
+                        $('#cartCount').text(response.cartCount);
+                    }
+                } else {
+                    toastr.error(response.message);
+                }
+            },
+            error: function () {
+                toastr.error('Có lỗi xảy ra khi thêm vào giỏ hàng.');
+            },
+            complete: function () {
+                btn.disabled = false;
+                btn.innerHTML = 'Thêm vào giỏ';
+            }
+        });
+    }
+
+
+
+</script>

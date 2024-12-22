@@ -1,4 +1,6 @@
-﻿<!doctype html>
+﻿
+
+<!doctype html>
 <html lang="en">
 <head>
     <title>Title</title>
@@ -159,6 +161,19 @@
             padding: 2px 6px;
             font-size: 12px;
         }
+        .hover-effect {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0D6EFD;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+            .hover-effect:hover {
+                color: darkblue; /* Thay đổi màu chữ khi hover */
+                text-shadow: 0px 4px 8px rgba(0, 0, 255, 0.5); /* Hiệu ứng bóng */
+            }
+
     </style>
 
 
@@ -190,12 +205,16 @@
                         <div class="dropdown w-100 inner-input d-flex align-items-center justify-content-center mt-3 ">
                             <i class="fa-solid fa-magnifying-glass icone-search opacity-50 ms-3"></i>
 
-                            <input class="border-0 dropdown-toggle ms-1 me-2" type="search"
-                                   placeholder="Search" aria-label="Search">
-
-                            <button class="btn text-primary border-start" type="submit">
-                                Search
-                            </button>
+                          
+                                <input name="searchTerm"
+                                       class="border-0 dropdown-toggle ms-1 me-2"
+                                       type="search"
+                                       placeholder="Search"
+                                       aria-label="Search">
+                                <button class="btn text-primary border-start" type="submit">
+                                    Search
+                                </button>
+                            
                         </div>
                         <ul class="d-flex listds">
 
@@ -232,9 +251,9 @@
                                 <li>@Html.ActionLink("Register", "Register", "QuanTris_64131236")</li>
                             }
 
-                              
+
                                 <li class="nav-item">
-                                   
+
                                         <!-- Trong _Layout.cshtml -->
                                 <li class="nav-item">
                                     @if (Session["MaKH"] != null)
@@ -245,8 +264,8 @@
                                         </a>
                                     }
                                 </li>
-                              
-                              
+
+
                             </ul>
                             <a>
                                 <i class="fa-solid fa-location-dot"></i>Địa chỉ : <span class="text-decoration-underline" style="font-weight: 600;">15 Lam Sơn TP.Nha Trang </span>
@@ -357,14 +376,14 @@
                                                     <img src="~/img/doanhthu.png" alt="Thống kê">
                                                     <p>Báo cáo thống kê</p>
                                                 </a>
-                                              
+
 
                                             }
                                             else
                                             {
                                                 // Menu cho Khách hàng
 
-                                                <a href="@Url.Action("Index", "LoaiHangs_64131236")" class="item">
+                                                <a href="@Url.Action("Categories", "LoaiHangs_64131236")" class="item">
                                                     <img src="~/img/danhmuc.png" alt="Danh mục">
                                                     <p>Danh mục</p>
                                                 </a>
@@ -404,6 +423,11 @@
                         </div>
 
                         <section class=" bg-white rounded-4 me-4 mt-3 ">
+                            <a href="@Url.Action("ProductList", "HangHoas_64131236")" class="float-end hover-effect">
+                                <p>Xem tất cả</p>
+                            </a>
+
+
                             @RenderBody()
 
                         </section>
