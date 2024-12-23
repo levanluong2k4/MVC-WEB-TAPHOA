@@ -1,0 +1,42 @@
+﻿@model web_levanluong_64131236.Models.KhachHang
+@{
+    ViewBag.Title = "Complete Registration";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container">
+    <h2>Complete Your Profile</h2>
+    <p class="text-info">Please provide your information to complete the registration.</p>
+
+    @using (Html.BeginForm("CreateCustomerInfo", "KhachHangs_64131236", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.username)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.TenKH, "Full Name")
+            @Html.TextBoxFor(m => m.TenKH, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.TenKH, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DiaChi, "Address")
+            @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, "Email")
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.SDT_KH, "Phone Number")
+            @Html.TextBoxFor(m => m.SDT_KH, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.SDT_KH, "", new { @class = "text-danger" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Complete Registration</button>
+    }
+</div>

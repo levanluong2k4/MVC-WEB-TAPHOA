@@ -3,19 +3,131 @@
   "WorkspaceRootPath": "D:\\webtaphoa\\web_levanluong_64131236\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|d:\\webtaphoa\\web_levanluong_64131236\\views\\quantris_64131236\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\quantris_64131236\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\quantris_64131236\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\quantris_64131236\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\quantris_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\quantris_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\changepasswordviewmodel2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\changepasswordviewmodel2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\quantris_64131236\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\quantris_64131236\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\forgotpasswordviewmodel2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\forgotpasswordviewmodel2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\shared\\_layoutpage1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\shared\\_layoutpage1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|d:\\webtaphoa\\web_levanluong_64131236\\views\\hanghoas_64131236\\productlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\hanghoas_64131236\\productlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\khachhangs_64131236\\editmyprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\khachhangs_64131236\\editmyprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\khachhangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\khachhangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\khachhangs_64131236\\myprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\khachhangs_64131236\\myprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\quantris_64131236\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\quantris_64131236\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\khachhangs_64131236\\createcustomerinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\khachhangs_64131236\\createcustomerinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\quantri.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\quantri.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\giohangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\giohangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\chitietgiohangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\chitietgiohangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\loaihangs_64131236\\categories.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\loaihangs_64131236\\categories.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|d:\\webtaphoa\\web_levanluong_64131236\\views\\hanghoas_64131236\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\account\\_externalloginslistpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\account\\_externalloginslistpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\account\\confirmemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\account\\confirmemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\account\\externalloginconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\account\\externalloginconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\account\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\account\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\account\\forgotpasswordconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\account\\forgotpasswordconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\account\\verifycode.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\account\\verifycode.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\accountviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\accountviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\adminauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\adminauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\customauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\customauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\hanghoas_64131236\\productlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\hanghoas_64131236\\productlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\loaihangs_64131236\\showproducts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\loaihangs_64131236\\showproducts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\hanghoas_64131236\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\hanghoas_64131236\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -27,7 +139,7 @@
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\hanghoas_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|d:\\webtaphoa\\web_levanluong_64131236\\views\\hanghoas_64131236\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\hanghoas_64131236\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\hanghoas_64131236\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -39,10 +151,6 @@
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\hanghoa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\loaihangs_64131236\\showproducts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\loaihangs_64131236\\showproducts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\hanghoas_64131236\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\hanghoas_64131236\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -51,11 +159,7 @@
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\giohangs_64131236\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|d:\\webtaphoa\\web_levanluong_64131236\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|d:\\webtaphoa\\web_levanluong_64131236\\controllers\\loaihangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\loaihangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\loaihangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -131,28 +235,12 @@
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\nhanvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\quantri.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\quantri.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\donhangs_64131236\\inhoadon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\donhangs_64131236\\inhoadon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\giohangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\giohangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\quantris_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\quantris_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\donhangs_64131236\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\donhangs_64131236\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\chitietgiohangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\chitietgiohangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\donhangs_64131236\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -165,10 +253,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\chitietdonhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\chitietdonhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\giohang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -206,10 +290,6 @@
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\discounts_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\khachhangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\khachhangs_64131236controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\managecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\managecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -222,20 +302,12 @@
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\loaihangs_64131236\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\loaihangs_64131236\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\chitietgiohangs_64131236\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:views\\chitietgiohangs_64131236\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\models\\customauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|solutionrelative:models\\customauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9B404BA-38B6-4482-A88E-586470FF1CB9}|web_levanluong_64131236.csproj|D:\\webtaphoa\\web_levanluong_64131236\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -249,469 +321,207 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\HangHoas_64131236\\Create.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Create.cshtml",
-              "RelativeToolTip": "Views\\HangHoas_64131236\\Create.cshtml",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "ForgotPassword.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\QuanTris_64131236\\ForgotPassword.cshtml",
+              "RelativeDocumentMoniker": "Views\\QuanTris_64131236\\ForgotPassword.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\QuanTris_64131236\\ForgotPassword.cshtml",
+              "RelativeToolTip": "Views\\QuanTris_64131236\\ForgotPassword.cshtml",
+              "ViewState": "AQIAABEAAAAAAAAAAAAUwBkAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T15:51:03.963Z",
+              "WhenOpened": "2024-12-23T09:27:12.561Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ProductList.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\ProductList.cshtml",
-              "RelativeDocumentMoniker": "Views\\HangHoas_64131236\\ProductList.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\ProductList.cshtml",
-              "RelativeToolTip": "Views\\HangHoas_64131236\\ProductList.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA8AAAAwAAAA",
+              "Title": "ChangePassword.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\QuanTris_64131236\\ChangePassword.cshtml",
+              "RelativeDocumentMoniker": "Views\\QuanTris_64131236\\ChangePassword.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\QuanTris_64131236\\ChangePassword.cshtml",
+              "RelativeToolTip": "Views\\QuanTris_64131236\\ChangePassword.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T15:16:42.151Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\HangHoas_64131236\\Index.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Index.cshtml",
-              "RelativeToolTip": "Views\\HangHoas_64131236\\Index.cshtml",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAAAE0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T15:09:46.291Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_LayoutPage1.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Shared\\_LayoutPage1.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_LayoutPage1.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Shared\\_LayoutPage1.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_LayoutPage1.cshtml",
-              "ViewState": "AQIAAGwBAAAAAAAAAAAAAH8BAABGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T14:10:58.531Z",
+              "WhenOpened": "2024-12-23T08:55:55.08Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Categories.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\Categories.cshtml",
-              "RelativeDocumentMoniker": "Views\\LoaiHangs_64131236\\Categories.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\Categories.cshtml",
-              "RelativeToolTip": "Views\\LoaiHangs_64131236\\Categories.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T15:37:28.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CategoryMenu.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\CategoryMenu.cshtml",
-              "RelativeDocumentMoniker": "Views\\LoaiHangs_64131236\\CategoryMenu.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\CategoryMenu.cshtml",
-              "RelativeToolTip": "Views\\LoaiHangs_64131236\\CategoryMenu.cshtml",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAACIAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T15:38:27.174Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DoanhThu.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\DoanhThu.cshtml",
-              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\DoanhThu.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\DoanhThu.cshtml",
-              "RelativeToolTip": "Views\\DonHangs_64131236\\DoanhThu.cshtml",
-              "ViewState": "AQIAANwAAAAAAAAAAAAAAGEBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-20T14:39:25.99Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HangHoas_64131236Controller.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\HangHoas_64131236Controller.cs",
-              "RelativeDocumentMoniker": "Controllers\\HangHoas_64131236Controller.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\HangHoas_64131236Controller.cs",
-              "RelativeToolTip": "Controllers\\HangHoas_64131236Controller.cs",
-              "ViewState": "AQIAACABAAAAAAAAAAAkwDIBAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T08:02:43.405Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HangHoa.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\HangHoa.cs",
-              "RelativeDocumentMoniker": "Models\\HangHoa.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\HangHoa.cs",
-              "RelativeToolTip": "Models\\HangHoa.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAA1wB0AAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T02:47:33.976Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ShowProducts.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\ShowProducts.cshtml",
-              "RelativeDocumentMoniker": "Views\\LoaiHangs_64131236\\ShowProducts.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\ShowProducts.cshtml",
-              "RelativeToolTip": "Views\\LoaiHangs_64131236\\ShowProducts.cshtml",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAADEAAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T15:39:18.927Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Details.cshtml",
-              "RelativeDocumentMoniker": "Views\\HangHoas_64131236\\Details.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Details.cshtml",
-              "RelativeToolTip": "Views\\HangHoas_64131236\\Details.cshtml",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAAAHoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-10T15:45:44.724Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\GioHangs_64131236\\Details.cshtml",
-              "RelativeDocumentMoniker": "Views\\GioHangs_64131236\\Details.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\GioHangs_64131236\\Details.cshtml",
-              "RelativeToolTip": "Views\\GioHangs_64131236\\Details.cshtml",
-              "ViewState": "AQIAABYAAAAAAAAAAAAAAA4AAAALAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-14T15:51:31.593Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAACQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-22T14:45:50.964Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "LoaiHangs_64131236Controller.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\LoaiHangs_64131236Controller.cs",
-              "RelativeDocumentMoniker": "Controllers\\LoaiHangs_64131236Controller.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\LoaiHangs_64131236Controller.cs",
-              "RelativeToolTip": "Controllers\\LoaiHangs_64131236Controller.cs",
-              "ViewState": "AQIAAJMAAAAAAAAAAAAkwJ8AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T15:17:29.475Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "BundleConfig.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\App_Start\\BundleConfig.cs",
-              "RelativeDocumentMoniker": "App_Start\\BundleConfig.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\App_Start\\BundleConfig.cs",
-              "RelativeToolTip": "App_Start\\BundleConfig.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAqwCIAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T01:18:15.512Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Global.asax.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Global.asax.cs",
-              "RelativeDocumentMoniker": "Global.asax.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Global.asax.cs",
-              "RelativeToolTip": "Global.asax.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-22T06:51:29.959Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "RouteConfig.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\App_Start\\RouteConfig.cs",
-              "RelativeDocumentMoniker": "App_Start\\RouteConfig.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\App_Start\\RouteConfig.cs",
-              "RelativeToolTip": "App_Start\\RouteConfig.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABgAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T15:13:14.4Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "DonHangs_64131236Controller.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\DonHangs_64131236Controller.cs",
-              "RelativeDocumentMoniker": "Controllers\\DonHangs_64131236Controller.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\DonHangs_64131236Controller.cs",
-              "RelativeToolTip": "Controllers\\DonHangs_64131236Controller.cs",
-              "ViewState": "AQIAADoCAAAAAAAAAAAAAPcCAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T03:23:29.249Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "BestSellingProductViewModel.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\BestSellingProductViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\BestSellingProductViewModel.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\BestSellingProductViewModel.cs",
-              "RelativeToolTip": "Models\\BestSellingProductViewModel.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAkwFAAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T14:36:56.614Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "DailyRevenueViewModel.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\DailyRevenueViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\DailyRevenueViewModel.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\DailyRevenueViewModel.cs",
-              "RelativeToolTip": "Models\\DailyRevenueViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T05:06:46.427Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "MonthlyRevenueViewModel.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\MonthlyRevenueViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\MonthlyRevenueViewModel.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\MonthlyRevenueViewModel.cs",
-              "RelativeToolTip": "Models\\MonthlyRevenueViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T05:23:24.56Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "RevenueViewModel.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\RevenueViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\RevenueViewModel.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\RevenueViewModel.cs",
-              "RelativeToolTip": "Models\\RevenueViewModel.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBoAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T14:36:08.165Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "YearlyRevenueViewModel.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\YearlyRevenueViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\YearlyRevenueViewModel.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\YearlyRevenueViewModel.cs",
-              "RelativeToolTip": "Models\\YearlyRevenueViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T05:23:56.263Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "ManageViewModels.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\ManageViewModels.cs",
-              "RelativeDocumentMoniker": "Models\\ManageViewModels.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\ManageViewModels.cs",
-              "RelativeToolTip": "Models\\ManageViewModels.cs",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAYwFAAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-22T00:10:48.988Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "OrderConfirmation.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\OrderConfirmation.cshtml",
-              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\OrderConfirmation.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\OrderConfirmation.cshtml",
-              "RelativeToolTip": "Views\\DonHangs_64131236\\OrderConfirmation.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-14T03:57:40.275Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "OrderTracking.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\OrderTracking.cshtml",
-              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\OrderTracking.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\OrderTracking.cshtml",
-              "RelativeToolTip": "Views\\DonHangs_64131236\\OrderTracking.cshtml",
-              "ViewState": "AQIAALMAAAAAAAAAAAAAAKkAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-18T08:19:56.843Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "QuanLyDonHang.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\QuanLyDonHang.cshtml",
-              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\QuanLyDonHang.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\QuanLyDonHang.cshtml",
-              "RelativeToolTip": "Views\\DonHangs_64131236\\QuanLyDonHang.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHEAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-18T09:14:54.066Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Checkout.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\Checkout.cshtml",
-              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\Checkout.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\Checkout.cshtml",
-              "RelativeToolTip": "Views\\DonHangs_64131236\\Checkout.cshtml",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAAAFQAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-14T03:31:00.514Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "CanceledOrders.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\CanceledOrders.cshtml",
-              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\CanceledOrders.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\CanceledOrders.cshtml",
-              "RelativeToolTip": "Views\\DonHangs_64131236\\CanceledOrders.cshtml",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAAADEAAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-18T08:18:06.789Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "AnhGiaoHang.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\AnhGiaoHang.cs",
-              "RelativeDocumentMoniker": "Models\\AnhGiaoHang.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\AnhGiaoHang.cs",
-              "RelativeToolTip": "Models\\AnhGiaoHang.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T08:16:19.147Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "DonHang.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\DonHang.cs",
-              "RelativeDocumentMoniker": "Models\\DonHang.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\DonHang.cs",
-              "RelativeToolTip": "Models\\DonHang.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAA4wCkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T08:01:07.451Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "QuanTri.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\QuanTri.cs",
-              "RelativeDocumentMoniker": "Models\\QuanTri.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\QuanTri.cs",
-              "RelativeToolTip": "Models\\QuanTri.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T04:29:18.847Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "NhanVien.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\NhanVien.cs",
-              "RelativeDocumentMoniker": "Models\\NhanVien.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\NhanVien.cs",
-              "RelativeToolTip": "Models\\NhanVien.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAuwBAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T09:13:24.093Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "InHoaDon.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\InHoaDon.cshtml",
-              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\InHoaDon.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\InHoaDon.cshtml",
-              "RelativeToolTip": "Views\\DonHangs_64131236\\InHoaDon.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-20T02:36:08.339Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "GioHangs_64131236Controller.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\GioHangs_64131236Controller.cs",
-              "RelativeDocumentMoniker": "Controllers\\GioHangs_64131236Controller.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\GioHangs_64131236Controller.cs",
-              "RelativeToolTip": "Controllers\\GioHangs_64131236Controller.cs",
-              "ViewState": "AQIAAHMAAAAAAAAAAAAAABQAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T10:42:12.598Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
               "Title": "QuanTris_64131236Controller.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\QuanTris_64131236Controller.cs",
               "RelativeDocumentMoniker": "Controllers\\QuanTris_64131236Controller.cs",
               "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\QuanTris_64131236Controller.cs",
               "RelativeToolTip": "Controllers\\QuanTris_64131236Controller.cs",
-              "ViewState": "AQIAAHwAAAAAAAAAAAAAAI4AAAAuAAAA",
+              "ViewState": "AQIAAAABAAAAAAAAAAAswDcBAAB0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T14:50:12.833Z"
+              "WhenOpened": "2024-12-10T14:50:12.833Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\Index.cshtml",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\Index.cshtml",
-              "RelativeToolTip": "Views\\DonHangs_64131236\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAALAAAA",
+              "DocumentIndex": 3,
+              "Title": "ChangePasswordViewModel2.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\ChangePasswordViewModel2.cs",
+              "RelativeDocumentMoniker": "Models\\ChangePasswordViewModel2.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\ChangePasswordViewModel2.cs",
+              "RelativeToolTip": "Models\\ChangePasswordViewModel2.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAswBkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T08:54:04.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ForgotPasswordViewModel2.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\ForgotPasswordViewModel2.cs",
+              "RelativeDocumentMoniker": "Models\\ForgotPasswordViewModel2.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\ForgotPasswordViewModel2.cs",
+              "RelativeToolTip": "Models\\ForgotPasswordViewModel2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T09:25:38.131Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\QuanTris_64131236\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\QuanTris_64131236\\Login.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\QuanTris_64131236\\Login.cshtml",
+              "RelativeToolTip": "Views\\QuanTris_64131236\\Login.cshtml",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAAB4AAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-16T15:52:20.948Z"
+              "WhenOpened": "2024-12-23T09:28:03.58Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 6,
+              "Title": "_LayoutPage1.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Shared\\_LayoutPage1.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_LayoutPage1.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Shared\\_LayoutPage1.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_LayoutPage1.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJUBAABTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T14:10:58.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EditMyProfile.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\KhachHangs_64131236\\EditMyProfile.cshtml",
+              "RelativeDocumentMoniker": "Views\\KhachHangs_64131236\\EditMyProfile.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\KhachHangs_64131236\\EditMyProfile.cshtml",
+              "RelativeToolTip": "Views\\KhachHangs_64131236\\EditMyProfile.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T08:48:47.117Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MyProfile.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\KhachHangs_64131236\\MyProfile.cshtml",
+              "RelativeDocumentMoniker": "Views\\KhachHangs_64131236\\MyProfile.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\KhachHangs_64131236\\MyProfile.cshtml",
+              "RelativeToolTip": "Views\\KhachHangs_64131236\\MyProfile.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T08:44:08.277Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\QuanTris_64131236\\Register.cshtml",
+              "RelativeDocumentMoniker": "Views\\QuanTris_64131236\\Register.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\QuanTris_64131236\\Register.cshtml",
+              "RelativeToolTip": "Views\\QuanTris_64131236\\Register.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T02:17:15.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "KhachHangs_64131236Controller.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\KhachHangs_64131236Controller.cs",
+              "RelativeDocumentMoniker": "Controllers\\KhachHangs_64131236Controller.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\KhachHangs_64131236Controller.cs",
+              "RelativeToolTip": "Controllers\\KhachHangs_64131236Controller.cs",
+              "ViewState": "AQIAANEAAAAAAAAAAAAiwN0AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-15T08:02:49.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CreateCustomerInfo.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\KhachHangs_64131236\\CreateCustomerInfo.cshtml",
+              "RelativeDocumentMoniker": "Views\\KhachHangs_64131236\\CreateCustomerInfo.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\KhachHangs_64131236\\CreateCustomerInfo.cshtml",
+              "RelativeToolTip": "Views\\KhachHangs_64131236\\CreateCustomerInfo.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAUwCkAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T08:30:14.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "KhachHang.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\KhachHang.cs",
+              "RelativeDocumentMoniker": "Models\\KhachHang.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\KhachHang.cs",
+              "RelativeToolTip": "Models\\KhachHang.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAwCgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T08:23:19.662Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "QuanTri.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\QuanTri.cs",
+              "RelativeDocumentMoniker": "Models\\QuanTri.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\QuanTri.cs",
+              "RelativeToolTip": "Models\\QuanTri.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAA3wCEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T04:29:18.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AQIAAE8BAAAAAAAAAAAAAGABAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-15T08:01:36.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "GioHangs_64131236Controller.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\GioHangs_64131236Controller.cs",
+              "RelativeDocumentMoniker": "Controllers\\GioHangs_64131236Controller.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\GioHangs_64131236Controller.cs",
+              "RelativeToolTip": "Controllers\\GioHangs_64131236Controller.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAAABQAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T10:42:12.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "ChiTietGioHangs_64131236Controller.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\ChiTietGioHangs_64131236Controller.cs",
               "RelativeDocumentMoniker": "Controllers\\ChiTietGioHangs_64131236Controller.cs",
@@ -723,7 +533,523 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Categories.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\Categories.cshtml",
+              "RelativeDocumentMoniker": "Views\\LoaiHangs_64131236\\Categories.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\Categories.cshtml",
+              "RelativeToolTip": "Views\\LoaiHangs_64131236\\Categories.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T15:37:28.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "_ExternalLoginsListPartial.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\_ExternalLoginsListPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\_ExternalLoginsListPartial.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\_ExternalLoginsListPartial.cshtml",
+              "RelativeToolTip": "Views\\Account\\_ExternalLoginsListPartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T03:17:11.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ConfirmEmail.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\ConfirmEmail.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ConfirmEmail.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\ConfirmEmail.cshtml",
+              "RelativeToolTip": "Views\\Account\\ConfirmEmail.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T03:17:09.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ExternalLoginConfirmation.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\ExternalLoginConfirmation.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ExternalLoginConfirmation.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\ExternalLoginConfirmation.cshtml",
+              "RelativeToolTip": "Views\\Account\\ExternalLoginConfirmation.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T03:17:08.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ForgotPassword.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\ForgotPassword.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ForgotPassword.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\ForgotPassword.cshtml",
+              "RelativeToolTip": "Views\\Account\\ForgotPassword.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T03:17:07.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ForgotPasswordConfirmation.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\ForgotPasswordConfirmation.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\ForgotPasswordConfirmation.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\ForgotPasswordConfirmation.cshtml",
+              "RelativeToolTip": "Views\\Account\\ForgotPasswordConfirmation.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T03:17:01.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\Register.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "Views\\Account\\Register.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T03:16:52.62Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "VerifyCode.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\VerifyCode.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\VerifyCode.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Account\\VerifyCode.cshtml",
+              "RelativeToolTip": "Views\\Account\\VerifyCode.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T03:16:36.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AccountViewModels.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\AccountViewModels.cs",
+              "RelativeDocumentMoniker": "Models\\AccountViewModels.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\AccountViewModels.cs",
+              "RelativeToolTip": "Models\\AccountViewModels.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAA6wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T02:51:59.941Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAACQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-22T14:45:50.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AdminAuthorizeAttribute.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\AdminAuthorizeAttribute.cs",
+              "RelativeDocumentMoniker": "Models\\AdminAuthorizeAttribute.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\AdminAuthorizeAttribute.cs",
+              "RelativeToolTip": "Models\\AdminAuthorizeAttribute.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAADwvxUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T02:17:03.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ProductList.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\ProductList.cshtml",
+              "RelativeDocumentMoniker": "Views\\HangHoas_64131236\\ProductList.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\ProductList.cshtml",
+              "RelativeToolTip": "Views\\HangHoas_64131236\\ProductList.cshtml",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAEsAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-22T15:16:42.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ShowProducts.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\ShowProducts.cshtml",
+              "RelativeDocumentMoniker": "Views\\LoaiHangs_64131236\\ShowProducts.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\ShowProducts.cshtml",
+              "RelativeToolTip": "Views\\LoaiHangs_64131236\\ShowProducts.cshtml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAEIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T15:39:18.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CustomAuthorizeAttribute.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\CustomAuthorizeAttribute.cs",
+              "RelativeDocumentMoniker": "Models\\CustomAuthorizeAttribute.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\CustomAuthorizeAttribute.cs",
+              "RelativeToolTip": "Models\\CustomAuthorizeAttribute.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAADwvxQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T14:57:45.175Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\HangHoas_64131236\\Index.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Index.cshtml",
+              "RelativeToolTip": "Views\\HangHoas_64131236\\Index.cshtml",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAAAE0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-22T15:09:46.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\HangHoas_64131236\\Create.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Create.cshtml",
+              "RelativeToolTip": "Views\\HangHoas_64131236\\Create.cshtml",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-22T15:51:03.963Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "CategoryMenu.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\CategoryMenu.cshtml",
+              "RelativeDocumentMoniker": "Views\\LoaiHangs_64131236\\CategoryMenu.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\CategoryMenu.cshtml",
+              "RelativeToolTip": "Views\\LoaiHangs_64131236\\CategoryMenu.cshtml",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAACIAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T15:38:27.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "DoanhThu.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\DoanhThu.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\DoanhThu.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\DoanhThu.cshtml",
+              "RelativeToolTip": "Views\\DonHangs_64131236\\DoanhThu.cshtml",
+              "ViewState": "AQIAANwAAAAAAAAAAAAAAGEBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-20T14:39:25.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "HangHoas_64131236Controller.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\HangHoas_64131236Controller.cs",
+              "RelativeDocumentMoniker": "Controllers\\HangHoas_64131236Controller.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\HangHoas_64131236Controller.cs",
+              "RelativeToolTip": "Controllers\\HangHoas_64131236Controller.cs",
+              "ViewState": "AQIAACABAAAAAAAAAAAkwDIBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-15T08:02:43.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "HangHoa.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\HangHoa.cs",
+              "RelativeDocumentMoniker": "Models\\HangHoa.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\HangHoa.cs",
+              "RelativeToolTip": "Models\\HangHoa.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAA1wB0AAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T02:47:33.976Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\HangHoas_64131236\\Details.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\HangHoas_64131236\\Details.cshtml",
+              "RelativeToolTip": "Views\\HangHoas_64131236\\Details.cshtml",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAAAHoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T15:45:44.724Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 38,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\GioHangs_64131236\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\GioHangs_64131236\\Details.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\GioHangs_64131236\\Details.cshtml",
+              "RelativeToolTip": "Views\\GioHangs_64131236\\Details.cshtml",
+              "ViewState": "AQIAABYAAAAAAAAAAAAAAA4AAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-14T15:51:31.593Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "LoaiHangs_64131236Controller.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\LoaiHangs_64131236Controller.cs",
+              "RelativeDocumentMoniker": "Controllers\\LoaiHangs_64131236Controller.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\LoaiHangs_64131236Controller.cs",
+              "RelativeToolTip": "Controllers\\LoaiHangs_64131236Controller.cs",
+              "ViewState": "AQIAAJMAAAAAAAAAAAAkwJ8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T15:17:29.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "BundleConfig.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\App_Start\\BundleConfig.cs",
+              "RelativeDocumentMoniker": "App_Start\\BundleConfig.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\App_Start\\BundleConfig.cs",
+              "RelativeToolTip": "App_Start\\BundleConfig.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAqwCIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T01:18:15.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Global.asax.cs",
+              "RelativeDocumentMoniker": "Global.asax.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Global.asax.cs",
+              "RelativeToolTip": "Global.asax.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T06:51:29.959Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "RouteConfig.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\App_Start\\RouteConfig.cs",
+              "RelativeDocumentMoniker": "App_Start\\RouteConfig.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\App_Start\\RouteConfig.cs",
+              "RelativeToolTip": "App_Start\\RouteConfig.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABgAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T15:13:14.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "DonHangs_64131236Controller.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\DonHangs_64131236Controller.cs",
+              "RelativeDocumentMoniker": "Controllers\\DonHangs_64131236Controller.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\DonHangs_64131236Controller.cs",
+              "RelativeToolTip": "Controllers\\DonHangs_64131236Controller.cs",
+              "ViewState": "AQIAADoCAAAAAAAAAAAAAPcCAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-14T03:23:29.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "BestSellingProductViewModel.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\BestSellingProductViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\BestSellingProductViewModel.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\BestSellingProductViewModel.cs",
+              "RelativeToolTip": "Models\\BestSellingProductViewModel.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAkwFAAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T14:36:56.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "DailyRevenueViewModel.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\DailyRevenueViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\DailyRevenueViewModel.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\DailyRevenueViewModel.cs",
+              "RelativeToolTip": "Models\\DailyRevenueViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T05:06:46.427Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "MonthlyRevenueViewModel.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\MonthlyRevenueViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\MonthlyRevenueViewModel.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\MonthlyRevenueViewModel.cs",
+              "RelativeToolTip": "Models\\MonthlyRevenueViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T05:23:24.56Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "RevenueViewModel.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\RevenueViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\RevenueViewModel.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\RevenueViewModel.cs",
+              "RelativeToolTip": "Models\\RevenueViewModel.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T14:36:08.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "YearlyRevenueViewModel.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\YearlyRevenueViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\YearlyRevenueViewModel.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\YearlyRevenueViewModel.cs",
+              "RelativeToolTip": "Models\\YearlyRevenueViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T05:23:56.263Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "ManageViewModels.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\ManageViewModels.cs",
+              "RelativeDocumentMoniker": "Models\\ManageViewModels.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\ManageViewModels.cs",
+              "RelativeToolTip": "Models\\ManageViewModels.cs",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAYwFAAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T00:10:48.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "OrderConfirmation.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\OrderConfirmation.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\OrderConfirmation.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\OrderConfirmation.cshtml",
+              "RelativeToolTip": "Views\\DonHangs_64131236\\OrderConfirmation.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-14T03:57:40.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "OrderTracking.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\OrderTracking.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\OrderTracking.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\OrderTracking.cshtml",
+              "RelativeToolTip": "Views\\DonHangs_64131236\\OrderTracking.cshtml",
+              "ViewState": "AQIAALMAAAAAAAAAAAAAAKkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-18T08:19:56.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "QuanLyDonHang.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\QuanLyDonHang.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\QuanLyDonHang.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\QuanLyDonHang.cshtml",
+              "RelativeToolTip": "Views\\DonHangs_64131236\\QuanLyDonHang.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHEAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-18T09:14:54.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\Checkout.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\Checkout.cshtml",
+              "RelativeToolTip": "Views\\DonHangs_64131236\\Checkout.cshtml",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAAAFQAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-14T03:31:00.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "CanceledOrders.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\CanceledOrders.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\CanceledOrders.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\CanceledOrders.cshtml",
+              "RelativeToolTip": "Views\\DonHangs_64131236\\CanceledOrders.cshtml",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAAADEAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-18T08:18:06.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "AnhGiaoHang.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\AnhGiaoHang.cs",
+              "RelativeDocumentMoniker": "Models\\AnhGiaoHang.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\AnhGiaoHang.cs",
+              "RelativeToolTip": "Models\\AnhGiaoHang.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T08:16:19.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "DonHang.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\DonHang.cs",
+              "RelativeDocumentMoniker": "Models\\DonHang.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\DonHang.cs",
+              "RelativeToolTip": "Models\\DonHang.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAA4wCkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-15T08:01:07.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "NhanVien.cs",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\NhanVien.cs",
+              "RelativeDocumentMoniker": "Models\\NhanVien.cs",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\NhanVien.cs",
+              "RelativeToolTip": "Models\\NhanVien.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAuwBAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-18T09:13:24.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "InHoaDon.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\InHoaDon.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\InHoaDon.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\InHoaDon.cshtml",
+              "RelativeToolTip": "Views\\DonHangs_64131236\\InHoaDon.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-20T02:36:08.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\Index.cshtml",
+              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\Index.cshtml",
+              "RelativeToolTip": "Views\\DonHangs_64131236\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T15:52:20.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\DonHangs_64131236\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\DonHangs_64131236\\Create.cshtml",
@@ -735,7 +1061,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 61,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\GioHangs_64131236\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\GioHangs_64131236\\Index.cshtml",
@@ -747,7 +1073,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 62,
               "Title": "ChiTietDonHang.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\ChiTietDonHang.cs",
               "RelativeDocumentMoniker": "Models\\ChiTietDonHang.cs",
@@ -759,19 +1085,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "KhachHang.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\KhachHang.cs",
-              "RelativeDocumentMoniker": "Models\\KhachHang.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\KhachHang.cs",
-              "RelativeToolTip": "Models\\KhachHang.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAuwCQAAAB7AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T08:23:19.662Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 65,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\ChiTietDonHangs_64131236\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\ChiTietDonHangs_64131236\\Index.cshtml",
@@ -783,7 +1097,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 64,
               "Title": "ChiTietDonHangs_64131236Controller.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\ChiTietDonHangs_64131236Controller.cs",
               "RelativeDocumentMoniker": "Controllers\\ChiTietDonHangs_64131236Controller.cs",
@@ -795,7 +1109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 63,
               "Title": "GioHang.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\GioHang.cs",
               "RelativeDocumentMoniker": "Models\\GioHang.cs",
@@ -807,7 +1121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 66,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\ChiTietDonHangs_64131236\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\ChiTietDonHangs_64131236\\Details.cshtml",
@@ -819,7 +1133,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 67,
               "Title": "CreateFromCart.cshtml",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\ChiTietDonHangs_64131236\\CreateFromCart.cshtml",
               "RelativeDocumentMoniker": "Views\\ChiTietDonHangs_64131236\\CreateFromCart.cshtml",
@@ -831,7 +1145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 68,
               "Title": "ChiTietGioHang.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\ChiTietGioHang.cs",
               "RelativeDocumentMoniker": "Models\\ChiTietGioHang.cs",
@@ -843,7 +1157,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 69,
               "Title": "Discount.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\Discount.cs",
               "RelativeDocumentMoniker": "Models\\Discount.cs",
@@ -855,7 +1169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 70,
               "Title": "HttpApplicationFactory.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\AppData\\Local\\Temp\\.vsdbgsrc\\5494ada4c17c6445375305e72bbb29c015e1c09fff0f24dd77ab1a85f644d209\\HttpApplicationFactory.cs",
               "ToolTip": "C:\\Users\\DELL\\AppData\\Local\\Temp\\.vsdbgsrc\\5494ada4c17c6445375305e72bbb29c015e1c09fff0f24dd77ab1a85f644d209\\HttpApplicationFactory.cs [Read Only]",
@@ -865,7 +1179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 74,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
@@ -877,19 +1191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "KhachHangs_64131236Controller.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\KhachHangs_64131236Controller.cs",
-              "RelativeDocumentMoniker": "Controllers\\KhachHangs_64131236Controller.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\KhachHangs_64131236Controller.cs",
-              "RelativeToolTip": "Controllers\\KhachHangs_64131236Controller.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T08:02:49.757Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 72,
               "Title": "ManageController.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\ManageController.cs",
               "RelativeDocumentMoniker": "Controllers\\ManageController.cs",
@@ -901,19 +1203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAA5wAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T08:01:36.768Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 71,
               "Title": "Discounts_64131236Controller.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\Discounts_64131236Controller.cs",
               "RelativeDocumentMoniker": "Controllers\\Discounts_64131236Controller.cs",
@@ -925,7 +1215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 75,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\LoaiHangs_64131236\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\LoaiHangs_64131236\\Index.cshtml",
@@ -937,7 +1227,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 76,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\ChiTietGioHangs_64131236\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\ChiTietGioHangs_64131236\\Details.cshtml",
@@ -949,7 +1239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 73,
               "Title": "NhanViens_64131236Controller.cs",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Controllers\\NhanViens_64131236Controller.cs",
               "RelativeDocumentMoniker": "Controllers\\NhanViens_64131236Controller.cs",
@@ -961,19 +1251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
-              "Title": "CustomAuthorizeAttribute.cs",
-              "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\CustomAuthorizeAttribute.cs",
-              "RelativeDocumentMoniker": "Models\\CustomAuthorizeAttribute.cs",
-              "ToolTip": "D:\\webtaphoa\\web_levanluong_64131236\\Models\\CustomAuthorizeAttribute.cs",
-              "RelativeToolTip": "Models\\CustomAuthorizeAttribute.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T14:57:45.175Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 77,
               "Title": "Error.cshtml",
               "DocumentMoniker": "D:\\webtaphoa\\web_levanluong_64131236\\Views\\Shared\\Error.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\Error.cshtml",

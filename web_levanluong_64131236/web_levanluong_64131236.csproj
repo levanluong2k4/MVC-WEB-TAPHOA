@@ -192,6 +192,7 @@
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BestSellingProductViewModel.cs" />
+    <Compile Include="Models\ChangePasswordViewModel2.cs" />
     <Compile Include="Models\ChiTietDonHang.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
@@ -206,6 +207,7 @@
     <Compile Include="Models\DonHang.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ForgotPasswordViewModel2.cs" />
     <Compile Include="Models\GioHang.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
@@ -532,6 +534,11 @@
     <Content Include="Views\DonHangs_64131236\InHoaDon.cshtml" />
     <Content Include="Views\DonHangs_64131236\DoanhThu.cshtml" />
     <Content Include="Views\HangHoas_64131236\ProductList.cshtml" />
+    <Content Include="Views\KhachHangs_64131236\CreateCustomerInfo.cshtml" />
+    <Content Include="Views\KhachHangs_64131236\MyProfile.cshtml" />
+    <Content Include="Views\KhachHangs_64131236\EditMyProfile.cshtml" />
+    <Content Include="Views\QuanTris_64131236\ChangePassword.cshtml" />
+    <Content Include="Views\QuanTris_64131236\ForgotPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
