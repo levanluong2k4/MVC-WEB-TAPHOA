@@ -1,0 +1,6 @@
+﻿@model int?
+
+@if (Session["MaKH"] != null)
+{
+    <span class="cart-count">@(Model ?? 0)</span>
+}

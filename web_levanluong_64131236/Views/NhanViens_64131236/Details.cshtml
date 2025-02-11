@@ -1,75 +1,104 @@
 ﻿@model web_levanluong_64131236.Models.NhanVien
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>NhanVien</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Ho)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ho)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ten)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ten)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgaySinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayLamViec)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayLamViec)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DienThoai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DienThoai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.QuanTri.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QuanTri.Password)
-        </dd>
-
-    </dl>
+<div class="container my-5">
+    <div class="card shadow">
+        <div class="card-header  text-white">
+            <h2 class="mb-0">Employee Details</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="fw-bold">@Html.DisplayNameFor(model => model.Ho)</label>
+                        <p class="form-control">@Html.DisplayFor(model => model.Ho)</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold">@Html.DisplayNameFor(model => model.Ten)</label>
+                        <p class="form-control">@Html.DisplayFor(model => model.Ten)</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold">@Html.DisplayNameFor(model => model.NgaySinh)</label>
+                        <p class="form-control">@Html.DisplayFor(model => model.NgaySinh)</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold">@Html.DisplayNameFor(model => model.NgayLamViec)</label>
+                        <p class="form-control">@Html.DisplayFor(model => model.NgayLamViec)</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="fw-bold">@Html.DisplayNameFor(model => model.DiaChi)</label>
+                        <p class="form-control">@Html.DisplayFor(model => model.DiaChi)</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold">@Html.DisplayNameFor(model => model.DienThoai)</label>
+                        <p class="form-control">@Html.DisplayFor(model => model.DienThoai)</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold">@Html.DisplayNameFor(model => model.QuanTri.Password)</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="password" value="@Model.QuanTri.Password" readonly>
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <i class="fas fa-eye" id="eyeIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex justify-content-between">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.MaNV }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNV }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .card {
+        border-radius: 15px;
+        border: none;
+    }
+
+    .card-header {
+        border-radius: 15px 15px 0 0 !important;
+    }
+
+    .form-control {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+    }
+
+    .btn {
+        border-radius: 5px;
+        padding: 8px 20px;
+    }
+    .card-header {
+        background: #F11623;
+    }
+</style>
+
+<script>
+document.getElementById('togglePassword').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+    }
+});
+</script>

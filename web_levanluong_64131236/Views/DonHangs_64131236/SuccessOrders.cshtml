@@ -1,0 +1,569 @@
+﻿@model IEnumerable<web_levanluong_64131236.Models.DonHang>
+@{
+    ViewBag.Title = "Lịch sử đơn hàng đã nhận";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -0.75rem; /* Negative margin to counteract padding */
+    }
+
+    .col-md-4 {
+        padding: 0.75rem;
+        display: flex; /* Enable flex context */
+    }
+    .orders-container {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1rem;
+    }
+
+    .page-title {
+        color: #2d3748;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .filter-buttons {
+        margin-bottom: 2rem;
+        gap: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .filter-buttons .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-buttons .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+    .order-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+        transition: transform 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 400px; /* Chiều cao tối thiểu cho card */
+        margin-bottom: 0; /* Reset margin bottom */
+    }
+
+        .order-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+    .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        flex-shrink: 0;
+    }
+
+        .order-header h3 {
+            font-size: 1.25rem;
+            color: #2d3748;
+            margin: 0;
+        }
+
+        .order-header span {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background-color: #48bb78;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+    .order-details {
+        color: #4a5568;
+        flex-grow: 1; /* Cho phép mở rộng để lấp đầy không gian */
+        display: flex;
+        flex-direction: column;
+    }
+
+        .order-details p {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .order-details strong {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+    .order-actions {
+     
+        flex-wrap: wrap;
+        margin-top: auto; /* Đẩy xuống dưới cùng */
+        flex-shrink: 0; /* Không co lại */
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column; /* Xếp các nút dọc */
+    }
+
+        .order-actions .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+    .delivery-status {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .step-label {
+        color: #48bb78;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .step-time {
+        color: #718096;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+
+    .alert-info {
+        background-color: #ebf8ff;
+        border: 1px solid #bee3f8;
+        color: #2b6cb0;
+        padding: 1rem;
+        border-radius: 8px;
+        font-weight: 500;
+    }
+
+    /* Responsive Design */
+
+
+    .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .order-actions {
+        flex-direction: column;
+    }
+
+        .order-actions .btn {
+            width: 100%;
+            justify-content: center;
+        }
+        .order-actions .btn {
+            width: 100%; /* Full width buttons */
+            margin: 0; /* Reset margins */
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    /* Delivery status section */
+    .delivery-status {
+        flex-shrink: 0; /* Không co lại */
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    /* Rating overlay adjustment */
+    .rating-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+</style>
+
+<div class="orders-container">
+    <h2 class="page-title">Lịch sử đơn hàng đã nhận</h2>
+
+    <div class="filter-buttons">
+        <a href="@Url.Action("OrderTracking")" class="btn btn-outline-danger">Tất cả đơn hàng</a>
+        <a href="@Url.Action("CanceledOrders")" class="btn btn-outline-danger">Đơn hàng đã hủy</a>
+        <a href="@Url.Action("SuccessOrders")" class="btn btn-danger">Đơn hàng đã nhận</a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            Không có đơn hàng đã nhận.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @{int count = 0;}
+            @foreach (var item in Model)
+            {
+                var thoiGianNhanHang = item.ThoiGianCapNhatDonHangs
+                    .Where(t => t.TrangThaiGiaoHang == "Đã nhận hàng")
+                    .OrderByDescending(t => t.ThoiGianCapNhat)
+                    .FirstOrDefault();
+                bool daCoYeuCauTraHang = item.TraHangs.Any();
+
+                <div class="col-md-4 mb-4">
+                    <div class="order-card">
+                        <div class="order-header">
+                            <h3>Đơn hàng #@item.MaDH</h3>
+                            <span>@item.TrangThai</span>
+                        </div>
+                        <div class="order-details">
+                            <p><strong>Ngày đặt:</strong> @item.NgayDat.ToString("dd/MM/yyyy HH:mm")</p>
+                            <p><strong>Phương thức thanh toán:</strong> @item.PhuongThucThanhToan</p>
+                            <p><strong>Tổng tiền:</strong> @item.TongTien.ToString("N0") đ</p>
+
+                            <div class="order-actions">
+                                <a href="@Url.Action("OrderConfirmation", new { id = item.MaDH })" class="btn btn-outline-primary">
+                                    <i class="fas fa-eye"></i> Xem chi tiết
+                                </a>
+                                @if (item.TrangThaiGiaoHang == "Đã nhận hàng" && thoiGianNhanHang != null)
+                                {
+                                    <button class="btn btn-outline-success" onclick="toggleRatingOverlay(@item.MaDH)">
+                                        <i class="fas fa-star"></i> Đánh giá sản phẩm
+                                    </button>
+                                }
+
+                                @if (item.TrangThaiGiaoHang == "Đã nhận hàng" && thoiGianNhanHang != null)
+                                {
+                                    if ((DateTime.Now - thoiGianNhanHang.ThoiGianCapNhat).TotalDays <= 2 && !daCoYeuCauTraHang)
+                                    {
+                                        <a href="@Url.Action("TaoYeuCauTraHang", "TraHangs_64131236", new { id = item.MaDH })"
+                                           class="btn btn-warning">
+                                            <i class="fas fa-undo"></i> Yêu cầu trả hàng
+                                        </a>
+                                    }
+                                }
+
+                                @if (item.TrangThaiGiaoHang == "Đã nhận hàng" || item.TrangThai == "Đã hủy")
+                                {
+                                    <a href="#" class="btn btn-primary" onclick="buyAgain(@item.MaDH)">
+                                        <i class="fas fa-cart-plus"></i> Mua lại
+                                    </a>
+                                }
+                            </div>
+                        </div>
+
+                        @if (item.TrangThaiGiaoHang == "Đã nhận hàng" && thoiGianNhanHang != null)
+                        {
+                            <div class="delivery-status">
+                                <div class="step-label">Đã nhận</div>
+                                <div class="step-time">@thoiGianNhanHang.ThoiGianCapNhat.ToString("dd/MM/yyyy HH:mm")</div>
+                            </div>
+
+                            <div class="rating-overlay" id="ratingOverlay-@item.MaDH">
+                                <div class="rating-overlay-content">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="m-0">Đánh giá sản phẩm</h5>
+                                        <button class="btn btn-sm btn-outline-dark" onclick="toggleRatingOverlay(@item.MaDH)">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="product-list">
+                                        @foreach (var product in item.ChiTietDonHangs)
+                                        {
+                                            var existingRating = product.DanhGiaSanPhams.FirstOrDefault();
+                                            <div class="product-rating-row d-flex align-items-center justify-content-between mb-2 p-3 border rounded bg-white">
+                                                <div class="d-flex align-items-center flex-grow-1">
+                                                    <img src="~/img/@product.HangHoa.AnhHH" alt="@product.HangHoa.TenHH"
+                                                         class="product-image">
+                                                    <span class="ms-3 flex-grow-1">@product.HangHoa.TenHH</span>
+                                                </div>
+                                                @if (existingRating == null)
+                                                {
+                                                    <button class="btn btn-primary"
+                                                            onclick="openRatingModal('@item.MaDH', '@product.MaHH', '@product.HangHoa.TenHH')">
+                                                        <i class="fas fa-star"></i> Đánh giá
+                                                    </button>
+                                                }
+                                                else
+                                                {
+                                                    <div class="existing-rating">
+                                                        @for (int i = 1; i <= 5; i++)
+                                                        {
+                                                            <i class="fas fa-star @(i <= existingRating.SoSao ? "text-warning" : "text-muted")"></i>
+                                                        }
+                                                        <small class="text-muted ms-2">
+                                                            @existingRating.NgayDanhGia
+                                                        </small>
+                                                    </div>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                count++;
+                if (count % 3 == 0)
+                {
+                @:</div><div class="row">
+                }
+            }
+            @if (count % 3 != 0)
+            {
+            @:</div>
+        }
+        </div>
+    }
+    </div>
+    <div class="modal fade" id="ratingModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Đánh giá sản phẩm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="ratingForm">
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        <h6 id="productName" class="mb-3"></h6>
+                        <div class="rating-stars mb-3">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <i class="fas fa-star star-rating" data-rating="@i"></i>
+                            }
+                        </div>
+                        <textarea id="ratingContent" class="form-control" rows="3" placeholder="Nhập đánh giá của bạn (không bắt buộc)"></textarea>
+                        <input type="hidden" id="currentOrderId" name="MaDH" />
+                        <input type="hidden" id="currentProductId" name="MaHH" />
+                        <input type="hidden" id="selectedStars" name="SoSao" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        <script>
+            function buyAgain(orderId) {
+                if (confirm('Bạn có muốn thêm tất cả sản phẩm này vào giỏ hàng?')) {
+                    $.ajax({
+                        url: '/DonHangs_64131236/BuyAgain',
+                        type: 'POST',
+                        data: { orderId: orderId },
+                        success: function (result) {
+                            if (result.success) {
+                                window.location.href = '/GioHangs_64131236';
+                            } else {
+                                alert(result.message || 'Có lỗi xảy ra');
+                            }
+                        },
+                        error: function () {
+                            alert('Có lỗi xảy ra khi thêm vào giỏ hàng');
+                        }
+                    });
+                }
+            }
+        </script>
+
+        <script>
+        let selectedRating = 0;
+
+        function openRatingModal(orderId, productId, productName) {
+            $('#currentOrderId').val(orderId);
+            $('#currentProductId').val(productId);
+            $('#productName').text(productName);
+            $('#ratingModal').modal('show');
+            resetStars();
+        }
+
+        $(document).ready(function() {
+            $('.star-rating').hover(
+                function() {
+                    let rating = $(this).data('rating');
+                    highlightStars(rating);
+                },
+                function() {
+                    highlightStars(selectedRating);
+                }
+            ).click(function() {
+                selectedRating = $(this).data('rating');
+                $('#selectedStars').val(selectedRating);
+                highlightStars(selectedRating);
+            });
+
+            $('#ratingForm').on('submit', function(e) {
+                e.preventDefault();
+                if (selectedRating === 0) {
+                    toastr.error('Vui lòng chọn số sao đánh giá');
+                    return;
+                }
+
+                var formData = {
+                    MaDH: $('#currentOrderId').val(),
+                    MaHH: $('#currentProductId').val(),
+                    SoSao: selectedRating,
+                    NoiDungDanhGia: $('#ratingContent').val(),
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                };
+
+                $.ajax({
+                    url: '@Url.Action("Create", "DanhGiaSanPhams_64131236")',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            toastr.success('Đánh giá của bạn đã được ghi nhận');
+                            $('#ratingModal').modal('hide');
+                            setTimeout(() => location.reload(), 1500);
+                        } else {
+                            toastr.error(response.message || 'Có lỗi xảy ra');
+                        }
+                    },
+                    error: function() {
+                        toastr.error('Có lỗi xảy ra khi gửi đánh giá');
+                    }
+                });
+            });
+        });
+
+        function highlightStars(rating) {
+            $('.star-rating').removeClass('active');
+            $('.star-rating').each(function() {
+                if ($(this).data('rating') <= rating) {
+                    $(this).addClass('active');
+                }
+            });
+        }
+
+        function resetStars() {
+            selectedRating = 0;
+            $('#selectedStars').val(0);
+            highlightStars(0);
+            $('#ratingContent').val('');
+            }
+
+
+
+
+            // Add this function to handle toggling the rating overlay
+            function toggleRatingOverlay(orderId) {
+                const overlayId = `ratingOverlay-${orderId}`;
+                const overlay = document.getElementById(overlayId);
+
+                if (overlay) {
+                    // Toggle the active class
+                    if (overlay.classList.contains('active')) {
+                        overlay.classList.remove('active');
+                    } else {
+                        // Hide all other active overlays first
+                        document.querySelectorAll('.rating-overlay.active').forEach(activeOverlay => {
+                            activeOverlay.classList.remove('active');
+                        });
+                        overlay.classList.add('active');
+                    }
+                }
+            }
+
+            // Close overlay when clicking outside
+            document.addEventListener('click', function (event) {
+                if (event.target.classList.contains('rating-overlay')) {
+                    event.target.classList.remove('active');
+                }
+            });
+
+            // Prevent overlay from closing when clicking inside the content
+            document.querySelectorAll('.rating-overlay-content').forEach(content => {
+                content.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                });
+            });
+        </script>
+
+        <style>
+            .star-rating {
+                font-size: 24px;
+                color: #ddd;
+                cursor: pointer;
+                margin: 0 2px;
+                transition: color 0.2s;
+            }
+
+                .star-rating.active {
+                    color: #ffd700;
+                }
+
+            .existing-rating .fa-star {
+                font-size: 16px;
+            }
+
+            .text-warning {
+                color: #ffd700 !important;
+            }
+
+            .rating-overlay {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(255, 255, 255, 0.97);
+                z-index: 1000;
+                padding: 1.5rem;
+                border-radius: 12px;
+            }
+
+                .rating-overlay.active {
+                    display: block;
+                }
+
+            .rating-overlay-content {
+                height: 100%;
+                overflow-y: auto;
+            }
+
+            .product-list {
+                max-height: calc(100% - 50px);
+                overflow-y: auto;
+            }
+
+            .product-image {
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+
+            .order-card {
+                position: relative;
+            }
+        </style>
+
+    }

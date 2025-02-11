@@ -1,92 +1,226 @@
 ﻿@model web_levanluong_64131236.Models.HangHoa
-
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Create</h2>
+<style>
+    .container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>HangHoa</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaHH, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MaHH, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MaHH, "", new { @class = "text-danger" })
-            </div>
+    .card {
+        box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+        border: none;
+    }
+
+    .card-header {
+        background: linear-gradient(45deg, #008080, #4CAF50);
+        color: white;
+        padding: 15px;
+    }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .input-group {
+        margin-bottom: 1rem;
+    }
+
+    .input-group-text {
+        background-color: #f8f9fa;
+    }
+
+    .form-control:focus {
+        border-color: #4CAF50;
+        box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+    }
+
+    .btn-primary {
+        background-color: #008080;
+        border-color: #008080;
+    }
+
+        .btn-primary:hover {
+            background-color: #006666;
+            border-color: #006666;
+        }
+
+    .img-preview {
+        max-width: 200px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .error-message {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Tạo mới hàng hóa</h3>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaLH, "MaLH", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MaLH", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaLH, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @using (Html.BeginForm("Create", "HangHoas_64131236", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="card-body">
+                <div class="row">
+                    <!-- Cột trái -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Mã hàng hóa</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-barcode"></i></span>
+                                <input type="text" class="form-control" value="@ViewBag.NewProductCode" disabled />
+                                @Html.HiddenFor(model => model.MaHH, new { @Value = ViewBag.NewProductCode })
+                            </div>
+                            <small class="text-muted">Mã hàng hóa được tự động tạo</small>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenHH, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenHH, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenHH, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tên hàng hóa</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-box"></i></span>
+                                @Html.EditorFor(model => model.TenHH, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên hàng hóa" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.TenHH, "", new { @class = "error-message" })
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AnhHH, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AnhHH, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AnhHH, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Loại hàng</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-tags"></i></span>
+                                @Html.DropDownList("MaLH", null, "-- Chọn loại hàng --", new { @class = "form-select" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.MaLH, "", new { @class = "error-message" })
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SoLuongHangTon, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SoLuongHangTon, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SoLuongHangTon, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Giá bán</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                                @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control", type = "number", min = "0", step = "1000", placeholder = "Nhập giá bán" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "error-message" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <!-- Cột phải -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Số lượng tồn kho</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-cubes"></i></span>
+                                @Html.EditorFor(model => model.SoLuongHangTon, new { htmlAttributes = new { @class = "form-control", type = "number", min = "0", placeholder = "Nhập số lượng" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.SoLuongHangTon, "", new { @class = "error-message" })
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HSD, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HSD, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HSD, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ngày sản xuất</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                @Html.EditorFor(model => model.NSX, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.NSX, "", new { @class = "error-message" })
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NSX, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NSX, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NSX, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Hạn sử dụng</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-calendar-times"></i></span>
+                                @Html.EditorFor(model => model.HSD, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.HSD, "", new { @class = "error-message" })
+                        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                        <div class="mb-3">
+                            <label class="form-label">Ảnh sản phẩm</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-image"></i></span>
+                                <input type="file" name="imageFile" class="form-control" accept="image/*" />
+                            </div>
+                            <div id="imagePreview" class="d-none mt-2">
+                                <img src="#" alt="Preview" class="img-preview" />
+                            </div>
+                            @Html.ValidationMessageFor(model => model.AnhHH, "", new { @class = "error-message" })
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            <div class="card-footer bg-light">
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-1"></i> Quay lại
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i> Lưu hàng hóa
+                    </button>
+                </div>
+            </div>
+        }
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script>
+    $(document).ready(function () {
+        // Preview ảnh trước khi upload
+        $('input[name="imageFile"]').change(function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreview').removeClass('d-none');
+                    $('#imagePreview img').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Kiểm tra ngày
+        $('#HSD').change(function () {
+            var nsx = new Date($('#NSX').val());
+            var hsd = new Date($(this).val());
+
+            if (hsd <= nsx) {
+                toastr.error('Hạn sử dụng phải lớn hơn ngày sản xuất');
+                $(this).val('');
+            }
+        });
+
+        // Validate form trước khi submit
+        $('form').submit(function (e) {
+            if (!$('#MaHH').val()) {
+                toastr.error('Vui lòng nhập mã hàng hóa');
+                e.preventDefault();
+                return false;
+            }
+            if (!$('#TenHH').val()) {
+                toastr.error('Vui lòng nhập tên hàng hóa');
+                e.preventDefault();
+                return false;
+            }
+            if (!$('#MaLH').val()) {
+                toastr.error('Vui lòng chọn loại hàng');
+                e.preventDefault();
+                return false;
+            }
+            if (!$('#GiaBan').val() || $('#GiaBan').val() <= 0) {
+                toastr.error('Vui lòng nhập giá bán hợp lệ');
+                e.preventDefault();
+                return false;
+            }
+            // Thêm các validation khác nếu cần
+        });
+    });
+</script>

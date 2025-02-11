@@ -1,0 +1,64 @@
+﻿@model IEnumerable<web_levanluong_64131236.Models.TraHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayTraHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LyDoTraHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungTraHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThaiTraHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonHang.PhuongThucThanhToan)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayTraHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LyDoTraHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoiDungTraHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThaiTraHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonHang.PhuongThucThanhToan)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaTraHang }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaTraHang }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaTraHang })
+        </td>
+    </tr>
+}
+
+</table>

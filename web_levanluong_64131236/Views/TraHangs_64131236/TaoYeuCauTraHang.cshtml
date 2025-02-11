@@ -1,0 +1,192 @@
+﻿
+@model web_levanluong_64131236.Models.TraHang
+@using web_levanluong_64131236.Models
+@{
+    ViewBag.Title = "Tạo yêu cầu trả hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var donHang = (DonHang)ViewBag.DonHang;
+}
+
+<div class="container my-5">
+    <h2>Tạo yêu cầu trả hàng</h2>
+    <div class="row">
+        <div class="col-md-8">
+            @using (Html.BeginForm("TaoYeuCauTraHang", "TraHangs_64131236", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.MaDH)
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Thông tin đơn hàng #@donHang.MaDH</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-4">
+                            <label class="fw-bold mb-2">Chọn sản phẩm cần trả</label>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Sản phẩm</th>
+                                            <th>Đơn giá</th>
+                                            <th>Số lượng đã mua</th>
+                                            <th>Số lượng trả</th>
+                                            <th>Chọn trả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in donHang.ChiTietDonHangs)
+                                        {
+                                           <tr>
+                                               <td>
+                                                   <div class="d-flex align-items-center">
+                                                       <img src="~/img/@item.HangHoa.AnhHH" alt="@item.HangHoa.TenHH"
+                                                            style="width: 50px; height: 50px; object-fit: cover" class="me-2" />
+                                                       <div>
+                                                           <h6 class="mb-0">@item.HangHoa.TenHH</h6>
+                                                           <small class="text-muted">Mã SP: @item.HangHoa.MaHH</small>
+                                                       </div>
+                                                   </div>
+                                               </td>
+                                               <td>@item.DonGia.ToString("N0") đ</td>
+                                               <td>@item.SoLuong</td>
+                                               <td>
+                                                   <input type="number"
+                                                          name="SoLuongTra_@(item.MaDH)_@(item.MaHH)"
+                                                          class="form-control"
+                                                          style="width: 80px"
+                                                          min="0"
+                                                          max="@item.SoLuong"
+                                                          value="0" />
+                                               </td>
+                                               <td>
+                                                   <div class="form-check">
+                                                       <input type="checkbox"
+                                                              class="form-check-input product-select"
+                                                              name="SelectedProducts"
+                                                              value="@(item.MaDH)_@(item.MaHH)"
+                                                              data-max="@item.SoLuong" />
+                                                   </div>
+                                               </td>
+                                           </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="fw-bold">Lý do trả hàng</label>
+                            @Html.DropDownListFor(m => m.LyDoTraHang, new SelectList(new[]
+                            {
+                                "Sản phẩm không đúng mô tả",
+                                "Sản phẩm bị lỗi/hỏng",
+                                "Không vừa size/không phù hợp",
+                                "Đổi ý không muốn mua",
+                                "Lý do khác"
+                            }), "-- Chọn lý do --", new { @class = "form-select", required = "required" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="fw-bold">Nội dung chi tiết</label>
+                            @Html.TextAreaFor(m => m.NoiDungTraHang, new { @class = "form-control", rows = "5", required = "required" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="fw-bold">Hình ảnh sản phẩm cần trả (tối đa 5 ảnh)</label>
+                            <input type="file" name="anhTraHang" multiple accept="image/*" class="form-control" />
+                            <small class="text-muted">Hỗ trợ: JPG, PNG (tối đa 5MB/ảnh)</small>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i> Lưu ý:
+                            <ul class="mb-0">
+                                <li>Vui lòng chọn sản phẩm và số lượng cần trả</li>
+                                <li>Sản phẩm trả phải còn nguyên vẹn và đầy đủ phụ kiện</li>
+                                <li>Thời gian xử lý 1-3 ngày làm việc</li>
+                            </ul>
+                        </div>
+
+                        <div class="text-end">
+                            <a href="@Url.Action("SuccessOrders", "DonHangs_64131236")" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Quay lại
+                            </a>
+                            <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
+                                <i class="fas fa-paper-plane"></i> Gửi yêu cầu
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Tóm tắt đơn hàng</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Mã đơn hàng:</strong> #@donHang.MaDH</p>
+                    <p><strong>Ngày đặt:</strong> @donHang.NgayDat.ToString("dd/MM/yyyy HH:mm")</p>
+                    <p><strong>Tổng tiền:</strong> @donHang.TongTien.ToString("N0") đ</p>
+                    <hr />
+                    <div id="returnSummary">
+                        <p><strong>Sản phẩm đã chọn trả:</strong> <span id="selectedCount">0</span></p>
+                        <p><strong>Tổng tiền hoàn trả:</strong> <span id="returnAmount">0 đ</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            function updateSummary() {
+                let selectedCount = 0;
+                let returnAmount = 0;
+
+                $('.product-select:checked').each(function () {
+                    const row = $(this).closest('tr');
+                    const price = parseFloat(row.find('td:eq(1)').text().replace(/[^\d]/g, ''));
+                    const quantity = parseInt(row.find('input[type="number"]').val()) || 0;
+
+                    if (quantity > 0) { // Chỉ tính khi số lượng > 0
+                        selectedCount += quantity;
+                        returnAmount += quantity * price;
+                    }
+                });
+
+                $('#selectedCount').text(selectedCount);
+                $('#returnAmount').text(returnAmount.toLocaleString('vi-VN') + ' đ');
+
+                // Enable/disable submit button
+                $('#submitBtn').prop('disabled', selectedCount === 0);
+            }
+
+            // Cập nhật khi thay đổi checkbox
+            $('.product-select').on('change', function () {
+                const quantityInput = $(this).closest('tr').find('input[type="number"]');
+                if (!$(this).prop('checked')) {
+                    quantityInput.val(0);
+                }
+                updateSummary();
+            });
+
+            // Cập nhật khi thay đổi số lượng
+            $('input[type="number"]').on('change', function () {
+                const checkbox = $(this).closest('tr').find('.product-select');
+                const quantity = parseInt($(this).val()) || 0;
+
+                if (quantity > 0) {
+                    checkbox.prop('checked', true);
+                }
+                updateSummary();
+            });
+
+            // Chạy lần đầu để khởi tạo trạng thái
+            updateSummary();
+        });
+    </script>
+}
+

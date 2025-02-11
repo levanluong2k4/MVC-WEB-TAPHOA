@@ -1,0 +1,112 @@
+﻿@model web_levanluong_64131236.Models.TraHang
+@using web_levanluong_64131236.Models
+@{
+    ViewBag.Title = "Chi tiết trả hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="container my-5">
+    <h2>Chi tiết yêu cầu trả hàng</h2>
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Yêu cầu trả hàng #@Model.MaTraHang</h5>
+                <span class="badge bg-@(Model.TrangThaiTraHang == "Đã xác nhận" ? "success" :
+                                    Model.TrangThaiTraHang == "Đã từ chối" ? "danger" :
+                                    Model.TrangThaiTraHang == "Hoàn thành" ? "info" : "warning")">
+                    @Model.TrangThaiTraHang
+                </span>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5>Thông tin khách hàng</h5>
+            <dl class="row">
+                <dt class="col-sm-3">Tên khách hàng</dt>
+                <dd class="col-sm-9">@Model.DonHang.KhachHang.TenKH</dd>
+                <dt class="col-sm-3">Số điện thoại</dt>
+                <dd class="col-sm-9">@Model.DonHang.KhachHang.SDT_KH</dd>
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Model.DonHang.KhachHang.Email</dd>
+            </dl>
+
+            <h5>Sản phẩm trả hàng</h5>
+            <div class="table-responsive mb-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng trả</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{decimal tongTienHoanTra = 0;}
+                        @foreach (var chiTiet in Model.ChiTietTraHangs)
+                        {
+                            var donGiaGoc = Model.DonHang.ChiTietDonHangs
+                                .FirstOrDefault(ct => ct.MaHH == chiTiet.MaHH)?.DonGia ?? 0;
+                            var thanhTien = donGiaGoc * chiTiet.SoLuongTra;
+                            tongTienHoanTra += thanhTien;
+
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="~/img/@chiTiet.HangHoa.AnhHH" alt="@chiTiet.HangHoa.TenHH"
+                                             style="width: 50px; height: 50px; object-fit: cover" class="me-2" />
+                                        <div>
+                                            <h6 class="mb-0">@chiTiet.HangHoa.TenHH</h6>
+                                            <small class="text-muted">Mã SP: @chiTiet.HangHoa.MaHH</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@donGiaGoc.ToString("N0") đ</td>
+                                <td>@chiTiet.SoLuongTra</td>
+                                <td>@thanhTien.ToString("N0") đ</td>
+                            </tr>
+                        }
+                        <tr class="table-info">
+                            <td colspan="3" class="text-end"><strong>Tổng tiền hoàn trả:</strong></td>
+                            <td><strong>@tongTienHoanTra.ToString("N0") đ</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h5>Thông tin yêu cầu trả hàng</h5>
+            <dl class="row">
+                <dt class="col-sm-3">Mã đơn hàng</dt>
+                <dd class="col-sm-9">#@Model.MaDH</dd>
+                <dt class="col-sm-3">Ngày yêu cầu</dt>
+                <dd class="col-sm-9">@Model.NgayTraHang.Value.ToString("dd/MM/yyyy HH:mm")</dd>
+                <dt class="col-sm-3">Lý do trả hàng</dt>
+                <dd class="col-sm-9">@Model.LyDoTraHang</dd>
+                <dt class="col-sm-3">Nội dung chi tiết</dt>
+                <dd class="col-sm-9">@Model.NoiDungTraHang</dd>
+                @if (!string.IsNullOrEmpty(Model.GhiChu))
+                {
+                    <dt class="col-sm-3">Ghi chú từ shop</dt>
+                    <dd class="col-sm-9">@Model.GhiChu</dd>
+                }
+            </dl>
+
+            @if (Model.AnhTraHangs.Any())
+            {
+                <h5>Hình ảnh đính kèm</h5>
+                <div class="row">
+                    @foreach (var anh in Model.AnhTraHangs)
+                    {
+                        <div class="col-md-4 mb-3">
+                            <img src="@anh.DuongDanAnh" class="img-fluid rounded" alt="Ảnh trả hàng" />
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+    <div class="text-center">
+        <a href="@Url.Action("SuccessOrders", "DonHangs_64131236")"
+           class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Quay lại
+        </a>
+    </div>
+</div>

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<web_levanluong_64131236.Models.HangHoa>
+﻿@model IPagedList<web_levanluong_64131236.Models.HangHoa>
+@using PagedList;
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Danh sách sản phẩm";
@@ -6,101 +8,233 @@
 }
 
 <h2>Danh sách sản phẩm</h2>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/boloc.css" rel="stylesheet" type="text/css" />
+<div class="filter-section mb-4">
+    <button class="btn btn-primary filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#filterForm">
+        <i class="fas fa-filter"></i> Bộ lọc tìm kiếm
+    </button>
 
-    <div class="row mb-3">
-        <div class="col-md-12">
+    <div class="collapse mt-3" id="filterForm">
+        <div class="card card-body filter-card">
             @using (Html.BeginForm("ProductList", "HangHoas_64131236", FormMethod.Get))
             {
-                <div class="row">
+                <div class="row g-3">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Tìm kiếm:</label>
-                            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                            <label class="form-label">Loại hàng:</label>
+                            @Html.DropDownList("maLH", ViewBag.LoaiHangs as SelectList, "Tất cả", new { @class = "form-select" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="form-label">Giá từ:</label>
+                            @Html.TextBox("minPrice", null, new { @class = "form-control", type = "number", placeholder = "VNĐ" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="form-label">Giá đến:</label>
+                            @Html.TextBox("maxPrice", null, new { @class = "form-control", type = "number", placeholder = "VNĐ" })
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Loại hàng:</label>
-                            @Html.DropDownList("maLH", ViewBag.LoaiHangs as SelectList, "Tất cả", new { @class = "form-control" })
+                            <label class="form-label">Lọc theo:</label>
+                            @Html.DropDownList("filterType",
+                                new SelectList(new[]
+                                {
+                                    new { Value = "", Text = "Tất cả sản phẩm" },
+                                    new { Value = "bestsellers", Text = "Sản phẩm bán chạy" }
+                                }, "Value", "Text", ViewBag.CurrentFilter),
+                                new { @class = "form-select" })
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group">
-                            <label>Giá từ:</label>
-                            @Html.TextBox("minPrice", null, new { @class = "form-control", type = "number" })
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Giá đến:</label>
-                            @Html.TextBox("maxPrice", null, new { @class = "form-control", type = "number" })
+                            <label class="form-label">Sắp xếp:</label>
+                            @Html.DropDownList("sortOrder",
+                                new SelectList(new[]
+                                {
+                                    new { Value = "", Text = "Tên A-Z" },
+                                    new { Value = "name_desc", Text = "Tên Z-A" },
+                                    new { Value = "Price", Text = "Giá tăng dần" },
+                                    new { Value = "price_desc", Text = "Giá giảm dần" },
+                                    new { Value = "Sales", Text = "Lượt bán tăng dần" },
+                                    new { Value = "sales_desc", Text = "Lượt bán giảm dần" }
+                                }, "Value", "Text", ViewBag.CurrentSort),
+                                new { @class = "form-select" })
                         </div>
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Tìm kiếm
+                        </button>
+                        <button type="reset" class="btn btn-secondary ms-2">
+                            <i class="fas fa-undo"></i> Đặt lại
+                        </button>
                     </div>
                 </div>
             }
         </div>
     </div>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card h-100 shadow-sm product-card">
+                <a href="@Url.Action("Details", "HangHoas_64131236", new { id = item.MaHH })" class="card-link text-decoration-none text-dark">
+                    @if (!string.IsNullOrEmpty(item.AnhHH))
+                    {
+                        <img src="~/img/@item.AnhHH" class="card-img-top" alt="@item.TenHH"
+                             style="height: 200px; object-fit: cover;">
+                    }
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">@item.TenHH</h5>
+                    <div class="product-rating mb-2">
+                        @{
+                            var ratings = item.DanhGiaSanPhams;
+                            var averageRating = ratings.Any() ? Math.Round(ratings.Average(r => r.SoSao), 1) : 0;
+                            var totalRatings = ratings.Count();
+                            var ratingPercentage = (averageRating / 5) * 100;
+                        }
+                        <div class="rating-stars">
+                            <div class="stars-outer">
+                                <div class="stars-inner" style="width: @ratingPercentage%"></div>
+                            </div>
+                            <span class="rating-count">
+                                @if (totalRatings > 0)
+                                {
+                                    <span class="text-primary">@averageRating.ToString("F1")</span>
+                                    <span class="text-muted">(@totalRatings đánh giá)</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Chưa có đánh giá</span>
+                                }
+                            </span>
+                        </div>
+                    </div>
+                    <p class="card-text">Giá: @item.GiaBan.ToString("N0") VNĐ</p>
+                    <p class="card-text">Còn lại: @item.SoLuongHangTon</p>
+                    <p class="card-text">Số lượng đã bán: @ViewBag.SoldQuantities[item.MaHH]</p>
+                </div>
+                </a>
+                <div class="card-footer bg-transparent border-0 mt-auto">
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-primary w-100" onclick="themVaoGio('@item.MaHH')">
+                        Thêm vào giỏ
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
-    <div class="row">
-        @foreach (var item in Model)
+<div class="d-flex justify-content-center mt-4">
+    @Html.PagedListPager(Model, page => Url.Action("ProductList",
+        new
+            {
+                page,
+            sortOrder = ViewBag.CurrentSort,
+            currentFilter = ViewBag.CurrentFilter,
+            maLH = Request.QueryString["maLH"],
+            minPrice = Request.QueryString["minPrice"],
+            maxPrice = Request.QueryString["maxPrice"]
+        }),
+        new PagedListRenderOptions
         {
-           <div class="col-md-3 col-sm-6 mb-4">
-               <div class="card h-100 shadow-sm product-card">
-                   <a href="@Url.Action("Details", "HangHoas_64131236", new { id = item.MaHH })" class="card-link text-decoration-none text-dark">
-                       @if (!string.IsNullOrEmpty(item.AnhHH))
-                       {
-                           <img src="~/img/@item.AnhHH" class="card-img-top" alt="@item.TenHH"
-                                style="height: 200px; object-fit: cover;">
-                       }
-                       <div class="card-body d-flex flex-column">
-                           <h5 class="card-title">@item.TenHH</h5>
-                           <p class="card-text">Giá: @item.GiaBan.ToString("N0") VNĐ</p>
-                           <p class="card-text">Còn lại: @item.SoLuongHangTon</p>
-                       </div>
-                   </a>
-                   <div class="card-footer bg-transparent border-0 mt-auto">
-                       @Html.AntiForgeryToken()
-                       <button class="btn btn-primary w-100" onclick="themVaoGio('@item.MaHH')">
-                           Thêm vào giỏ
-                       </button>
-                   </div>
-               </div>
+            LiElementClasses = new string[] { "page-item" },
+            UlElementClasses = new string[] { "pagination" },
+            LinkToPreviousPageFormat = "«",
+            LinkToNextPageFormat = "»"
+        })
+</div>
 
-           </div>
-        }
-    </div>
-    <style>
-        .card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+<style>
+    .card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-            .card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            }
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
 
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .pagination {
+        margin: 20px 0;
+    }
+
+    .page-item.active .page-link {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .page-link {
+        color: #007bff;
+    }
+
+
+
+</style>
+
+<style>
+    .product-rating {
+        font-size: 0.9rem;
+    }
+
+    .rating-stars {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stars-outer {
+        display: inline-block;
+        position: relative;
+        font-family: 'Font Awesome 5 Free';
+    }
+
+        .stars-outer::before {
+            content: "\f005 \f005 \f005 \f005 \f005";
+            color: #ddd;
+            font-weight: 900;
         }
 
-        .card-text {
-            font-size: 0.9rem;
+    .stars-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+        .stars-inner::before {
+            content: "\f005 \f005 \f005 \f005 \f005";
+            color: #ffd700;
+            font-weight: 900;
         }
 
-        .btn-group .btn {
-            flex: 1;
-        }
-    </style>
+    .rating-count {
+        margin-left: 8px;
+    }
+</style>
 
+@section Scripts {
     <script>
-
         function themVaoGio(maHH) {
             const btn = event.target;
             btn.disabled = true;
@@ -109,7 +243,7 @@
             var token = $('input[name="__RequestVerificationToken"]').val();
 
             $.ajax({
-                url: '/GioHangs_64131236/AddToCart',  // Sửa lại URL cho đúng với controller
+                url: '/GioHangs_64131236/AddToCart',
                 type: 'POST',
                 data: {
                     maHH: maHH,
@@ -119,7 +253,6 @@
                 success: function (response) {
                     if (response.success) {
                         toastr.success(response.message);
-                        // Cập nhật số lượng giỏ hàng
                         if (response.cartCount !== undefined) {
                             $('#cartCount').text(response.cartCount);
                         }
@@ -139,6 +272,56 @@
 
 
 
+
     </script>
+    <script>
+$(document).ready(function() {
+    $("#searchInput").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "@Url.Action("GetSearchSuggestions", "HangHoas_64131236")",
+                dataType: "json",
+                data: { term: request.term },
+                success: function(data) {
+                    console.log("Search results:", data); // Debug log
+                    response(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Search error:", error); // Debug log
+                    response([]);
+                }
+            });
+        },
+        minLength: 1,
+        select: function(event, ui) {
+            if (ui.item && ui.item.id) {
+                window.location.href = '@Url.Action("Details", "HangHoas_64131236")/' + ui.item.id;
+                return false;
+            }
+        }
+    }).autocomplete("instance")._renderItem = function(ul, item) {
+        return $("<li>")
+            .append(`<div class='product-suggestion'>
+                <img src='/img/${item.image}' alt='${item.label}'
+                     style='width:50px;height:50px;object-fit:cover;margin-right:10px'>
+                <div>
+                    <div style='font-weight:500'>${item.label}</div>
+                    <div style='color:#ee4d2d'>${item.price.toLocaleString('vi-VN')}₫</div>
+                </div>
+            </div>`)
+            .appendTo(ul);
+    };
+
+    $("#globalSearchForm").on("submit", function(e) {
+        e.preventDefault();
+        var searchTerm = $("#searchInput").val().trim();
+        if (searchTerm) {
+            window.location.href = '@Url.Action("ProductList", "HangHoas_64131236")?searchString=' + encodeURIComponent(searchTerm);
+        }
+    });
+});
+    </script>
+}
+
 
 

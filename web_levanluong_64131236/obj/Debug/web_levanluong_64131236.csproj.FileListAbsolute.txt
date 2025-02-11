@@ -214,3 +214,7 @@ D:\webtaphoa\web_levanluong_64131236\obj\Debug\web_levanluong_64131236.csproj.Co
 D:\webtaphoa\web_levanluong_64131236\obj\Debug\web_leva.EF0E5694.Up2Date
 D:\webtaphoa\web_levanluong_64131236\obj\Debug\web_levanluong_64131236.dll
 D:\webtaphoa\web_levanluong_64131236\obj\Debug\web_levanluong_64131236.pdb
+D:\webtaphoa\web_levanluong_64131236\bin\PagedList.dll
+D:\webtaphoa\web_levanluong_64131236\bin\PagedList.Mvc.dll
+D:\webtaphoa\web_levanluong_64131236\bin\PagedList.xml
+D:\webtaphoa\web_levanluong_64131236\bin\PagedList.Mvc.xml

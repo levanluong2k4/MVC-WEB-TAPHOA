@@ -19,6 +19,9 @@ namespace web_levanluong_64131236.Models
         {
             this.AnhGiaoHangs = new HashSet<AnhGiaoHang>();
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
+            this.ThoiGianCapNhatDonHangs = new HashSet<ThoiGianCapNhatDonHang>();
+            this.TraHangs = new HashSet<TraHang>();
+            this.DanhGiaSanPhams = new HashSet<DanhGiaSanPham>();
         }
     
         public int MaDH { get; set; }
@@ -37,5 +40,11 @@ namespace web_levanluong_64131236.Models
         public virtual Discount Discount { get; set; }
         public virtual KhachHang KhachHang { get; set; }
         public virtual KhachHang KhachHang1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThoiGianCapNhatDonHang> ThoiGianCapNhatDonHangs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TraHang> TraHangs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DanhGiaSanPham> DanhGiaSanPhams { get; set; }
     }
 }

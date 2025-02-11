@@ -16,10 +16,15 @@ namespace web_levanluong_64131236
         
 
             routes.MapRoute(
-                name: "ProductsByCategory",
-                url: "danh-muc/{id}",
-                defaults: new { controller = "LoaiHangs_64131236", action = "ShowProducts" }
+                name: "Products",
+                url: "san-pham/{id}",
+                defaults: new { controller = "HangHoas_64131236", action = "ProductList" }
             );
+            routes.MapRoute(
+    name: "ProductSearch",
+    url: "HangHoas_64131236/GetSearchSuggestions",
+    defaults: new { controller = "HangHoas_64131236", action = "GetSearchSuggestions" }
+);
 
             // Route mặc định đặt cuối cùng
             routes.MapRoute(

@@ -5,82 +5,163 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>HangHoa</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MaHH)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaLH, "MaLH", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MaLH", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaLH, "", new { @class = "text-danger" })
-            </div>
+<div class="container py-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Chỉnh sửa thông tin hàng hóa</h3>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenHH, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenHH, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenHH, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Edit", "HangHoas_64131236", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
+            {
+                @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AnhHH, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AnhHH, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AnhHH, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.MaHH, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.LabelFor(model => model.MaHH, "Mã hàng hóa")
+                            @Html.ValidationMessageFor(model => model.MaHH, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SoLuongHangTon, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SoLuongHangTon, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SoLuongHangTon, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            @Html.DropDownList("MaLH", null, new { @class = "form-select" })
+                            @Html.LabelFor(model => model.LoaiHang.TenLH, "Loại hàng")
+                            @Html.ValidationMessageFor(model => model.LoaiHang.TenLH, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="col-md-12">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.TenHH, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.LabelFor(model => model.TenHH, "Tên hàng hóa")
+                            @Html.ValidationMessageFor(model => model.TenHH, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HSD, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HSD, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HSD, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label"><i class="fas fa-image me-2"></i>Ảnh hàng hóa</label>
+                            <div class="input-group">
+                                <input type="file" name="imageFile" id="imageFile" class="form-control"
+                                       onchange="previewImage(this);" accept="image/*" />
+                                <label class="input-group-text" for="imageFile">
+                                    <i class="fas fa-upload"></i>
+                                </label>
+                            </div>
+                            @if (!string.IsNullOrEmpty(Model.AnhHH))
+                            {
+                                <div class="mt-3 position-relative" style="max-width: 200px;">
+                                    <img src="~/img/@Model.AnhHH" id="imagePreview" alt="Current Image"
+                                         class="img-thumbnail" />
+                                </div>
+                            }
+                            @Html.HiddenFor(model => model.AnhHH)
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NSX, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NSX, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NSX, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.SoLuongHangTon, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.LabelFor(model => model.SoLuongHangTon, "Số lượng hàng tồn")
+                            @Html.ValidationMessageFor(model => model.SoLuongHangTon, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.LabelFor(model => model.GiaBan, "Giá bán")
+                            @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.HSD, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                            @Html.LabelFor(model => model.HSD, "Hạn sử dụng")
+                            @Html.ValidationMessageFor(model => model.HSD, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.NSX, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                            @Html.LabelFor(model => model.NSX, "Ngày sản xuất")
+                            @Html.ValidationMessageFor(model => model.NSX, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Lưu thay đổi
+                    </button>
+                </div>
+            }
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+<style>
+    .form-floating > label {
+        padding-left: 1.25rem;
+    }
+
+    .form-floating > .form-control {
+        height: calc(3.5rem + 2px);
+        line-height: 1.25;
+    }
+
+    .input-group-text {
+        cursor: pointer;
+    }
+
+    .card {
+        border: none;
+        border-radius: 0.5rem;
+    }
+
+    .card-header {
+        border-radius: 0.5rem 0.5rem 0 0 !important;
+    }
+
+    .btn {
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.25rem;
+    }
+</style>
+
+<script>
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#imagePreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(document).ready(function() {
+        // Initialize tooltips
+        $('[data-bs-toggle="tooltip"]').tooltip();
+
+        // Format currency input
+        $('#GiaBan').on('input', function() {
+            let value = $(this).val().replace(/\D/g, '');
+            $(this).val(new Intl.NumberFormat('vi-VN').format(value));
+        });
+
+        // Show success message after form submission
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+            toastr.success('@TempData["SuccessMessage"]');
+            </text>
+        }
+    });
+</script>

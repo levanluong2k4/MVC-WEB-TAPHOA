@@ -53,6 +53,12 @@
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -173,6 +179,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChiTietDonHangs_64131236Controller.cs" />
     <Compile Include="Controllers\ChiTietGioHangs_64131236Controller.cs" />
+    <Compile Include="Controllers\DanhGiaSanPhams_64131236Controller.cs" />
     <Compile Include="Controllers\Discounts_64131236Controller.cs" />
     <Compile Include="Controllers\DonHangs_64131236Controller.cs" />
     <Compile Include="Controllers\GioHangs_64131236Controller.cs" />
@@ -183,12 +190,16 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NhanViens_64131236Controller.cs" />
     <Compile Include="Controllers\QuanTris_64131236Controller.cs" />
+    <Compile Include="Controllers\TraHangs_64131236Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminAuthorizeAttribute.cs" />
     <Compile Include="Models\AnhGiaoHang.cs">
+      <DependentUpon>Model1_64131236.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AnhTraHang.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BestSellingProductViewModel.cs" />
@@ -199,8 +210,14 @@
     <Compile Include="Models\ChiTietGioHang.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChiTietTraHang.cs">
+      <DependentUpon>Model1_64131236.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CustomAuthorizeAttribute.cs" />
     <Compile Include="Models\DailyRevenueViewModel.cs" />
+    <Compile Include="Models\DanhGiaSanPham.cs">
+      <DependentUpon>Model1_64131236.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Discount.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
@@ -214,6 +231,7 @@
     <Compile Include="Models\HangHoa.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HangHoaExtensions .cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\KhachHang.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
@@ -244,6 +262,7 @@
     <Compile Include="Models\QuanTri.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegistrationViewModel.cs" />
     <Compile Include="Models\RevenueViewModel.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
@@ -263,7 +282,16 @@
     <Compile Include="Models\sp_TopSanPhamBanChay_Result.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1_64131236.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ThemVaoGioHang_Result.cs">
+      <DependentUpon>Model1_64131236.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThoiGianCapNhatDonHang.cs">
+      <DependentUpon>Model1_64131236.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TraHang.cs">
       <DependentUpon>Model1_64131236.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\YearlyRevenueViewModel.cs" />
@@ -271,6 +299,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\boloc.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -287,6 +316,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\register.css" />
     <Content Include="Content\tiki.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -370,6 +401,7 @@
     <Content Include="img\QR.png" />
     <Content Include="img\rejoice_dau_goi.jpg" />
     <Content Include="img\sach.png" />
+    <Content Include="img\sanpham.png" />
     <Content Include="img\smartphone.jpg" />
     <Content Include="img\son.png" />
     <Content Include="img\sprite_chanh.jpg" />
@@ -387,6 +419,7 @@
     <Content Include="img\th_true_milk.jpg" />
     <Content Include="img\th_true_water.jpg" />
     <Content Include="img\topdeal.png" />
+    <Content Include="img\trahang.png" />
     <Content Include="img\trung.jpg" />
     <Content Include="img\tuong_ot.jpg" />
     <Content Include="img\user.png" />
@@ -435,6 +468,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\search.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -476,11 +510,8 @@
     <Content Include="Views\QuanTris_64131236\Edit.cshtml" />
     <Content Include="Views\QuanTris_64131236\Index.cshtml" />
     <Content Include="Views\QuanTris_64131236\Login.cshtml" />
-    <Content Include="Views\LoaiHangs_64131236\Create.cshtml" />
     <Content Include="Views\LoaiHangs_64131236\Delete.cshtml" />
     <Content Include="Views\LoaiHangs_64131236\Details.cshtml" />
-    <Content Include="Views\LoaiHangs_64131236\Edit.cshtml" />
-    <Content Include="Views\LoaiHangs_64131236\Index.cshtml" />
     <Content Include="Views\NhanViens_64131236\Create.cshtml" />
     <Content Include="Views\NhanViens_64131236\Delete.cshtml" />
     <Content Include="Views\NhanViens_64131236\Details.cshtml" />
@@ -514,7 +545,6 @@
     <Content Include="Views\Discounts_64131236\Delete.cshtml" />
     <Content Include="Views\Discounts_64131236\Details.cshtml" />
     <Content Include="Views\Discounts_64131236\Edit.cshtml" />
-    <Content Include="Views\Discounts_64131236\Index.cshtml" />
     <Content Include="Views\ChiTietDonHangs_64131236\Create.cshtml" />
     <Content Include="Views\ChiTietDonHangs_64131236\Delete.cshtml" />
     <Content Include="Views\ChiTietDonHangs_64131236\Details.cshtml" />
@@ -539,6 +569,28 @@
     <Content Include="Views\KhachHangs_64131236\EditMyProfile.cshtml" />
     <Content Include="Views\QuanTris_64131236\ChangePassword.cshtml" />
     <Content Include="Views\QuanTris_64131236\ForgotPassword.cshtml" />
+    <Content Include="Views\NhanViens_64131236\DeleteMultiple.cshtml" />
+    <Content Include="Views\Shared\_CartCount.cshtml" />
+    <Content Include="Views\DonHangs_64131236\SuccessOrders.cshtml" />
+    <Content Include="Views\TraHangs_64131236\Create.cshtml" />
+    <Content Include="Views\TraHangs_64131236\Delete.cshtml" />
+    <Content Include="Views\TraHangs_64131236\Details.cshtml" />
+    <Content Include="Views\TraHangs_64131236\Edit.cshtml" />
+    <Content Include="Views\TraHangs_64131236\Index.cshtml" />
+    <Content Include="Views\TraHangs_64131236\TaoYeuCauTraHang.cshtml" />
+    <Content Include="Views\TraHangs_64131236\QuanLyTraHang.cshtml" />
+    <Content Include="Views\TraHangs_64131236\ChiTietTraHang.cshtml" />
+    <Content Include="Views\TraHangs_64131236\TheoDoiTraHang.cshtml" />
+    <Content Include="Views\DanhGiaSanPhams_64131236\Create.cshtml" />
+    <Content Include="Views\DanhGiaSanPhams_64131236\Delete.cshtml" />
+    <Content Include="Views\DanhGiaSanPhams_64131236\Details.cshtml" />
+    <Content Include="Views\DanhGiaSanPhams_64131236\Edit.cshtml" />
+    <Content Include="Views\DanhGiaSanPhams_64131236\Index.cshtml" />
+    <Content Include="Views\LoaiHangs_64131236\AdminIndex.cshtml" />
+    <Content Include="Views\LoaiHangs_64131236\AdminCreate.cshtml" />
+    <Content Include="Views\LoaiHangs_64131236\AdminEdit.cshtml" />
+    <Content Include="Views\LoaiHangs_64131236\AdminDelete.cshtml" />
+    <Content Include="Views\Discounts_64131236\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

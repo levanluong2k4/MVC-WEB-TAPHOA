@@ -137,42 +137,7 @@
         </div>
     </div>
 
-    <!-- Best Selling Products -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-crown me-1"></i>
-            Top 10 sản phẩm bán chạy
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Mã hàng</th>
-                            <th>Sản phẩm</th>
-                            <th>Số lượng bán</th>
-                            <th>Doanh thu</th>
-                            <th>Ảnh</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var product in Model.BestSellingProducts)
-                        {
-                            <tr>
-                                <td>@product.MaHH</td>
-                                <td>@product.TenHH</td>
-                                <td class="text-center">@product.TotalQuantity</td>
-                                <td class="text-right">@String.Format("{0:N0}đ", product.TotalRevenue)</td>
-                                <td class="text-center">
-                                    <img src="~/img/@product.AnhHH" alt="@product.TenHH" class="img-thumbnail" style="max-width: 50px;">
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+  
 </div>
 
 

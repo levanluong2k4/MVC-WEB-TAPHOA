@@ -8,6 +8,47 @@
 <div class="container my-5">
     <h2>Quản Lý Đơn Hàng</h2>
 
+
+    <div class="filter-section mb-4">
+        <button class="btn btn-primary filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#filterForm">
+            <i class="fas fa-filter"></i> Bộ lọc tìm kiếm
+        </button>
+
+        <div class="collapse mt-3" id="filterForm">
+            <div class="card card-body filter-card">
+                @using (Html.BeginForm("QuanLyDonHang", "DonHangs_64131236", FormMethod.Get, new { @class = "row g-3" }))
+                {
+                    <div class="col-md-3">
+                        <label class="form-label">Trạng thái đơn hàng</label>
+                        @Html.DropDownList("trangThai", (IEnumerable<SelectListItem>)ViewBag.TrangThaiList,
+                            new { @class = "form-select", onchange = "this.form.submit()" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Trạng thái giao hàng</label>
+                        @Html.DropDownList("trangThaiGiaoHang", (IEnumerable<SelectListItem>)ViewBag.TrangThaiGiaoHangList,
+                            new { @class = "form-select", onchange = "this.form.submit()" })
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Từ ngày</label>
+                        <input type="date" name="tuNgay" class="form-control" value="@ViewBag.CurrentTuNgay">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Đến ngày</label>
+                        <input type="date" name="denNgay" class="form-control" value="@ViewBag.CurrentDenNgay">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Lọc</button>
+                        <a href="@Url.Action("QuanLyDonHang")" class="btn btn-secondary">Đặt lại</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
@@ -124,6 +165,29 @@
             </tbody>
         </table>
     </div>
+
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(!ViewBag.HasPreviousPage ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("QuanLyDonHang", new { page = ViewBag.CurrentPage - 1, trangThai = ViewBag.CurrentTrangThai, trangThaiGiaoHang = ViewBag.CurrentTrangThaiGiaoHang, tuNgay = ViewBag.CurrentTuNgay, denNgay = ViewBag.CurrentDenNgay })">
+                    Trước
+                </a>
+            </li>
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("QuanLyDonHang", new { page = i, trangThai = ViewBag.CurrentTrangThai, trangThaiGiaoHang = ViewBag.CurrentTrangThaiGiaoHang, tuNgay = ViewBag.CurrentTuNgay, denNgay = ViewBag.CurrentDenNgay })">
+                        @i
+                    </a>
+                </li>
+            }
+            <li class="page-item @(!ViewBag.HasNextPage ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("QuanLyDonHang", new { page = ViewBag.CurrentPage + 1, trangThai = ViewBag.CurrentTrangThai, trangThaiGiaoHang = ViewBag.CurrentTrangThaiGiaoHang, tuNgay = ViewBag.CurrentTuNgay, denNgay = ViewBag.CurrentDenNgay })">
+                    Sau
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 
 <!-- Modal Upload Ảnh -->
@@ -148,6 +212,10 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Pagination -->
+   
 </div>
 
 <style>

@@ -238,3 +238,107 @@ body {
 .cart-badge.pulse {
     animation: pulse 0.5s ease-in-out;
 }
+
+/* Navigation Container */
+.d-flex.flex-column {
+    background-color: white;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0;
+}
+
+    /* All Navigation Links */
+    .nav-link, .navbar-nav li a {
+        color: #333;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        transition: all 0.2s;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+        /* Home Link */
+        .nav-link.active.text-primary {
+            color: #068df4 !important;
+        }
+
+        .nav-link i, .navbar-nav li a i {
+            font-size: 1.1rem;
+        }
+
+        /* Login/Register Links */
+        .navbar-nav li a[href*="Login"] {
+            background-color: #068df4;
+            color: white;
+        }
+
+        .navbar-nav li a[href*="Register"] {
+            border: 2px solid #068df4;
+            color: #068df4;
+        }
+
+        /* Logout Link */
+        .navbar-nav li a[href*="Logout"] {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* Hover States */
+        .navbar-nav li a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+/* Welcome Message */
+.navbar-text {
+    background-color: #e8f0fe;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    color: #068df4;
+    font-weight: 500;
+}
+
+/* Cart Link */
+.nav-link[href*="GioHangs"] {
+    position: relative;
+    color: #333;
+}
+
+#cartCount {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}
+
+/* Address Section */
+.d-flex.flex-column > a {
+    color: #666;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .d-flex.flex-column > a {
+        font-size: 0.9rem;
+    }
+}

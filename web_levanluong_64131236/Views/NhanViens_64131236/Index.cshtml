@@ -1,70 +1,162 @@
 ﻿@model IEnumerable<web_levanluong_64131236.Models.NhanVien>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lý nhân viên";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container-fluid py-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0"><i class="fas fa-users me-2"></i>Quản lý nhân viên</h3>
+            <a href="@Url.Action("Create")" class="btn btn-success">
+                <i class="fas fa-plus me-2"></i>Thêm nhân viên mới
+            </a>
+        </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Ho)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayLamViec)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DienThoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QuanTri.Password)
-        </th>
-        <th></th>
-    </tr>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    @using (Html.BeginForm("Index", "NhanViens_64131236", FormMethod.Get, new { @class = "form-inline" }))
+                    {
+                        <div class="input-group">
+                            @Html.DropDownList("searchBy", null, "-- Tìm kiếm theo --", new { @class = "form-select w-25" })
+                            @Html.TextBox("searchString", null, new { @class = "form-control", placeholder = "Nhập từ khóa..." })
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search me-2"></i>Tìm kiếm
+                            </button>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-4 text-end">
+                    <button id="deleteSelected" class="btn btn-danger" style="display: none;">
+                        <i class="fas fa-trash me-2"></i>Xóa đã chọn
+                    </button>
+                </div>
+            </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ho)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgaySinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayLamViec)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DienThoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuanTri.Password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaNV }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaNV }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaNV })
-        </td>
-    </tr>
-}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>
+                                <input type="checkbox" id="selectAll" />
+                            </th>
+                            <th>Mã NV</th>
+                            <th>
+                                @Html.ActionLink("Họ và tên", "Index", new { sortOrder = ViewBag.NameSortParm })
+                                <i class="fas fa-sort text-muted ms-1"></i>
+                            </th>
+                            <th>
+                                @Html.ActionLink("Ngày làm việc", "Index", new { sortOrder = ViewBag.DateSortParm })
+                                <i class="fas fa-sort text-muted ms-1"></i>
+                            </th>
+                            <th>Địa chỉ</th>
+                            <th>Điện thoại</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="employeeCheckbox" value="@item.MaNV" />
+                                </td>
+                                <td>@item.MaNV</td>
+                                <td>@item.Ho @item.Ten</td>
+                                <td>@item.NgayLamViec.ToString("dd/MM/yyyy")</td>
+                                <td>@item.DiaChi</td>
+                                <td>@item.DienThoai</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="@Url.Action("Edit", new { id = item.MaNV })" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="@Url.Action("Details", new { id = item.MaNV })" class="btn btn-sm btn-info">
+                                            <i class="fas fa-info-circle"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-danger delete-single" data-id="@item.MaNV">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-</table>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Handle select all checkbox
+            $("#selectAll").change(function () {
+                $(".employeeCheckbox").prop('checked', $(this).prop('checked'));
+                updateDeleteButton();
+            });
+
+            // Handle individual checkboxes
+            $(".employeeCheckbox").change(function () {
+                updateDeleteButton();
+            });
+
+            // Update delete button visibility
+            function updateDeleteButton() {
+                if ($(".employeeCheckbox:checked").length > 0) {
+                    $("#deleteSelected").show();
+                } else {
+                    $("#deleteSelected").hide();
+                }
+            }
+              $(".delete-single").click(function () {
+        var id = $(this).data("id");
+        if (confirm("Bạn có chắc chắn muốn xóa nhân viên này?")) {
+            $.ajax({
+                url: '@Url.Action("DeleteMultiple")',
+                type: 'POST',
+                data: { selectedIds: [id] },
+                success: function (response) {
+                    if (response.success) {
+                        location.reload();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('Có lỗi xảy ra khi xóa nhân viên.');
+                }
+            });
+        }
+    });
+
+    // Delete selected button handler
+    $("#deleteSelected").click(function () {
+        var selectedIds = $(".employeeCheckbox:checked").map(function () {
+            return $(this).val();
+        }).get();
+
+        if (selectedIds.length > 0 && confirm("Bạn có chắc chắn muốn xóa các nhân viên đã chọn?")) {
+            $.ajax({
+                url: '@Url.Action("DeleteMultiple")',
+                type: 'POST',
+                data: { selectedIds: selectedIds },
+                success: function (response) {
+                    if (response.success) {
+                        location.reload();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('Có lỗi xảy ra khi xóa nhân viên.');
+                }
+            });
+        }
+    });
+        }
+    </script>
+    }    

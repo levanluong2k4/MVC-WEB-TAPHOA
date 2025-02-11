@@ -8,19 +8,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Bootstrap CSS v5.2.1 -->
+    <!-- jQuery first, then jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    <!-- Bootstrap CSS -->
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery.js"></script> <!-- Include jQuery if you’re using it -->
-    <script src="~/Scripts/bootstrap.bundle.min.js"></script> <!-- Bootstrap JavaScript file -->
+
+    <!-- Other CSS -->
     <link rel="stylesheet" href="~/Content/tiki.css">
     <link href="~/Content/fontawesome/css/all.min.css" rel="stylesheet" />
-    <!-- Thêm vào phần head -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Other Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/search.js"></script>
     <style>
 
         .inner-item {
@@ -161,6 +166,7 @@
             padding: 2px 6px;
             font-size: 12px;
         }
+
         .hover-effect {
             font-size: 20px;
             font-weight: 600;
@@ -174,6 +180,105 @@
                 text-shadow: 0px 4px 8px rgba(0, 0, 255, 0.5); /* Hiệu ứng bóng */
             }
 
+        .search-form {
+            width: 67%;
+        }
+
+        /* Navigation List */
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Home Button */
+        .nav-link.active {
+            background-color: #f0f7ff;
+            color: #068df4;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+            .nav-link.active:hover {
+                background-color: #e0f0ff;
+                transform: translateY(-2px);
+            }
+
+        /* Welcome Message */
+        .navbar-text {
+            background-color: #e8f0fe;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            color: #068df4;
+            font-weight: 500;
+        }
+
+        /* Login/Register Buttons */
+        .nav-item a[href*="Login"] {
+            background-color: #068df4;
+            color: white !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-item a[href*="Register"] {
+            background-color: white;
+            color: #068df4 !important;
+            border: 2px solid #068df4;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        /* Logout Button */
+        .nav-item a[href*="Logout"] {
+            background-color: #dc3545;
+            color: white !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        /* Cart Button */
+        .nav-link[href*="GioHangs"] {
+            background-color: #f8f9fa;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        #cartCount {
+            background-color: #dc3545;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            margin-left: 0.3rem;
+        }
+
+        /* Hover Effects */
+        .nav-item a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+
+        /* Address Style */
+        .d-flex.flex-column > a {
+            color: #666;
+            padding: 0.6rem;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            margin-top: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .inner-logocart {
+            width: 50px;
+            height: auto
+        }
     </style>
 
 
@@ -186,7 +291,7 @@
     <header class="bg-white container-fluid">
         <nav class="navbar navbar-expand-lg  align-items-center justify-content-center ">
             <div class="container-fluid ">
-                <a class="navbar-brand d-flex flex-column me-3 " href="#">
+                <a class="navbar-brand d-flex flex-column me-3" href="@Url.Action("ProductList", "HangHoas_64131236")">
                     <img class="inner-logo"
                          src="~/img/logogo.png"
                          alt="LOGO">
@@ -198,323 +303,439 @@
                         aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse align-items-center justify-content-between "
+                <div class="collapse navbar-collapse align-items-center  "
                      id="navbarSupportedContent">
 
-                    <form class="w-75 border-1 align-items-center justify-content-center" role="search">
-                        <div class="dropdown w-100 inner-input d-flex align-items-center justify-content-center mt-3 ">
+                    <form style="width:64%;" class=" border-1 align-items-center " role="search">
+                        <!-- Replace the nested forms with this -->
+                        <div class="dropdown inner-input d-flex align-items-center justify-content-center mt-3">
                             <i class="fa-solid fa-magnifying-glass icone-search opacity-50 ms-3"></i>
-
-                          
-                                <input name="searchTerm"
-                                       class="border-0 dropdown-toggle ms-1 me-2"
-                                       type="search"
-                                       placeholder="Search"
-                                       aria-label="Search">
+                            <form id="globalSearchForm" class="search-form d-flex align-items-center">
+                                <input type="text"
+                                       name="searchString"
+                                       id="searchInput"
+                                       class="form-control border-0 ms-1 me-2"
+                                       placeholder="Tìm kiếm..."
+                                       autocomplete="off" />
                                 <button class="btn text-primary border-start" type="submit">
-                                    Search
+                                    <i class="fas fa-search"></i>
                                 </button>
-                            
+                            </form>
                         </div>
-                        <ul class="d-flex listds">
 
-                            <li><a href="/">Nước</a></li>
-                            <li><a href="/">cafee</a></li>
-                            <li><a href="/">Ăn vặt</a></li>
-                            <li>
-                                <a href="/">
-                                    Trà sữa
-                                </a>
-                            </li>
-                            <li><a href="/">Topping</a></li>
-                            <li><a href="/">Giải khát</a></li>
-
-                        </ul>
                     </form>
-                    <div class="d-flex flex-column">
+                    <div class="d-flex flex-column ms-2" style=" padding-top: 26px;">
+
+                        @if (Session["username"] != null)
+                        {
+
+
+                            <li class="nav-item mb-3"><span class="navbar-text">Xin chào @Session["username"]!</span></li>
+                        }
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                             <li class="nav-item ">
-                                <a class="nav-link active text-primary" aria-current="page" href="#">
+                                <a class="nav-link active " aria-current="page" href="@Url.Action("ProductList", "HangHoas_64131236")">
                                     <i class="fa-solid fa-house" style="color: #068df4;"></i>Trang chủ
                                 </a>
                             </li>
-                            <li class="nav-item">
 
-                                @if (Session["username"] != null)
-                                {
-                                <li><span class="navbar-text">Hello @Session["username"]!</span></li>
-                                <li>@Html.ActionLink("Logout", "Logout", "QuanTris_64131236")</li>
+
+                            @if (Session["username"] != null)
+                            {
+
+
+
+
+
+                                <li class="nav-item ">@Html.ActionLink("Đăng xuất", "Logout", "QuanTris_64131236")</li>
                             }
                             else
                             {
-                                <li>@Html.ActionLink("Login", "Login", "QuanTris_64131236")</li>
-                                <li>@Html.ActionLink("Register", "Register", "QuanTris_64131236")</li>
+                                <li class="nav-item ">@Html.ActionLink("Đăng nhập", "Login", "QuanTris_64131236")</li>
+                                <li class="nav-item ">@Html.ActionLink("Đăng ký", "Register", "QuanTris_64131236")</li>
                             }
 
 
-                                <li class="nav-item">
 
-                                        <!-- Trong _Layout.cshtml -->
-                                <li class="nav-item">
-                                    @if (Session["MaKH"] != null)
-                                    {
-                                        <a class="nav-link" href="@Url.Action("Index", "GioHangs_64131236")">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                            (<span id="cartCount">@ViewBag.CartCount</span>)
-                                        </a>
-                                    }
-                                </li>
+                            <!-- Trong _Layout.cshtml -->
+                            <li class="nav-item">
+                                @if (Session["MaKH"] != null)
+                                {
+                                    <a class="nav-link" href="@Url.Action("Index", "GioHangs_64131236")">
+                                        <img class="inner-logocart"
+                                             src="~/img/cart.png"
+                                             alt="cart">
+                                        <span id="cartCount">
+
+                                            @Html.Action("CartCountPartial", "GioHangs_64131236")
+                                        </span>
+                                    </a>
+                                }
+                            </li>
 
 
-                            </ul>
-                            <a>
-                                <i class="fa-solid fa-location-dot"></i>Địa chỉ : <span class="text-decoration-underline" style="font-weight: 600;">15 Lam Sơn TP.Nha Trang </span>
-                            </a>
-                        </div>
+                        </ul>
+                        <a href="https://maps.app.goo.gl/njru4mqbMnHB4AhQA" target="_blank">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Địa chỉ: <span class="text-decoration-underline" style="font-weight: 600;">15 Lam Sơn TP.Nha Trang</span>
+                        </a>
+
                     </div>
                 </div>
-            </nav>
-        </header>
-        <main class="bg-gray">
-            <section class="section-one d-flex justify-content-center">
-                <a href="#">
-                    <span class="text-primary">
-                        <i class="fa-solid fa-box"></i>
-                        Trà sữa Chang Tea
-                    </span>
-                    Uống không ngon hoàn tiền x2 <i class="fa-solid fa-chevron-right opacity-50"></i>
-                </a>
-            </section>
+            </div>
+        </nav>
+    </header>
+    <main class="bg-gray">
+        <section class="section-one d-flex justify-content-center">
+            <a href="#">
+                <span class="text-primary">
+                    <i class="fa-solid fa-box"></i>
+                    Trà sữa Chang Tea
+                </span>
+                Uống không ngon hoàn tiền x2 <i class="fa-solid fa-chevron-right opacity-50"></i>
+            </a>
+        </section>
 
-            <section class="section-main container-fluid mt-3 ">
-                <div class="row">
+        <section class="section-main container-fluid mt-3 ">
+            <div class="row">
 
 
-                    <div class="inner-info col-12 ">
-                        <div class="bg-white rounded-3 me-4 ">
-                            <div class="inner-corousel p-3 rounded-3">
-                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                                    <div class="carousel-indicators">
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="~/img/carousel1.jpg" class="d-block w-100" alt="Slide 1">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="~/img/carousel2.jpg" class="d-block w-100" alt="Slide 2">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="~/img/carousel3.jpg" class="d-block w-100" alt="Slide 3">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="~/img/carousel4.jpg" class="d-block w-100" alt="Slide 4">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="~/img/carousel5.png" class="d-block w-100" alt="Slide 5">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="~/img/carousel6.jpg" class="d-block w-100" alt="Slide 6">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="~/img/carousel7.png" class="d-block w-100" alt="Slide 7">
-                                        </div>
-                                    </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
+                <div class="inner-info col-12 ">
+                    <div class="bg-white rounded-3 me-4 ">
+                        <div class="inner-corousel p-3 rounded-3">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
                                 </div>
-
-
-
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="~/img/carousel1.jpg" class="d-block w-100" alt="Slide 1">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="~/img/carousel2.jpg" class="d-block w-100" alt="Slide 2">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="~/img/carousel3.jpg" class="d-block w-100" alt="Slide 3">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="~/img/carousel4.jpg" class="d-block w-100" alt="Slide 4">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="~/img/carousel5.png" class="d-block w-100" alt="Slide 5">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="~/img/carousel6.jpg" class="d-block w-100" alt="Slide 6">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="~/img/carousel7.png" class="d-block w-100" alt="Slide 7">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-                        </div>
 
-                        <div class="inner-product mt-4">
-                            <p class="text-primary">Sản phẩm khác</p>
+
 
                         </div>
-                        <div class="bg-white rounded-4 me-4 mt-3">
-                            <section class="menu2 bg-white pt-3 rounded-3">
-                                <div class="inner-item">
-                                    @{
-                                        if (Session["username"] != null)
+                    </div>
+
+                    <div class="inner-product mt-4">
+                        <p class="text-primary">Sản phẩm khác</p>
+
+                    </div>
+                    <div class="bg-white rounded-4 me-4 mt-3">
+                        <section class="menu2 bg-white pt-3 rounded-3">
+                            <div class="inner-item">
+                                @{
+                                    if (Session["username"] != null)
+                                    {
+
+
+                                        if ((bool?)Session["Admin"] == true)
                                         {
-
-
-                                            if ((bool?)Session["Admin"] == true)
-                                            {
-                                                // Menu cho Admin/Nhân viên
-                                                <a href="@Url.Action("Index", "NhanViens_64131236")" class="item">
-                                                    <img src="~/img/user.png" alt="User">
-                                                    <p>Quản lý Nhân viên</p>
-                                                </a>
-                                                <a href="@Url.Action("Index", "Discounts")" class="item">
-                                                    <img src="~/img/voucher.png" alt="Mã giảm giá">
-                                                    <p>Quản lý mã giảm giá</p>
-                                                </a>
-                                                <a href="@Url.Action("Index", "KhachHangs")" class="item">
-                                                    <img src="~/img/khachhang.png" alt="Khách hàng">
-                                                    <p>Quản lý khách hàng</p>
-                                                </a>
-                                                <a href="@Url.Action("QuanLyDonHang", "DonHangs_64131236")" class="item">
-                                                    <img src="~/img/kh.png" alt="Đơn hàng">
-                                                    <p>Quản lý đơn hàng</p>
-                                                </a>
-                                                <a href="@Url.Action("DoanhThu", "DonHangs_64131236")" class="item">
-                                                    <img src="~/img/doanhthu.png" alt="Thống kê">
-                                                    <p>Báo cáo thống kê</p>
-                                                </a>
-
-
-                                            }
-                                            else
-                                            {
-                                                // Menu cho Khách hàng
-
-                                                <a href="@Url.Action("Categories", "LoaiHangs_64131236")" class="item">
-                                                    <img src="~/img/danhmuc.png" alt="Danh mục">
-                                                    <p>Danh mục</p>
-                                                </a>
-
-                                                if (Session["MaKH"] != null)
-                                                {
-                                                    <a href="@Url.Action("Index", "GioHangs_64131236")" class="item cart-icon">
-                                                        <div class="cart-container">
-                                                            <img src="~/img/cart.png" alt="Giỏ hàng">
-                                                            <span class="cart-badge" id="cartCount">@ViewBag.CartCount</span>
-                                                        </div>
-                                                        <p>Giỏ hàng</p>
-
-
-                                                    </a>
-
+                                            <style>
+                                                .inner-item {
+                                                    grid-template-columns: repeat(8,1fr);
                                                 }
+                                            </style>
+                                            <a href="@Url.Action("AdminIndex", "LoaiHangs_64131236")" class="item">
+                                                <img src="~/img/danhmuc.png" alt="Danh mục">
+                                                <p> Quản lýdanh mục</p>
+                                            </a>
+                                            <a href="@Url.Action("Index", "HangHoas_64131236")" class="item">
+                                                <img src="~/img/sanpham.png" alt="User">
+                                                <p>Quản lý sản phẩm</p>
+                                            </a>
+                                            <a href="@Url.Action("Index", "NhanViens_64131236")" class="item">
+                                                <img src="~/img/user.png" alt="User">
+                                                <p>Quản lý Nhân viên</p>
+                                            </a>
+                                            <a href="@Url.Action("Index", "Discounts")" class="item">
+                                                <img src="~/img/voucher.png" alt="Mã giảm giá">
+                                                <p>Quản lý mã giảm giá</p>
+                                            </a>
+                                            <a href="@Url.Action("Index", "KhachHangs_64131236")" class="item">
+                                                <img src="~/img/khachhang.png" alt="Khách hàng">
+                                                <p>Quản lý khách hàng</p>
+                                            </a>
+                                            <a href="@Url.Action("QuanLyDonHang", "DonHangs_64131236")" class="item">
+                                                <img src="~/img/kh.png" alt="Đơn hàng">
+                                                <p>Quản lý đơn hàng</p>
+                                            </a>
 
 
-                                                <a href="@Url.Action("OrderTracking", "DonHangs_64131236")" class="item">
-                                                    <img src="~/img/hoadon.png" alt="Lịch sử mua hàng">
-                                                    <p>Lịch sử mua hàng</p>
-                                                </a>
-                                                <a href="@Url.Action("MyProfile", "KhachHangs_64131236")" class="item">
-                                                    <img src="~/img/user.png" alt="Thông tin cá nhân">
-                                                    <p>Thông tin cá nhân</p>
-                                                </a>
-                                                <a href="@Url.Action("OrderTracking", "DonHangs_64131236")" class="item">
-                                                    <img src="~/img/donhang.png" alt="Theo dõi đơn hàng">
-                                                    <p>Theo dõi đơn hàng</p>
-                                                </a>
-                                            }
+                                            <a href="@Url.Action("DoanhThu", "DonHangs_64131236")" class="item">
+                                                <img src="~/img/doanhthu.png" alt="Thống kê">
+                                                <p>Báo cáo thống kê</p>
+                                            </a>
+
+                                            <a href="@Url.Action("QuanLyTraHang", "TraHangs_64131236")" class="item">
+                                                <img src="~/img/trahang.png" alt="trả hàng">
+                                                <p>Quản lý trả hàng</p>
+                                            </a>
+
+
+                                        }
+                                        else
+                                        {
+                                            // Menu cho Khách hàng
+                                            <style>
+                                                .inner-item {
+                                                    grid-template-columns: repeat(4,1fr);
+                                                }
+                                            </style>
+                                            <a href="@Url.Action("Categories", "LoaiHangs_64131236")" class="item">
+                                                <img src="~/img/danhmuc.png" alt="Danh mục">
+                                                <p>Danh mục</p>
+                                            </a>
+
+
+
+
+
+                                            <a href="@Url.Action("MyProfile", "KhachHangs_64131236")" class="item">
+                                                <img src="~/img/user.png" alt="Thông tin cá nhân">
+                                                <p>Thông tin cá nhân</p>
+                                            </a>
+                                            <a href="@Url.Action("OrderTracking", "DonHangs_64131236")" class="item">
+                                                <img src="~/img/donhang.png" alt="Theo dõi đơn hàng">
+                                                <p>Theo dõi đơn hàng</p>
+                                            </a>
+                                            <a href="@Url.Action("TheoDoiTraHang", "TraHangs_64131236")" class="item">
+                                                <img src="~/img/trahang.png" alt="trả hàng">
+                                                <p> trả hàng</p>
+                                            </a>
                                         }
                                     }
-                                </div>
-                            </section>
-                        </div>
-
-                        <section class=" bg-white rounded-4 me-4 mt-3 ">
-                            <a href="@Url.Action("ProductList", "HangHoas_64131236")" class="float-end hover-effect">
-                                <p>Xem tất cả</p>
-                            </a>
-
-
-                            @RenderBody()
-
+                                }
+                            </div>
                         </section>
                     </div>
+
+                    <section class=" bg-white rounded-4 me-4 mt-3 ">
+                      
+
+
+                        @RenderBody()
+
+                    </section>
                 </div>
-            </section>
+            </div>
+        </section>
 
 
 
 
-        </main>
-
-        <script src="~/Scripts/jquery.js"></script>
-        <script src="~/Scripts/bootstrap.bundle.min.js"></script>
-        @RenderSection("Scripts", required: false)
-
-        <!-- Existing layout content -->
-
-        @section Styles {
-            <link href="~/Content/toastr.min.css" rel="stylesheet" />
-        }
-
-        @section Scripts {
-            <script src="~/Scripts/jquery.min.js"></script>
-            <script src="~/Scripts/toastr.min.js"></script>
-            <script>
-                // Cấu hình toastr
-                toastr.options = {
-                    "closeButton": true,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "timeOut": "3000"
-                };
-            </script>
-        }
+    </main>
 
 
 
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <script>
-        toastr.success('@TempData["SuccessMessage"]');
-            </script>
-        }
+    @RenderSection("Scripts", required: false)
 
-        <!-- Trong _Layout.cshtml -->
+    <!-- Existing layout content -->
 
+   
 
+    @section Scripts {
+   
         <script>
-            // Place this in your layout page or a common JavaScript file
-            // Add this JavaScript
-            function updateCartCount() {
-                $.ajax({
-                    url: '/GioHangs_64131236/GetCartCount',
-                    type: 'GET',
-                    success: function (count) {
-                        $('#cartCount').text(count);
-                        if (count > 0) {
-                            $('#cartCount').show();
-                        } else {
-                            $('#cartCount').hide();
-                        }
-                    }
-                });
-            }
-
-            // Call this after adding items to cart
-            $(document).ready(function () {
-                updateCartCount();
-            });
-
-        </script>
-
-        <link href="~/Content/toastr.min.css" rel="stylesheet" />
-        <script src="~/Scripts/toastr.min.js"></script>
-        <script>
+            // Cấu hình toastr
             toastr.options = {
                 "closeButton": true,
                 "progressBar": true,
                 "positionClass": "toast-top-right",
                 "timeOut": "3000"
             };
+        </script>
+      
+        <script>
+$(document).ready(function() {
+    $("#searchInput").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "@Url.Action("GetSearchSuggestions", "HangHoas_64131236")",
+                dataType: "json",
+                data: { term: request.term },
+                success: function(data) {
+                    console.log("Search results:", data); // Debug log
+                    response(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Search error:", error); // Debug log
+                    response([]);
+                }
+            });
+        },
+        minLength: 1,
+        select: function(event, ui) {
+            if (ui.item && ui.item.id) {
+                window.location.href = '@Url.Action("Details", "HangHoas_64131236")/' + ui.item.id;
+                return false;
+            }
+        }
+    }).autocomplete("instance")._renderItem = function(ul, item) {
+        return $("<li>")
+            .append(`<div class='product-suggestion'>
+                <img src='/img/${item.image}' alt='${item.label}'
+                     style='width:50px;height:50px;object-fit:cover;margin-right:10px'>
+                <div>
+                    <div style='font-weight:500'>${item.label}</div>
+                    <div style='color:#ee4d2d'>${item.price.toLocaleString('vi-VN')}₫</div>
+                </div>
+            </div>`)
+            .appendTo(ul);
+    };
 
-
-
+    $("#globalSearchForm").on("submit", function(e) {
+        e.preventDefault();
+        var searchTerm = $("#searchInput").val().trim();
+        if (searchTerm) {
+            window.location.href = '@Url.Action("ProductList", "HangHoas_64131236")?searchString=' + encodeURIComponent(searchTerm);
+        }
+    });
+});
         </script>
 
 
-    </body>
+        <style>
+            .ui-autocomplete {
+                z-index: 1051;
+                max-width: 800px;
+                background: white;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                max-height: calc(3 * 74px); /* 74px = height of each item (54px) + padding (10px * 2) */
+                overflow-y: auto; /* Enable vertical scrolling */
+                overflow-x: hidden; /* Hide horizontal scrollbar */
+            }
+
+            .ui-menu-item {
+                margin: 0;
+                padding: 0;
+                height: 54px; /* Fixed height for each item */
+            }
+
+            .ui-menu-item-wrapper {
+                padding: 0;
+            }
+
+            .product-suggestion {
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                cursor: pointer;
+                height: 54px; /* Match the height of ui-menu-item */
+                box-sizing: border-box;
+            }
+
+                .product-suggestion:hover {
+                    background-color: #f5f5f5;
+                }
+
+            /* Custom scrollbar styling */
+            .ui-autocomplete::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            .ui-autocomplete::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 4px;
+            }
+
+            .ui-autocomplete::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 4px;
+            }
+
+                .ui-autocomplete::-webkit-scrollbar-thumb:hover {
+                    background: #555;
+                }
+        </style>
+    }
+
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script>
+        toastr.success('@TempData["SuccessMessage"]');
+        </script>
+    }
+
+    <!-- Trong _Layout.cshtml -->
+
+
+    <script>
+        // Place this in your layout page or a common JavaScript file
+        // Add this JavaScript
+        function updateCartCount() {
+            $.ajax({
+                url: '/GioHangs_64131236/GetCartCount',
+                type: 'GET',
+                success: function (count) {
+                    $('#cartCount').text(count);
+                    if (count > 0) {
+                        $('#cartCount').show();
+                    } else {
+                        $('#cartCount').hide();
+                    }
+                }
+            });
+        }
+
+        // Call this after adding items to cart
+        $(document).ready(function () {
+            updateCartCount();
+        });
+
+    </script>
+
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "timeOut": "3000"
+        };
+
+
+
+    </script>
+
+
+</body>
 </html>

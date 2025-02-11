@@ -15,9 +15,19 @@ namespace web_levanluong_64131236.Controllers
         private webbanhang64131236Entities1 db = new webbanhang64131236Entities1();
 
         // GET: KhachHangs_64131236
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var khachHangs = db.KhachHangs.Include(k => k.QuanTri);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                searchString = searchString.ToLower();
+                khachHangs = khachHangs.Where(s => s.TenKH.ToLower().Contains(searchString)
+                                               || s.Email.ToLower().Contains(searchString)
+                                               || s.SDT_KH.Contains(searchString)
+                                               || s.DiaChi.ToLower().Contains(searchString));
+            }
+
             return View(khachHangs.ToList());
         }
 

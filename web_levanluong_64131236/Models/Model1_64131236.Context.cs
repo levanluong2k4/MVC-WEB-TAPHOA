@@ -38,6 +38,12 @@ namespace web_levanluong_64131236.Models
         public virtual DbSet<LoaiHang> LoaiHangs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<QuanTri> QuanTris { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<ThoiGianCapNhatDonHang> ThoiGianCapNhatDonHangs { get; set; }
+        public virtual DbSet<AnhTraHang> AnhTraHangs { get; set; }
+        public virtual DbSet<TraHang> TraHangs { get; set; }
+        public virtual DbSet<ChiTietTraHang> ChiTietTraHangs { get; set; }
+        public virtual DbSet<DanhGiaSanPham> DanhGiaSanPhams { get; set; }
     
         public virtual int HangHoa_TimKiem(string maHH, string maLH, string tenHH, Nullable<decimal> giaBanMin, Nullable<decimal> giaBanMax, Nullable<int> soThang, Nullable<int> soLuongMin, Nullable<int> soLuongMax, Nullable<int> sapHetHang, Nullable<System.DateTime> ngayNSXTu, Nullable<System.DateTime> ngayNSXDen, Nullable<System.DateTime> ngayHSDTu, Nullable<System.DateTime> ngayHSDDen, Nullable<int> sapHetHan, Nullable<bool> coHinhAnh)
         {

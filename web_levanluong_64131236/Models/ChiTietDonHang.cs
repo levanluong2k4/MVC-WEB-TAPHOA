@@ -14,6 +14,12 @@ namespace web_levanluong_64131236.Models
     
     public partial class ChiTietDonHang
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ChiTietDonHang()
+        {
+            this.DanhGiaSanPhams = new HashSet<DanhGiaSanPham>();
+        }
+    
         public int MaDH { get; set; }
         public string MaHH { get; set; }
         public int SoLuong { get; set; }
@@ -22,5 +28,7 @@ namespace web_levanluong_64131236.Models
     
         public virtual DonHang DonHang { get; set; }
         public virtual HangHoa HangHoa { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DanhGiaSanPham> DanhGiaSanPhams { get; set; }
     }
 }

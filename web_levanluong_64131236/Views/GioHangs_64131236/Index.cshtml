@@ -22,10 +22,11 @@
         <table class="table">
             <thead>
                 <tr>
-                    
+
                     <th>Mã giỏ hàng</th>
 
                     <th>Sản phẩm</th>
+                    <th>Hình ảnh</th>
                     <th>Giá</th>
                     <th>Số lượng</th>
                     <th>Thành tiền</th>
@@ -38,7 +39,12 @@
                 {
                     <tr id="cart-item-@item.MaHH">
                         <td>@item.MaGioHang</td>
-                   
+                        <td>@item.HangHoa.TenHH</td>
+                        <td>
+                            <img src="~/img/@item.HangHoa.AnhHH" alt="@item.HangHoa.TenHH" style="width: 50px; height: 50px;" />
+                        </td>
+
+
                         <td>@item.HangHoa.GiaBan.ToString("N0") đ</td>
                         <td>
                             <div class="quantity-container">
@@ -63,7 +69,7 @@
             <tfoot>
                 <tr>
                     <td colspan="3" class="text-right"><strong>Tổng cộng:</strong></td>
-                    <td colspan="2" class="cart-total">
+                    <td colspan="4" class="cart-total">
                         @Model.ChiTietGioHangs.Sum(x => x.SoLuong * x.HangHoa.GiaBan).ToString("N0") đ
                     </td>
                 </tr>
@@ -71,10 +77,14 @@
         </table>
 
         <div class="text-right mt-3">
+
+            <button onclick="removeAllItems()" class="btn btn-danger">
+                <i class="fa fa-trash"></i> Xóa tất cả sản phẩm 
+            </button>
             <a href="@Url.Action("Categories", "LoaiHangs_64131236")" class="btn btn-secondary">
                 Tiếp tục mua hàng
             </a>
-        
+
             <a href="@Url.Action("Checkout", "DonHangs_64131236")" class="btn btn-primary">
                 Thanh toán
             </a>
@@ -165,6 +175,25 @@
                     $('.cart-count').text(count);
                 }
             });
+        }
+
+        function removeAllItems() {
+            if (confirm('Bạn có chắc muốn xóa tất cả sản phẩm khỏi giỏ hàng?')) {
+                $.ajax({
+                    url: '/GioHangs_64131236/RemoveAllItems',
+                    type: 'POST',
+                    success: function (response) {
+                        if (response.success) {
+                            location.reload(); // Reload the page to show empty cart
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra khi xóa sản phẩm');
+                    }
+                });
+            }
         }
     </script>
 

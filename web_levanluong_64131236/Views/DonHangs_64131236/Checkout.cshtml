@@ -6,7 +6,8 @@
     var gioHang = ViewBag.GioHang as web_levanluong_64131236.Models.GioHang;
     var khachHang = ViewBag.KhachHang as web_levanluong_64131236.Models.KhachHang;
 }
-
+<!-- Add in _LayoutPage1.cshtml in the <head> section -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="container mt-4">
     <h2>Thanh toán</h2>
     @if (TempData["DebugMaDH"] != null)
@@ -66,7 +67,7 @@
                                 <div class="mb-3">
                                     <h5>Thông tin tài khoản</h5>
                                     <p><strong>Ngân hàng:</strong> Viettinbank</p>
-                                    <p><strong>Số tài khoản:</strong> 1234567890</p>
+                                    <p><strong>Số tài khoản:</strong> 100876002794</p>
                                     <p><strong>Chủ tài khoản:</strong> LE VAN LUONG</p>
                                     <p><strong>Chi nhánh:</strong> Nha Trang</p>
                                     <div class="mt-3">
@@ -82,8 +83,24 @@
                             </div>
                             <div class="col-md-6 text-center">
                                 <h5>Mã QR thanh toán</h5>
-                                <img src="~/img/QR.png" alt="QR Code" class="img-fluid" />
-                                <p class="mt-2 text-muted">Quét mã QR để thanh toán nhanh</p>
+                                <img src="" alt="QR Code" class="img-fluid" style="cursor: pointer;" onclick="openQrModal(this.src)" />
+                                <p class="mt-2 text-muted">Quét mã QR để thanh toán nhanh<br>(Nhấp vào mã QR để phóng to)</p>
+                                <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="qrModalLabel">Mã QR thanh toán</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <img id="modalQrImage" src="" alt="QR Code" style="max-width: 100%; height: auto;" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -103,7 +120,7 @@
 
                         <div class="mt-3">
                             <p>Tổng tiền: <span id="originalTotal">@ViewBag.OriginalTotal.ToString("N0") đ</span></p>
-                            <p>Giảm giá: <span id="discountAmount">0 đ</span></p>
+
                             <h4>Thành tiền: <span id="finalTotal">@ViewBag.OriginalTotal.ToString("N0") đ</span></h4>
                         </div>
 
@@ -123,41 +140,199 @@
 
 @section Scripts {
     <script>
-        function applyDiscount(maGiamGia) {
-            var originalTotal = @ViewBag.OriginalTotal;
+    function handlePaymentMethodChange(method) {
+    const bankTransferDetails = document.getElementById('bankTransferDetails');
+    if (method === 'BankTransfer') {
+        bankTransferDetails.style.display = 'block';
+        updateQRCode();
+    } else {
+        bankTransferDetails.style.display = 'none';
+    }
+}
 
-            $.ajax({
-                url: '@Url.Action("ApplyDiscount", "DonHangs_64131236")',
-                type: 'POST',
-                data: {
-                    maGiamGia: maGiamGia,
-                    tongTien: originalTotal
-                },
-                success: function(response) {
-                    if (response.isValid) {
-                        $('#discountAmount').text(response.giaTriGiam.toLocaleString('vi-VN') + ' đ');
-                        $('#finalTotal').text(response.tongTienSauGiam.toLocaleString('vi-VN') + ' đ');
-                    } else {
-                        $('#discountAmount').text('0 đ');
-                        $('#finalTotal').text(originalTotal.toLocaleString('vi-VN') + ' đ');
-                    }
-                }
-            });
+function openQrModal(imageSrc) {
+    const modalQrImage = document.getElementById('modalQrImage');
+    modalQrImage.src = imageSrc;
+    const modal = new bootstrap.Modal(document.getElementById('qrModal'));
+    modal.show();
+}
+
+function updateQRCode() {
+    try {
+        const finalTotal = document.getElementById('finalTotal').textContent;
+        const amount = finalTotal.replace(/[^\d]/g, '');
+        const transferContent = document.getElementById('transferContent').textContent.trim();
+
+        const qrCodeUrl = 'https://img.vietqr.io/image/vietinbank-100876002794-compact2.jpg'
+            + '?amount=' + amount
+            + '&addInfo=' + encodeURIComponent(transferContent)
+            + '&accountName=LE VAN LUONG';
+
+        // Update both the thumbnail and modal images
+        const qrCodeImage = document.querySelector('#bankTransferDetails img:not(#modalQrImage)');
+        if (qrCodeImage) {
+            qrCodeImage.src = qrCodeUrl;
         }
 
-        function handlePaymentMethodChange(method) {
-            const bankTransferDetails = document.getElementById('bankTransferDetails');
-            if (method === 'BankTransfer') {
-                bankTransferDetails.style.display = 'block';
+        const modalQrImage = document.getElementById('modalQrImage');
+        if (modalQrImage) {
+            modalQrImage.src = qrCodeUrl;
+        }
+    } catch (error) {
+        console.error('Error updating QR code:', error);
+    }
+}
+
+// Initialize when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    const paymentMethod = document.getElementById('PhuongThucThanhToan').value;
+    if (paymentMethod === 'BankTransfer') {
+        handlePaymentMethodChange(paymentMethod);
+    }
+});
+
+function applyDiscount(maGiamGia) {
+    var originalTotal = @ViewBag.OriginalTotal;
+
+    $.ajax({
+        url: '@Url.Action("ApplyDiscount", "DonHangs_64131236")',
+        type: 'POST',
+        data: {
+            maGiamGia: maGiamGia,
+            tongTien: originalTotal
+        },
+        success: function(response) {
+            if (response.isValid) {
+                $('#discountAmount').text(response.giaTriGiam.toLocaleString('vi-VN') + ' đ');
+                $('#finalTotal').text(response.tongTienSauGiam.toLocaleString('vi-VN') + ' đ');
             } else {
-                bankTransferDetails.style.display = 'none';
+                $('#discountAmount').text('0 đ');
+                $('#finalTotal').text(originalTotal.toLocaleString('vi-VN') + ' đ');
             }
+            updateQRCode();
         }
+    });
 
-        // Initialize payment method display on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const paymentMethod = document.getElementById('PhuongThucThanhToan').value;
-            handlePaymentMethodChange(paymentMethod);
+
+
+        }
+        $(document).ready(function () {
+            $('form').on('submit', function (e) {
+                e.preventDefault();
+
+                // Show loading state
+                const submitBtn = $(this).find('button[type="submit"]');
+                const originalText = submitBtn.text();
+                submitBtn.prop('disabled', true).text('Đang xử lý...');
+
+                $.ajax({
+                    url: this.action,
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            // Show Bootstrap modal for success
+                            var modalHtml = `
+                        <div class="modal fade" id="successModal" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Thành công!</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>${response.message}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-primary" id="viewOrderBtn">Xem đơn hàng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+
+                            // Remove existing modal if any
+                            $('#successModal').remove();
+
+                            // Add new modal to body
+                            $('body').append(modalHtml);
+
+                            // Initialize and show modal
+                            var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                            successModal.show();
+
+                            // Handle view order button click
+                            $('#viewOrderBtn').click(function () {
+                                window.location.href = response.redirectUrl;
+                            });
+                        } else {
+                            // Show error alert
+                            var errorModal = `
+                        <div class="modal fade" id="errorModal" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Lỗi!</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>${response.message}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+
+                            // Remove existing modal if any
+                            $('#errorModal').remove();
+
+                            // Add new modal to body
+                            $('body').append(errorModal);
+
+                            // Initialize and show modal
+                            var errorModalInstance = new bootstrap.Modal(document.getElementById('errorModal'));
+                            errorModalInstance.show();
+
+                            submitBtn.prop('disabled', false).text(originalText);
+                        }
+                    },
+                    error: function () {
+                        // Show network error alert
+                        var networkErrorModal = `
+                    <div class="modal fade" id="networkErrorModal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Lỗi!</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Có lỗi xảy ra khi xử lý đơn hàng. Vui lòng thử lại.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+
+                        // Remove existing modal if any
+                        $('#networkErrorModal').remove();
+
+                        // Add new modal to body
+                        $('body').append(networkErrorModal);
+
+                        // Initialize and show modal
+                        var networkErrorModalInstance = new bootstrap.Modal(document.getElementById('networkErrorModal'));
+                        networkErrorModalInstance.show();
+
+                        submitBtn.prop('disabled', false).text(originalText);
+                    }
+                });
+            });
         });
     </script>
 }
+

@@ -1,58 +1,117 @@
 ﻿@model IEnumerable<web_levanluong_64131236.Models.KhachHang>
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lý khách hàng";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Quản lý khách hàng</h2>
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    @using (Html.BeginForm("Index", "KhachHangs_64131236", FormMethod.Get))
+                    {
+                        <div class="input-group">
+                            @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "form-control", @placeholder = "Nhập tên, email hoặc số điện thoại..." })
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i> Tìm kiếm
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.TenKH)</th>
+                            <th>@Html.DisplayNameFor(model => model.DiaChi)</th>
+                            <th>@Html.DisplayNameFor(model => model.Email)</th>
+                            <th>@Html.DisplayNameFor(model => model.SDT_KH)</th>
+                            <th>@Html.DisplayNameFor(model => model.username)</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.TenKH)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SDT_KH)</td>
+                                <td>@Html.DisplayFor(modelItem => item.username)</td>
+                                <td>
+                                    <div class="btn-group">
+                                     
+                                        <a href="@Url.Action("Details", new { id = item.MaKH })" class="btn btn-sm btn-info me-1">
+                                            <i class="fas fa-info-circle"></i> Chi tiết
+                                        </a>
+                                        <a href="@Url.Action("Delete", new { id = item.MaKH })" class="btn btn-sm btn-danger"
+                                           onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này?');">
+                                            <i class="fas fa-trash"></i> Xóa
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenKH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SDT_KH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QuanTri.Password)
-        </th>
-        <th></th>
-    </tr>
+<style>
+    .card {
+        border-radius: 10px;
+        border: none;
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenKH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SDT_KH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuanTri.Password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaKH }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaKH }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaKH })
-        </td>
-    </tr>
+    .table th {
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    .btn-group .btn {
+        border-radius: 4px !important;
+    }
+
+    .input-group {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-radius: 5px;
+    }
+
+        .input-group .form-control {
+            border-right: none;
+        }
+
+        .input-group .btn {
+            border-left: none;
+        }
+
+    .table-hover tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<!-- Add FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Enter key trigger form submit
+            $("#searchString").keypress(function (e) {
+                if (e.which == 13) {  // Enter key
+                    e.preventDefault();
+                    $(this).closest('form').submit();
+                }
+            });
+        });
+    </script>
 }
-
-</table>

@@ -6,27 +6,191 @@
 }
 
 
-<div class="container">
-    <h2>Login</h2>
-    @using (Html.BeginForm("Login", "QuanTris_64131236", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.ValidationSummary(true)
-        <div class="form-group">
-            @Html.LabelFor(m => m.username)
-            @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Overlay wrapper */
+        .overlay-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Lớp phủ tối */
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main site container */
+        .site-container {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Header styles - adjust to match your GO! header */
+        .header {
+            background: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        .search-bar {
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Auth form styles */
+        .auth-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .auth-title {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(118, 75, 162, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+            .form-control:focus {
+                border-color: #764ba2;
+                box-shadow: 0 0 0 0.2rem rgba(118, 75, 162, 0.25);
+                outline: none;
+            }
+
+        .btn-auth {
+            width: 100%;
+            padding: 12px;
+            background: #764ba2;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-auth:hover {
+                background: #667eea;
+            }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .auth-links a {
+                color: #764ba2;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+
+                .auth-links a:hover {
+                    text-decoration: underline;
+                }
+
+        .alert-danger {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Main site container -->
+    <div class="site-container">
+        <!-- Header -->
+        <header class="header">
+            <img src="/path-to-your-logo/logo.png" alt="GO!" class="logo">
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm..." class="form-control">
+            </div>
+            <div class="nav-buttons">
+                <a href="@Url.Action("Index", "Home")" class="btn-auth">Trang chủ</a>
+                <a href="@Url.Action("Login", "QuanTris_64131236")" class="btn-auth">Đăng nhập</a>
+            </div>
+        </header>
+
+        <!-- Overlay with auth form -->
+        <div class="overlay-wrapper">
+            <div class="auth-box">
+                <h2 class="auth-title">Đăng nhập</h2>
+                @using (Html.BeginForm("Login", "QuanTris_64131236", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.username)
+                        @Html.TextBoxFor(m => m.username, new { @class = "form-control", placeholder = "Nhập tên đăng nhập" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                    </div>
+
+                    if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">@ViewBag.Error</div>
+                    }
+
+                    <button type="submit" class="btn-auth">Đăng nhập</button>
+
+                    <div class="auth-links">
+                        @Html.ActionLink("Đăng ký", "Register") |
+                        @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")
+                    </div>
+                }
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password)
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-        <div class="text-danger">@ViewBag.Error</div>
-        <button type="submit" class="btn btn-primary">Login</button>
-    }
-    <p>
-        Don't have an account? @Html.ActionLink("Register", "Register")
-    </p>
-    <div class="form-group">
-        @Html.ActionLink("Quên mật khẩu?", "ForgotPassword", null, new { @class = "text-primary" })
     </div>
-</div>
+</body>
+</html>
 

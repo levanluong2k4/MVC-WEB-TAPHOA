@@ -6,8 +6,9 @@
 
 <div class="container my-5">
     <div class="card">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header bg-primary text-white d-">
             <h3 class="card-title mb-0">Chi tiết đơn hàng #@Model.MaDH</h3>
+
         </div>
         <div class="card-body">
             <div class="row mb-4">
@@ -32,11 +33,23 @@
                     <p><strong>Tên khách hàng:</strong> @Model.KhachHang.TenKH</p>
                     <p><strong>Email:</strong> @Model.KhachHang.Email</p>
                     <p><strong>Số điện thoại:</strong> @Model.KhachHang.SDT_KH</p>
-                    <p><strong>Địa chỉ:</strong> @Model.KhachHang.DiaChi</p>
+                    <p>
+                        <strong>Địa chỉ:</strong>
+                        <span id="customerAddress">@Model.KhachHang.DiaChi</span>
+                        @if (Model.TrangThai == "Chờ xác nhận")
+                        {
+                            <button class="btn btn-sm btn-primary ms-2"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#editAddressModal">
+                                <i class="fas fa-edit"></i> Sửa địa chỉ
+                            </button>
+                        }
+                    </p>
                 </div>
             </div>
 
             <h5 class="mb-3">Chi tiết sản phẩm</h5>
+
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="table-light">
@@ -66,6 +79,12 @@
                     </tfoot>
                 </table>
             </div>
+            @if (Model.TrangThaiGiaoHang == "Đã nhận hàng" || Model.TrangThai == "Đã hủy")
+            {
+                <button class="btn btn-warning float-end" onclick="buyAgain(@Model.MaDH)">
+                    <i class="fas fa-cart-plus"></i> Mua lại
+                </button>
+            }
 
             @if (Model.TrangThaiGiaoHang == "Giao hàng thành công" || Model.TrangThaiGiaoHang == "Đã nhận hàng")
             {
@@ -119,6 +138,32 @@
     </div>
 </div>
 
+<div class="modal fade" id="editAddressModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chỉnh sửa địa chỉ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editAddressForm">
+                    <input type="hidden" id="orderId" value="@Model.MaDH" />
+                    <div class="mb-3">
+                        <label for="newAddress" class="form-label">Địa chỉ mới</label>
+                        <textarea class="form-control"
+                                  id="newAddress"
+                                  rows="3"
+                                  required>@Model.KhachHang.DiaChi</textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="updateAddress()">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+</div>
 @section Scripts {
     <script>
         $(document).ready(function () {
@@ -152,6 +197,60 @@
         }
     </script>
 
+    <script>
+        function buyAgain(orderId) {
+            if (confirm('Bạn có muốn thêm tất cả sản phẩm này vào giỏ hàng?')) {
+                $.ajax({
+                    url: '/DonHangs_64131236/BuyAgain',
+                    type: 'POST',
+                    data: { orderId: orderId },
+                    success: function (result) {
+                        if (result.success) {
+
+                            window.location.href = '/GioHangs_64131236';
+                        } else {
+                            alert(result.message || 'Có lỗi xảy ra');
+                        }
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra khi thêm vào giỏ hàng');
+                    }
+                });
+            }
+        }
+    </script>
+    <script>
+        function updateAddress() {
+            const newAddress = $('#newAddress').val();
+            const orderId = $('#orderId').val();
+
+            if (!newAddress.trim()) {
+                alert('Vui lòng nhập địa chỉ mới');
+                return;
+            }
+
+            $.ajax({
+                url: '/DonHangs_64131236/UpdateAddress',
+                type: 'POST',
+                data: {
+                    orderId: orderId,
+                    newAddress: newAddress
+                },
+                success: function (result) {
+                    if (result.success) {
+                        $('#customerAddress').text(newAddress);
+                        $('#editAddressModal').modal('hide');
+                       
+                    } else {
+                        alert(result.message || 'Có lỗi xảy ra khi cập nhật địa chỉ');
+                    }
+                },
+                error: function () {
+                    alert('Có lỗi xảy ra khi cập nhật địa chỉ');
+                }
+            });
+        }
+    </script>
     <style>
         .delivery-image {
             max-height: 200px;
@@ -168,3 +267,13 @@
         }
     </style>
 }
+
+
+
+
+
+
+
+
+
+

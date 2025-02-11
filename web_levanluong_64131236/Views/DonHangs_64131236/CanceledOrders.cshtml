@@ -9,8 +9,9 @@
     <div class="row mb-3">
         <div class="col">
             <div class="btn-group">
-                <a href="@Url.Action("OrderHistory")" class="btn btn-outline-primary">Tất cả đơn hàng</a>
-                <a href="@Url.Action("CanceledOrders")" class="btn btn-primary">Đơn hàng đã hủy</a>
+                <a href="@Url.Action("OrderTracking")" class="btn btn-outline-danger">Tất cả đơn hàng</a>
+                <a href="@Url.Action("CanceledOrders")" class="btn btn-danger">Đơn hàng đã hủy</a>
+                <a href="@Url.Action("SuccessOrders")" class="btn btn-outline-danger">Đơn hàng đã nhận</a>
             </div>
         </div>
     </div>
@@ -40,6 +41,12 @@
                                 <a href="@Url.Action("OrderConfirmation", new { id = item.MaDH })" class="btn btn-outline-primary btn-sm">
                                     <i class="fas fa-eye"></i> Xem chi tiết
                                 </a>
+                                @if (item.TrangThaiGiaoHang == "Đã nhận hàng" || item.TrangThai == "Đã hủy")
+                                {
+                                    <button class="btn btn-warning float-end" onclick="buyAgain(@item.MaDH)">
+                                        <i class="fas fa-cart-plus"></i> Mua lại
+                                    </button>
+                                }
                             </div>
                         </div>
                     </div>
@@ -48,3 +55,30 @@
         </div>
     }
 </div>
+
+@section Scripts {
+
+    <script>
+        function buyAgain(orderId) {
+            if (confirm('Bạn có muốn thêm tất cả sản phẩm này vào giỏ hàng?')) {
+                $.ajax({
+                    url: '/DonHangs_64131236/BuyAgain',
+                    type: 'POST',
+                    data: { orderId: orderId },
+                    success: function (result) {
+                        if (result.success) {
+                            
+                            window.location.href = '/GioHangs_64131236';
+                        } else {
+                            alert(result.message || 'Có lỗi xảy ra');
+                        }
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra khi thêm vào giỏ hàng');
+                    }
+                });
+            }
+        }
+    </script>
+
+}

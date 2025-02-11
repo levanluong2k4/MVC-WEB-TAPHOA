@@ -1,0 +1,67 @@
+﻿@model web_levanluong_64131236.Models.DanhGiaSanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DanhGiaSanPham</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoSao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoSao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDungDanhGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungDanhGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDanhGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDanhGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChiTietDonHang.MaHH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChiTietDonHang.MaHH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonHang.PhuongThucThanhToan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonHang.PhuongThucThanhToan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HangHoa.MaLH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HangHoa.MaLH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDanhGia }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

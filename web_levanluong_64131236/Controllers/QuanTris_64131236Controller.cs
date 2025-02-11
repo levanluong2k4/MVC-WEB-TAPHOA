@@ -158,11 +158,11 @@ namespace web_levanluong_64131236.Controllers
 
                 if (user.Admin == true)
                 {
-                    return RedirectToAction("Index", "QuanTris_64131236");
+                    return RedirectToAction("QuanLyDonHang", "DonHangs_64131236");
                 }
                 else
                 {
-                    return RedirectToAction("Categories", "LoaiHangs_64131236");
+                    return RedirectToAction("ProductList", "HangHoas_64131236");
                 }
             }
 
@@ -209,10 +209,10 @@ namespace web_levanluong_64131236.Controllers
 
 
 
-    public ActionResult Logout()
+            public ActionResult Logout()
         {
             Session.Clear();
-            return RedirectToAction("Login");
+            return RedirectToAction("ProductList", "HangHoas_64131236");
         }
         public ActionResult AccessDenied()
         {
@@ -309,7 +309,7 @@ namespace web_levanluong_64131236.Controllers
                     mail.IsBodyHtml = true;
 
                     var smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
-                    smtp.Credentials = new System.Net.NetworkCredential("levanluong18t@gmail.com", "uoemvardtldkpuxe");
+                    smtp.Credentials = new System.Net.NetworkCredential("levanluong18t@gmail.com", "fihlzwmrghxagoir");
                     smtp.EnableSsl = true;
                     smtp.Send(mail);
                 }
@@ -341,7 +341,7 @@ namespace web_levanluong_64131236.Controllers
 
         private void SendPasswordResetEmail(string email, string customerName, string newPassword)
         {
-            var fromAddress = new MailAddress("levanluong18t@gmail.com@gmail.com", "uoemvardtldkpuxe");
+            var fromAddress = new MailAddress("levanluong18t@gmail.com@gmail.com", "fihlzwmrghxagoir");
             var toAddress = new MailAddress(email);
             const string subject = "Đặt lại mật khẩu";
             string body = $@"
@@ -362,7 +362,7 @@ namespace web_levanluong_64131236.Controllers
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("levanluong18t@gmail.com", "uoemvardtldkpuxe")
+                Credentials = new NetworkCredential("levanluong18t@gmail.com", "fihlzwmrghxagoir")
             })
             {
                 using (var message = new MailMessage(fromAddress, toAddress)

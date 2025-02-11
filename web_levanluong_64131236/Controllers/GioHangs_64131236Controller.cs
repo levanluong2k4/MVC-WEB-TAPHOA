@@ -43,7 +43,7 @@ namespace web_levanluong_64131236.Controllers
                 string maKH = Session["MaKH"]?.ToString();
                 if (string.IsNullOrEmpty(maKH))
                 {
-                    return Json(new { success = false, message = "Vui lòng đăng nhập để thêm vào giỏ hàng" });
+                    return Json(new { success = false, message = "Vui lòng đăng nhập tài khoản khách hàng để thêm giỏ hàng" });
                 }
 
                 var hangHoa = db.HangHoas.Find(maHH);
@@ -264,6 +264,55 @@ namespace web_levanluong_64131236.Controllers
             {
                 ViewBag.CartCount = 0;
             }
+        }
+
+        // xóa tất cả sản phẩm trong giỏ hàng
+        // POST: Remove All Items from Cart
+        [HttpPost]
+        public JsonResult RemoveAllItems()
+        {
+            try
+            {
+                string maKH = Session["MaKH"]?.ToString();
+                if (string.IsNullOrEmpty(maKH))
+                {
+                    return Json(new { success = false, message = "Vui lòng đăng nhập" });
+                }
+
+                var gioHang = db.GioHangs.FirstOrDefault(g => g.MaKH == maKH);
+                if (gioHang == null)
+                {
+                    return Json(new { success = false, message = "Giỏ hàng không tồn tại" });
+                }
+
+                var chiTietGioHangs = db.ChiTietGioHangs.Where(ct => ct.MaGioHang == gioHang.MaGioHang);
+                db.ChiTietGioHangs.RemoveRange(chiTietGioHangs);
+                db.SaveChanges();
+
+                return Json(new { success = true, message = "Đã xóa tất cả sản phẩm khỏi giỏ hàng" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Lỗi: " + ex.Message });
+            }
+        }
+
+        [ChildActionOnly]
+        public ActionResult CartCountPartial()
+        {
+            string maKH = Session["MaKH"]?.ToString();
+            int? cartCount = null;
+
+            if (!string.IsNullOrEmpty(maKH))
+            {
+                cartCount = db.GioHangs
+                    .Where(g => g.MaKH == maKH)
+                    .SelectMany(g => g.ChiTietGioHangs)
+                    .Select(ct => (int?)ct.SoLuong)
+                    .Sum();
+            }
+
+            return PartialView("_CartCount", cartCount);
         }
     }
 }

@@ -1,0 +1,53 @@
+﻿@model web_levanluong_64131236.Models.LoaiHang
+
+@{
+    ViewBag.Title = "Xóa danh mục";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Xóa danh mục</h2>
+
+<div class="alert alert-danger">
+    <strong>Bạn có chắc chắn muốn xóa danh mục này không?</strong>
+</div>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaLH)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaLH)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLH)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenLH)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhLH)
+        </dt>
+        <dd>
+            @if (Model.AnhLH != null)
+            {
+                <img src="~/img/@Model.AnhLH" alt="Ảnh danh mục" class="img-thumbnail" style="max-width: 200px;" />
+            }
+            else
+            {
+                <span>Không có ảnh</span>
+            }
+        </dd>
+    </dl>
+</div>
+
+@using (Html.BeginForm("AdminDelete", "LoaiHangs_64131236", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.MaLH)
+
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    @Html.ActionLink("Quay lại", "AdminIndex", null, new { @class = "btn btn-secondary" })
+}
+
+

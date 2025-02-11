@@ -1,0 +1,108 @@
+﻿@model IEnumerable<web_levanluong_64131236.Models.TraHang>
+@using web_levanluong_64131236.Models
+@{
+    ViewBag.Title = "Quản lý trả hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="container-fluid my-4">
+    <h2>Quản lý yêu cầu trả hàng</h2>
+
+    <div class="row mb-3">
+        <div class="col">
+            @using (Html.BeginForm("QuanLyTraHang", "TraHangs_64131236", FormMethod.Get))
+            {
+                <div class="input-group">
+                    @Html.DropDownList("trangThai", (SelectList)ViewBag.TrangThaiList, "Tất cả trạng thái", new { @class = "form-select" })
+                    <button type="submit" class="btn btn-primary">Lọc</button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Mã trả hàng</th>
+                    <th>Mã đơn hàng</th>
+                    <th>Ngày yêu cầu</th>
+                    <th>Lý do</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MaTraHang</td>
+                        <td>@item.MaDH</td>
+                        <td>@item.NgayTraHang.Value.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@item.LyDoTraHang</td>
+                        <td>
+                            <span class="badge bg-@(item.TrangThaiTraHang == "Đã xác nhận" ? "success" :
+                                                item.TrangThaiTraHang == "Đã từ chối" ? "danger" :
+                                                item.TrangThaiTraHang == "Hoàn thành" ? "info" : "warning")">
+                                @item.TrangThaiTraHang
+                            </span>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+
+                                
+                                    <a href="@Url.Action("ChiTietTraHang", new { id = item.MaTraHang })" class="btn btn-sm btn-info">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    @if(item.TrangThaiTraHang == "Chờ xác nhận")
+                                    {
+
+                                        <button onclick="capNhatTrangThai(@item.MaTraHang, 'Đã xác nhận')" class="btn btn-sm btn-success">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button onclick="capNhatTrangThai(@item.MaTraHang, 'Từ chối')" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    }
+
+                                
+               
+
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function capNhatTrangThai(maTraHang, trangThai) {
+            var ghiChu = prompt("Nhập ghi chú cho cập nhật này:");
+            if (ghiChu === null) return;
+
+            $.ajax({
+                url: '@Url.Action("CapNhatTrangThaiTraHang")',
+                type: 'POST',
+                data: {
+                    id: maTraHang,
+                    trangThai: trangThai,
+                    ghiChu: ghiChu
+                },
+                success: function (result) {
+                    if (result.success) {
+                        location.reload();
+                    } else {
+                        alert(result.message || 'Có lỗi xảy ra');
+                    }
+                },
+                error: function () {
+                    alert('Có lỗi xảy ra');
+                }
+            });
+        }
+    </script>
+}

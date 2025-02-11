@@ -1,59 +1,85 @@
 ﻿@model web_levanluong_64131236.Models.KhachHang
-
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết khách hàng";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>KhachHang</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenKH)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TenKH)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SDT_KH)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SDT_KH)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.QuanTri.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QuanTri.Password)
-        </dd>
-
-    </dl>
+<div class="container py-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Thông tin chi tiết khách hàng</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="w-25">
+                                    @Html.DisplayNameFor(model => model.TenKH)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(model => model.TenKH)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DiaChi)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(model => model.DiaChi)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(model => model.Email)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SDT_KH)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(model => model.SDT_KH)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.QuanTri.Password)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(model => model.QuanTri.Password)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            @Html.ActionLink("Xóa tài khoản", "Delete", new { id = Model.MaKH }, new { @class = "btn btn-warning mx-2" })
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary mx-2" })
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaKH }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<style>
+    .table th {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 10px;
+    }
+
+    .card-header {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .btn {
+        padding: 8px 20px;
+    }
+</style>

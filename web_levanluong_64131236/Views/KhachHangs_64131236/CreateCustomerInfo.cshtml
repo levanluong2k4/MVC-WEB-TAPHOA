@@ -1,42 +1,150 @@
 ﻿@model web_levanluong_64131236.Models.KhachHang
+
 @{
     ViewBag.Title = "Complete Registration";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<div class="container">
-    <h2>Complete Your Profile</h2>
-    <p class="text-info">Please provide your information to complete the registration.</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/register.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="site-container">
+        <header class="header">
+            <img src="~/img/logo.png" alt="GO!" class="logo">
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm..." class="form-control">
+            </div>
+            <div class="nav-buttons">
+                <a href="@Url.Action("Index", "Home")" class="btn-auth">Trang chủ</a>
+                <a href="@Url.Action("Login", "QuanTris_64131236")" class="btn-auth">Đăng nhập</a>
+            </div>
+        </header>
 
-    @using (Html.BeginForm("CreateCustomerInfo", "KhachHangs_64131236", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(m => m.username)
+        <div class="overlay-wrapper">
+            <div class="auth-box">
+                <h2 class="auth-title">Cập nhật thông tin</h2>
+                <p class="text-info">Vui lòng điền thông tin để hoàn tất hồ sơ.</p>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.TenKH, "Full Name")
-            @Html.TextBoxFor(m => m.TenKH, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.TenKH, "", new { @class = "text-danger" })
+                @using (Html.BeginForm("CreateCustomerInfo", "KhachHangs_64131236", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.username)
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.TenKH, "Họ và tên")
+                        @Html.TextBoxFor(m => m.TenKH, new { @class = "form-control", placeholder = "Nhập họ và tên" })
+                        @Html.ValidationMessageFor(m => m.TenKH, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DiaChi, "Địa chỉ")
+                        @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", placeholder = "Nhập địa chỉ" })
+                        @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, "Email")
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Nhập email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SDT_KH, "Số điện thoại")
+                        @Html.TextBoxFor(m => m.SDT_KH, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
+                        @Html.ValidationMessageFor(m => m.SDT_KH, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn-auth">Cập nhật</button>
+                    <div class="auth-links">
+                        @Html.ActionLink("Quay lại", "Index", null, new { @class = "text-muted" })
+                    </div>
+                }
+            </div>
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.DiaChi, "Address")
-            @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Email, "Email")
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.SDT_KH, "Phone Number")
-            @Html.TextBoxFor(m => m.SDT_KH, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.SDT_KH, "", new { @class = "text-danger" })
-        </div>
-
-        <button type="submit" class="btn btn-primary">Complete Registration</button>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
     }
-</div>
+</body>
+</html>
+<style>
+    /* Cấu hình chung */
+    body {
+        background-color: #f7f7f7;
+        font-family: Arial, sans-serif;
+    }
+
+    .site-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        height: 50px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .auth-box {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .auth-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .btn-auth {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+        .btn-auth:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+    /* Link trở về */
+    .auth-links a {
+        display: block;
+        margin-top: 10px;
+        color: #007bff;
+        text-align: center;
+        font-size: 14px;
+    }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+</style>
